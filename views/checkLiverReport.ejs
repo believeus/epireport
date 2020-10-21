@@ -16,25 +16,33 @@
             </div>
         </div>
         <div id="content" style=" padding: 50px;">cauwu
-            <p style="color:#1a88c7;font-size: 34px;text-align: center;">为保护您的隐私，请输入样本编码或身份证号查询报告</p>
+            <p style="color:#1a88c7;font-size: 34px;text-align: center;">为保护您的隐私，请输入身份证号查询报告</p>
+            <!-- <div style="text-align: center;margin: 45px;">
+                <input type="text" id="sampNumber" name="sampNumber" value="" placeholder="请填写手机号码"></input>
+            </div> -->
             <div style="text-align: center;margin: 45px;">
-                <input type="text" id="sampNumber" name="sampNumber" value="" placeholder="请填写样本编号"></input>
-            </div>
-            <div style="text-align: center;margin: 45px;">
-                <input type="text" id="idNumber" name="idNumber" value="" placeholder="请填写身份证号"></input>
+                <input type="text" id="identity" name="identity" value="" placeholder="请填写身份证号"></input>
             </div>
             <div style="height: 23px;width: 100%;"></div>
             <div style="text-align: center;margin: 45px;">
-                <input id="search" type="button" value="查询">
+                <input id="searchliver" type="button" value="查询">
             </div>
-            <p  style="color:#9c9c9c;font-size: 23px;text-align: center;">
+            <p style="color:#9c9c9c;font-size: 23px;text-align: center;">
                 检查报告涉及个人隐私，为了确保您的隐私安全，仅限本人查询，查询后请妥善保管您的报告。
             </p>
 
         </div>
 
         <script>
-
+            $("#searchliver").click(function () {
+                livereport = {};
+                livereport.identity = $("#identity").val()
+                $.post("/admin/searchlivereport", livereport, function (data) {
+                    if (data == "success") {
+                        window.location.href = "http://192.168.0.110:3000/userdata"
+                    }
+                })
+            })
         </script>
 </body>
 

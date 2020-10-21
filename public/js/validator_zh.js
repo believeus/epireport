@@ -82,27 +82,26 @@ $().ready(function () {
             $('input').attr('value', function () {
                 return $(this).val();
             });
-            $("input").attr("readonly", "true");
-
-            //js获取链接地址传递的参数
-            var test = window.location.href 
-            console.log(test);
-            var str = test.substr(1); //从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串
-            strs = str.split("="); //用等号进行分隔 （因为知道只有一个参数 
             //所以直接用等号进分隔 如果有多个参数 要用&号分隔 再用等号进行分隔）
-            console.log("openid=" + strs[1]) //直接弹出第一个参数 （如果有多个参数 还要进行循环的）
-            var finalHtml = {}
-            
-            finalHtml.sampleid = $('#sampleid').val()
-            finalHtml.openid = strs[1]
-            finalHtml.username = $('#name').val()
-            finalHtml.tel = $("#tel").val()
-            finalHtml.htmlpage = ("<html>" + $('html').html() + "</html>").replace(/block/g, "none")
-            finalHtml.date = new Date().toLocaleString(); //2010/2/3 2/3/2012
-            $.post("/saveform", finalHtml, function (data) {
-                alert(data)
+            $("#submit").click(function () {
+                // $("input").attr("readonly", "true");
+                var finalHtml = {}
+                finalHtml.sampleid = $('#sampleid').val()
+                finalHtml.username = $('#name').val()
+                finalHtml.tel = $("#tel").val()
+                finalHtml.identity=$("#identity").val()
+                finalHtml.htmlpage = ("<html>" + $('html').html() + "</html>").replace(/block/g, "none")
+                finalHtml.date = new Date().toLocaleString()
+                $.post("/saveform", finalHtml, function (data) {
+                    if (data == "success") {
+                        alert("您的信息已保存成功")
+                        window.location.href = "http://192.168.0.110:3000/reserveLiver_success"
+                    } else {
+                        alert("出错")
+                    }
+                })
             })
-            //$(form).ajaxSubmit();
+
         }
 
     });

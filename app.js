@@ -11,28 +11,35 @@ var app = express();
 var wkhtmltopdf = require('wkhtmltopdf');
 var url = 'mongodb://localhost:27017/dbtest';
 var session = require('express-session');
+
 // const { id } = require('pdfkit/js/reference');
 var exec = require('child_process').exec;
-//设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');  //设置渲染引擎
-app.set('host', "http://localhost:3000")
-app.use("/public", express.static(path.join(__dirname, 'public'))); //静态目录设置,设置虚拟目录/public
-app.use(bodyParser.urlencoded({ extended: true }));
+// 创建app应用对象
+const sha1 = require("sha1");
+//引入tool
+const config = require('./modules/config');
+const menu = require("./modules/wechat/menu");
 app.use(session({
   secret: "weird sheep",
   resave: false,
   saveUninitialized: true,
-  // cookie: { user: "admin", maxAge: 14 * 24 * 60 * 60 * 1000 }
+  cookie: { maxAge: 1000 * 60 * 60 },
 
 }))
+const wechat = require('./modules/wechat/wechat');
+// console.info("app.js:"+global.openid)
+//设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');  //设置渲染引擎
+app.set('host', "http://192.168.0.110:3000")
+//验证服务器的有效性
+//静态目录设置,设置虚拟目录/public
+app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 //设置全局的变量url供模板ejs引用
 //app.locals会在整个生命周期中起作用；而res.locals只会有当前请求中起作用
-app.use(function (req, res, next) {
-  app.locals.url = 'http://localhost:3000'
-  res.locals.url = 'http://localhost:3000'
-  next();
-})
 
 //1.创建User集合规则
 let UserSchema = new mongoose.Schema({
@@ -47,8 +54,8 @@ let User = mongoose.model('User', UserSchema);
 let UserInfoSchema = new mongoose.Schema({
   sampleid: { type: String, trim: true },
   username: { type: String, trim: true },
-  openid: String,
   tel: String,
+  identity:String,
   date: String,
   htmlpage: String,
   reportPage: String
@@ -74,7 +81,6 @@ app.get("/admin/report", (req, res) => {
     }
   })
 })
-
 app.post("/admin/buildpdf", (req, res) => {
   let id = req.body.id//根据样本id查询到那条记录，然后根据这个ID 查询数据返回htmlpage给浏览器显示
   console.log(req.body.sampleid)
@@ -91,96 +97,106 @@ app.post("/admin/buildpdf", (req, res) => {
     }
   })
 })
-
 //front pages
-app.get('/', (req, res) => res.render('index'))
+app.get('/index', (req, res) => {
+  var url = req.originalUrl
+  console.log("index URL:" + url)
+  res.render('index')
+})
+
 app.get('/userdata', (req, res) => {
+
+  //微信验证信息 
   //获取上一个页面链接传过来的openid
-  UserInfo.find({ openid: req.query.openid }, function (err, result) {
+  UserInfo.find({ tel: req.query.tel }, function (err, result) {
     if (err) throw err
-    if (result.length!=0) {
-      var html = result[0].htmlpage.replace(/readonly="readonly"/g,"")
+    if (result.length != 0) {
+      var html = result[0].htmlpage.replace(/readonly="readonly"/g, "").replace(/display: none;/g, "display: block;")
       res.send(html)
     } else {
       res.render('userForm')
+
     }
   })
   //根据openid数据库,如果没有这条记录返回userFrom
   //如果有这条记录返回存储在数据库的HTML页面
 
 })
+app.get('/reserveLiver_success', (req, res) => res.render('reserveLiver_success'))
 app.get('/reserveLiver', (req, res) => res.render('reserveLiver'))
 app.get('/reserveCervix', (req, res) => res.render('reserveCervix'))
+app.get('/maintaining', (req, res) => res.render('maintaining'))
 app.get('/reserveEpiage', (req, res) => res.render('reserveEpiage'))
 app.get('/checkLiverReport', (req, res) => res.render('checkLiverReport'))
 app.get('/reportLiver', (req, res) => res.render('reportLiver'))
 app.get('/reserveLiver_success', (req, res) => res.render('reserveLiver_success'))
-
 app.post("/users", function (req, res) {
-  // 通过connection和schema创建model
   new User(req.body).save((err, data) => {
     if (err) throw err
-  });
+    res.send("success")
+    // res.render("userForm")
+  })
 
 })
 app.post("/saveform", function (req, res) {
-  //根据客户端传过来的openid查找数据库，没有就保存表单
-  //有查到openid就根据openid更新数据库相应的openid字段,并把html页面返回给用户
-  UserInfo.find({ openid: req.body.openid }, function (err, result) {
+  new UserInfo(req.body).save((err, data) => {
     if (err) throw err
-    if (result.length != 0) {
-        UserInfo.update({ openid: req.body.openid }, { $set: { "openid": req.body.openid,"username":req.body.username ,"tel":req.body.tel,"htmlpage":req.body.htmlpage,"date":req.body.date} }, function (err, status) {
-          if (err) throw err
-          console.log(status)
-          res.render(result[0].htmlpage)
-        })
-    } else {
-      new UserInfo(req.body).save((err, data) => {
-        if (err) throw err
-          res.send(data);
-      })
-    }
+    res.send("success");
+  })
 
-   })
+  // UserInfo.find({ tel: req.body.tel }, function (err, result) {
+  //   if (err) throw err
+  //   if (result.length != 0) {
+  //     UserInfo.update({ tel: req.body.tel }, { $set: {"username": req.body.username, "tel": req.body.tel, "htmlpage": req.body.htmlpage, "date": req.body.date } }, function (err, status) {
+  //       if (err) throw err
+  //       console.log(status)
+  //       res.render(result[0].htmlpage)
+  //     })
+  //   } else {
+  //     new UserInfo(req.body).save((err, data) => {
+  //       if (err) throw err
+  //       res.send("success");
+  //     })
+  //   }
+
+  // })
 
 });
-// app.post("/saveform", function (req, res) {
-//   UserInfo.find({ _id: req.body.id }, function (err, result) {
-//     if (err) throw err
-//     console.log(req.body.id)
-//     if (_id) {
-//       console.log(req.body.sampleid)
-//       UserInfo.update({ _id: req.body.id }, { $set: { "sampleid": result[0].sampleid, "reportPage": result[0].reportPage, "dnaval": result[0].dnaval } }, function (err, status) {
-//         if (err) throw err
-//         res.send("success")
-//       })
-//      } else {
-//         new UserInfo(req.body).save((err, data) => {
-//           if (err) throw err
-//           res.send(data);
+app.post("/admin/searchlivereport", function (req, res) {
+  console.log(req.body.identity)
+//根据身份证号码查询userinfo数据库
+UserInfo.find({ identity: req.body.identity }, function (err, result) {
+  if (err) throw err
+  let livereport = result[0].reportPage
+  if (livereport) {
+    res.send(livereport)
+  } else {
+    res.render('reportLiver', { "data": result[0] })
+  }
+})
 
-//         });
-
-//       }
-//     })
-//   })
-//查询数据库是否有样本号相同的数据，有就更新，没有就插入
-
-//  mongoose.collection('UserInfo').update({ sampleid: "sampleid" }, { Docsave }, { upsert: true })
-
-//接受客户端提交的post请求并返回req.body获取的参数给客户端。
-// 通过实例化model创建文档
-// 将文档插入到数据库，save方法返回一个Promise对象。
-// req.body不是nodejs默认提供的，需要载入中间件body-parser中间件才可以使用req.body
-
-
+})
 //登录拦截器，必须放在静态资源声明之后、路由导航之前
 app.use(function (req, res, next) {
+  const { signature, echostr, timestamp, nonce } = req.query;
+  const { token } = config;
+
+  //1、字典排序2、sha1 加密
+  //const  arr =[timestamp,nonce,token];
+  const sha1Str = sha1([timestamp, nonce, token].sort().join(''));
   var url = req.originalUrl
   var user = req.session.user  //记录登录的信息
-  if (user) {
+  console.log("backend app.js:" + url)
+  if (url.split("?")[0] == "/") {
+    if (sha1Str === signature) {
+      res.send(echostr) //返回微信验证字符串
+    }
+  } else if (user || url.split("?")[0] == "/") {
     next()
-  } else if (url == "/admin/loginview") {
+  } else if (url == "/saveform") {
+    next()
+  }
+  else if (url == "/admin/loginview") { 
     next()
   } else if (url == "/admin/login") {
     fs.readFile(__dirname + '/account.txt', 'utf-8', function (err, data) {
@@ -197,15 +213,13 @@ app.use(function (req, res, next) {
       }
     });
   } else if (url != "/admin/loginview" && !user) { //user不存在
-    return res.redirect("/admin/loginview");
+    return res.redirect("/admin/loginview")
   } else if (url == "/admin/loginview" && user) {
     next()
   }
 });
-
-
 //back pages
-app.get('/admin/loginview', (req, res) => res.render('back/login'))
+app.post('/admin/loginview', (req, res) => res.render('back/login'))
 app.get("/admin", (req, res) => {
 
   //查数据库获取数据，拼接成json格式传递到客户端
@@ -215,7 +229,7 @@ app.get("/admin", (req, res) => {
   // res.sendFile(path.join(__dirname, "views/back", 'index.html'), {"username":"wuqiwei"});
 })
 
-app.post("/admin/login", (req, res) => { res.redirect('/admin') })
+// app.post("/admin/login", (req, res) => { res.redirect('/admin') })
 app.get("/admin/welcome", (req, res) => res.render('back/welcome'))
 app.get("/admin/article", (req, res) => res.render('back/article-list'))
 app.get("/admin/member", (req, res) => {
@@ -292,16 +306,19 @@ app.get("/admin/detail", (req, res) => {
     res.send(htmlpage)
   })
 })
-
-
-
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
   if (err) throw err;
   console.log("Connected to Database");
 
+  //开启自定义菜单
+  (async () => {
+    const w = new wechat();
+    let resule = await w.deleteMenu();
+    let muelu = await w.creatMenu(menu);
 
-
+  })();
   app.listen(3000, () => console.log('Server listening on port 3000!'))
 
-
 })
+
+module.exports = app;

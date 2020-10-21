@@ -9,17 +9,6 @@
     <script type="text/javascript" src="/public/js/getidinfo.js"></script>
     <script type="text/javascript" src="/public/js/jquery.validate.min.js"></script>
 
-    <!-- <link href="/public/css/bootstrap.min.css" rel="stylesheet"> -->
-    <!-- <script>
-        $.validator.setDefaults({
-            submitHandler: function () {
-                alert("提交事件!");
-            }
-        });
-        $().ready(function () {
-            $("#commentForm").validate();
-        });
-    </script> -->
 </head>
 
 <body>
@@ -30,8 +19,8 @@
             <h5>以下为客户信息，请认真填写</h5>
         </div>
         <form class="userform" id="userform" name="userform" method="GET" action="http://localhost:3000/userForm">
-            <input type="hidden"  whichOpenid="openid">
-            <input type="hidden"    whichid="dbid">
+            <input type="hidden" whichOpenid="openid">
+            <input type="hidden" whichid="dbid">
             <div id="content">
                 <p class="grey-line"></p>
                 <div class="pwrap">
@@ -51,7 +40,7 @@
                 <div class="pwrap">
                     <div class="wrap">
                         <label><span style="color:red;">* </span>身份证号:</label>
-                        <input type="text" id="identify" name="identify" value="" onblur="getInfo()" placeholder="请输入"
+                        <input type="text" id="identity" name="identity" value="" onblur="getInfo()" placeholder="请输入"
                             required="required"></input>
                     </div>
                 </div>
@@ -146,7 +135,7 @@
                 <div class="pwrap">
                     <div class="wrap">
                         <label><span style="color:red;">* </span>手机号码:</label>
-                        <input type="tel" id="tel" name="tel" value=""  placeholder="请输入" required="required"></input>
+                        <input type="tel" id="tel" name="tel" value="" placeholder="请输入" required="required"></input>
                     </div>
                 </div>
                 <p class="grey-line"></p>
@@ -175,16 +164,12 @@
         </form>
         <script type="text/javascript" src="/public/js/validator_zh.js"></script>
         <script>
-            $(function(){
-                $("input[type=radio]").change(function () {
-                    if ($(this).attr('checked', true)) {
-                        $(this).siblings("input[type=radio]").attr('checked', false)
-                    }
-                })
-                
+            $("input[type=radio]").change(function () {
+                if ($(this).attr('checked', true)) {
+                    $(this).siblings("input[type=radio]").attr('checked', false)
+                }
             })
            
-
         </script>
 </body>
 

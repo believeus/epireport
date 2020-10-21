@@ -37,6 +37,7 @@
       </div>
     </form>
     <script>
+      console.info(window.location.href)
       $("#signname").blur(function(){
         var myDate = new Date();
         var year = myDate.getFullYear();       
@@ -46,16 +47,16 @@
         $("input[id=signdate]").attr("value",currentTime);
       })
       $("#button").click(function () {
-        var openid = window.location.href.substr(1).split("=")[1]; //从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串
         userData = {};
         userData.signname = $("#signname").val()
         userData.signdate = $("#signdate").val()
         userData.htmlpage=$("html").html();
-        console.log(userData);
         $.post("/users",  userData, function (data) {
-          alert(data)
+          if(data=="success"){
+            window.location.href="http://192.168.0.110:3000/userdata"
+          }
         })
-        window.location="http://localhost:3000/userdata?openid="+openid
+        
       })
     </script>
 </body>
