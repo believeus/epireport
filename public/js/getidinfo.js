@@ -1,5 +1,5 @@
 var getInfo = function () {
-    var ele = $("input[id=identify]").val();
+    var ele = $("input[id=identity]").val();
     var birth = ele.substring(6, 10) + "-" + ele.substring(10, 12) + "-" + ele.substring(12, 14);
     $("input[id=txtBirth]").attr("value",birth);
     var sex = "";
