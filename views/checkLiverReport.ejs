@@ -33,6 +33,31 @@
 
         </div>
 
+<<<<<<< HEAD
+   
+
+    <script>
+    
+      $("#button").click(function () {
+        userData = {};
+        userData.sfz=$("#sfz").val()
+        // window.location.href= "http://192.168.0.112:3000/testre?sfz="+$("#sfz").val()
+
+       $.post("/testre",  userData, function (data) {
+            if(data){
+                // $('html').html(data)
+                window.location.href= "<%=host%>"+"/public/pdffile/"+data
+            }
+         
+          if(data==null){
+              alert("您的查询报告还没出来，请耐心等候")
+          }
+        })
+      
+      })
+    </script>
+ 
+=======
         <script>
             $("#checkliver").click(function () {
                 livereport = {};
@@ -46,6 +71,7 @@
                 })
             })
         </script>
+>>>>>>> deda2bc853b2643deeaf5150351bb8ac1c8a4d1d
 </body>
 
 </html>

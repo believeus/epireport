@@ -197,8 +197,8 @@ app.all("/testre", function (req, res) {
   UserInfo.find({ identity: sfz }, function (err, result) {
 
     if (err) throw err
-    if (result.length != 0) {
-      var html = result[0].reportPage
+    if (result[0].pdf) {
+      // var html = result[0].reportPage
       // console.info(html)
       var pdf = result[0].pdf
       console.info(result[0].pdf);
@@ -222,7 +222,7 @@ app.use(function (req, res, next) {
   //1、字典排序2、sha1 加密
   //const  arr =[timestamp,nonce,token];
   const sha1Str = sha1([timestamp, nonce, token].sort().join(''));
-  var url = req.originalUrl
+  var url = req.url
   var user = req.session.user  //记录登录的信息
   console.log("backend app.js:" + url)
   if (url.split("?")[0] == "/") {
