@@ -3,13 +3,13 @@
  */
 /*
 *
-* ·şÎñÆ÷ÑéÖ¤ ÓĞĞ§ĞÔµÄÄ£¿é
+* æœåŠ¡å™¨éªŒè¯ æœ‰æ•ˆæ€§çš„æ¨¡å—
 * */
 
 
 const  sha1 = require("sha1");
 const config = require('../config');
-//ÒıÈëtool
+//å¼•å…¥tool
 const {getUserDataAsync} = require('../utils/tool');
 
 
@@ -17,7 +17,7 @@ module.exports = () =>{
 
 
     return async (req,res,next) => {
-        //Î¢ĞÅ·şÎñÆ÷²ÎÊı
+        //å¾®ä¿¡æœåŠ¡å™¨å‚æ•°
         console.log(req.query);
 
         /*
@@ -30,10 +30,10 @@ module.exports = () =>{
         const {signature,echostr,timestamp,nonce}=req.query;
         const {token}=config;
 
-        //1¡¢×ÖµäÅÅĞò2¡¢sha1 ¼ÓÃÜ
+        //1ã€å­—å…¸æ’åº2ã€sha1 åŠ å¯†
         //const  arr =[timestamp,nonce,token];
         const  sha1Str = sha1([timestamp,nonce,token].sort().join(''));
-        //3¡¢¼ÓÃÜÍê³ÉÉú²úÒ»¸ösignatrue ºÍÎ¢ĞÅ·¢ËÍ¹ıÀ´µÄ½øĞĞ¶Ô±È
+        //3ã€åŠ å¯†å®Œæˆç”Ÿäº§ä¸€ä¸ªsignatrue å’Œå¾®ä¿¡å‘é€è¿‡æ¥çš„è¿›è¡Œå¯¹æ¯”
         if(req.method ==='GET'){
             if(sha1Str===signature){
                 res.send(echostr)
@@ -41,26 +41,19 @@ module.exports = () =>{
                 res.end('error');
             }
         }else if(req.method ==='POST'){
-            //Î¢ĞÅ·şÎñÆ÷ÏòÓÃ»§·¢ËÍµÄÊı¾İÓÃpost ×ª¿ª·¢Õß·şÎñÆ÷
-            //ÑéÖ¤ÏûÏ¢À´×ÔÓÚÎ¢ĞÅ·şÎñÆ÷
+            //å¾®ä¿¡æœåŠ¡å™¨å‘ç”¨æˆ·å‘é€çš„æ•°æ®ç”¨post è½¬å¼€å‘è€…æœåŠ¡å™¨
+            //éªŒè¯æ¶ˆæ¯æ¥è‡ªäºå¾®ä¿¡æœåŠ¡å™¨
 
             if(sha1Str !==signature){
                 res.end('error');
             }
             console.log(req.query);
-            const openid = await req.query.openid;
-            global.openid = openid;
-            //return Promise.resolve(openid);
-
-            //module.exports.openid = openid;
-            console.log("three openid:"+openid);
             const xmlData = await getUserDataAsync(req);
-            console.log('xmldata:'+xmlData);
             res.end('');
         }else{
             res.end('error');
         }
-
-
+        
+        
     }
 };

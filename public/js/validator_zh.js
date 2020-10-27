@@ -95,7 +95,7 @@ $().ready(function () {
                 $.post("/saveform", finalHtml, function (data) {
                     if (data == "success") {
                         alert("您的信息已保存成功")
-                        window.location.href = "http://192.168.0.112:3000/reserveLiver_success"
+                        window.location.href = "http://192.168.0.109:3000/reserveLiver_success"
                     } else {
                         alert("出错")
                     }

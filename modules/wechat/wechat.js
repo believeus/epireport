@@ -52,7 +52,9 @@ class wechat{
         return new Promise((resolve, reject) => {
             rp({method: 'GET', url, json: true}).then(res => {
                 console.log(res);
+
                 /*
+                 *
                  * { access_token:
                  '37_KHSv4Qg19iQWhJAFWdJZrqGexExBPrUfWq1tpieUiAjn71KZvmNyn0vb7pehsmNr_0TcAuPyKTj_VyZ1LLws7vgMdJgzXg8vfXS7zw88gZffKz6vBT8vctEQD5BNSK_qwJEijtmkjAaiRar_OVXaAFAHOQ',
                  expires_in: 7200 }
@@ -63,7 +65,7 @@ class wechat{
                 resolve(res)
             }).catch(err => {
                 console.log(err);
-                reject('getAccessToken' + err)
+                reject('getAccessToken??????' + err)
             })
         });
 
@@ -81,7 +83,7 @@ class wechat{
                     console.log("保存成功");
                     resolve();
                 } else {
-                    reject("saveAccessToken" + err);
+                    reject("saveAccessToken??????????" + err);
                 }
             })
         })
@@ -98,10 +100,11 @@ class wechat{
             readFile('./accessToken.txt', accessToken, err, data=> {
                 if (!err) {
                     console.log("?????????");
+                    // ????????js????
                     data = JSON.parse(data);
                     resolve(data);
                 } else {
-                    reject("readAccessToken" + err);
+                    reject("readAccessToken??????" + err);
                 }
             })
         })
@@ -134,7 +137,7 @@ class wechat{
                 if (this.isValidAccessToken(res)) {
                     return Promise.resolve(res);
                 } else {
-
+                    //??????
                     //重新获取accesstoken
                     const res = await this.getAccessToken();
                     await this.saveAccessToken(res);
@@ -151,6 +154,8 @@ class wechat{
                 this.expires_in = res.expires_in;
                 return Promise.resolve(res)
             })
+
+
     }
 
 
@@ -175,7 +180,7 @@ class wechat{
                 });
                 resolve(result);
             } catch (e) {
-                reject("creatMenu...." + e);
+                reject("creatMenu??????????" + e);
             }
         })
     }

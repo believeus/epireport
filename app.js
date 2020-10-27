@@ -33,14 +33,14 @@ const wechat = require('./modules/wechat/wechat');
 //设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');  //设置渲染引擎
-app.set('host', "http://192.168.0.112:3000")
+app.set('host', "http://192.168.0.107:3000")
 app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //设置全局的变量url供模板ejs引用
 //app.locals会在整个生命周期中起作用；而res.locals只会有当前请求中起作用
-app.locals["url"] = "http://192.168.0.112:3000"
+app.locals["url"] = "http://192.168.0.107:3000"
 
 //1.创建User集合规则
 let UserSchema = new mongoose.Schema({
@@ -116,7 +116,7 @@ app.post("/admin/buildpdf", (req, res) => {
       let spath = __dirname + '/public/pdffile/' + result[0].sampleid + '.pdf'
       wkhtmltopdf(html.replace(/block/g, "none"), { output: spath })
       // result[0].pdf=result[0].sampleid + '.pdf'
-      UserInfo.update({ "_id": id },{$set:{pdf: result[0].sampleid+'.pdf' }}, function (err, status) {
+      UserInfo.update({ "_id": id }, { $set: { pdf: result[0].sampleid + '.pdf' } }, function (err, status) {
         if (err) throw err
       })
 
@@ -162,7 +162,7 @@ app.post("/users", function (req, res) {
   new User(req.body).save((err, data) => {
     if (err) throw err
     res.send("success")
-    
+
   })
 
 })
@@ -172,34 +172,18 @@ app.post("/saveform", function (req, res) {
     res.send("success");
   })
 
-  // UserInfo.find({ tel: req.body.tel }, function (err, result) {
-  //   if (err) throw err
-  //   if (result.length != 0) {
-  //     UserInfo.update({ tel: req.body.tel }, { $set: {"username": req.body.username, "tel": req.body.tel, "htmlpage": req.body.htmlpage, "date": req.body.date } }, function (err, status) {
-  //       if (err) throw err
-  //       console.log(status)
-  //       res.render(result[0].htmlpage)
-  //     })
-  //   } else {
-  //     new UserInfo(req.body).save((err, data) => {
-  //       if (err) throw err
-  //       res.send("success");
-  //     })
-  //   }
-
-  // })
 
 });
 app.all("/testre", function (req, res) {
 
-  console.info("身份证：" + req.body.sfz)
-  let sfz = req.body.sfz;
-  UserInfo.find({ identity: sfz }, function (err, result) {
-
-    if (err) throw err
+  console.info("身份证：" + req.body.identity)
+  let identity = req.body.identity;
+  UserInfo.find({ identity: identity }, function (err, result) {
+    if (err) {
+      res.send('noid')
+      return
+    }
     if (result[0].pdf) {
-      // var html = result[0].reportPage
-      // console.info(html)
       var pdf = result[0].pdf
       console.info(result[0].pdf);
       res.send(pdf);
@@ -238,6 +222,7 @@ app.use(function (req, res, next) {
     next()
   } else if (url == "/admin/login") {
     fs.readFile(__dirname + '/account.txt', 'utf-8', function (err, data) {
+      if (err) throw err
       var username = data.slice(0, 5)
       var password = data.slice(5, 16)
       if (req.body.username == username && req.body.password == password) {
@@ -250,7 +235,7 @@ app.use(function (req, res, next) {
         return res.redirect('/admin/loginview')
       }
     });
-  } else if (url != "/admin/loginview" && !user) { 
+  } else if (url != "/admin/loginview" && !user) {
     return res.redirect("/admin/loginview")
   } else if (url == "/admin/loginview" && user) {
     next()

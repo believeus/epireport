@@ -1,12 +1,7 @@
-/**
- * Created by Administrator on 2020/9/9.
- */
 
-
-//微信服务器appid
 module.exports={
     token :'epidia',
-    appID :'wx5b9051235177f138',
-    appsecret :'5e57ee92fe48daa1aabc34506ee7de9a'
+    appID :'wxfc9dec422e602a83',
+    appsecret :'a6f5a2764273d25d282282db5498c633'
 };
 
