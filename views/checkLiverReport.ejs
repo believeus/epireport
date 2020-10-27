@@ -17,12 +17,15 @@
         </div>
         <div id="content" style=" padding: 50px;">
             <p style="color:#1a88c7;font-size: 34px;text-align: center;">为保护您的隐私，请输入身份证号查询报告</p>
-          <div style="text-align: center;margin: 45px;">
-                <input type="text" id="sfz" name="identity" value="" placeholder="请填写身份证号"></input>
+            <!-- <div style="text-align: center;margin: 45px;">
+                <input type="text" id="sampNumber" name="sampNumber" value="" placeholder="请填写手机号码"></input>
+            </div> -->
+            <div style="text-align: center;margin: 45px;">
+                <input type="text" id="identity" name="identity" value="" placeholder="请填写身份证号"></input>
             </div>
             <div style="height: 23px;width: 100%;"></div>
             <div style="text-align: center;margin: 45px;">
-                <input id="button" type="button" value="查询">
+                <input id="checkliver" type="button" value="查询">
             </div>
             <p style="color:#9c9c9c;font-size: 23px;text-align: center;">
                 检查报告涉及个人隐私，为了确保您的隐私安全，仅限本人查询，查询后请妥善保管您的报告。
@@ -30,30 +33,19 @@
 
         </div>
 
-   
-
-    <script>
-    
-      $("#button").click(function () {
-        userData = {};
-        userData.sfz=$("#sfz").val()
-        // window.location.href= "http://192.168.0.112:3000/testre?sfz="+$("#sfz").val()
-
-       $.post("/testre",  userData, function (data) {
-            if(data){
-                // $('html').html(data)
-                window.location.href= "http://192.168.0.112:3000/public/pdffile/"+data
-            }
-         
-          if(data=="error"){
-              alert("身份证有误")
-          }
-        })
-      
-      })
-    </script>
- 
+        <script>
+            $("#checkliver").click(function () {
+                livereport = {};
+                livereport.identity = $("#identity").val()
+                $.post("/admin/checklivereport", livereport, function (data) {
+                    if (data == "success") {
+                        window.location.href = "<%=locals.url%>/admin/reportby/"+$("#identity").val()
+                    }else{
+                        alert("请稍等，您的报告结果正在检测中！")
+                    }
+                })
+            })
+        </script>
 </body>
 
 </html>
-
