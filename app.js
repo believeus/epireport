@@ -33,14 +33,14 @@ const wechat = require('./modules/wechat/wechat');
 //设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');  //设置渲染引擎
-app.set('host', "http://192.168.0.107:3000")
+app.set('host', "http://192.168.0.109:3000")
 app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //设置全局的变量url供模板ejs引用
 //app.locals会在整个生命周期中起作用；而res.locals只会有当前请求中起作用
-app.locals["url"] = "http://192.168.0.107:3000"
+app.locals["url"] = "http://192.168.0.109:3000"
 
 //1.创建User集合规则
 let UserSchema = new mongoose.Schema({
@@ -172,8 +172,8 @@ app.post("/saveform", function (req, res) {
     res.send("success");
   })
 
-
 });
+
 app.all("/testre", function (req, res) {
 
   console.info("身份证：" + req.body.identity)
@@ -216,9 +216,11 @@ app.use(function (req, res, next) {
       //直接查数据库 如果数据库没有就去读取文件中的html页面，有就返回数据库的html页面
     }
     next()
+  
   } else if (user || url.split("?")[0] == "/") {
     next()
-  } else if (url == "/admin/loginview") {
+  }
+   else if (url == "/admin/loginview") {
     next()
   } else if (url == "/admin/login") {
     fs.readFile(__dirname + '/account.txt', 'utf-8', function (err, data) {
