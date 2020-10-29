@@ -35,8 +35,7 @@ $().ready(function () {
                 required: true,
                 minlength: 10,
             },
-            identify: {
-                required: true,
+            identify: {              
                 isIdCardNo: true
             },
             tel: {
@@ -45,7 +44,6 @@ $().ready(function () {
             },
             email: {
                 isEmail: true,
-                required: true
             }
         },
 
