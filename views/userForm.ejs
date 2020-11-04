@@ -4,7 +4,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>客户信息登记表</title>
-    <link rel="stylesheet" type="text/css" href="/public/css/userform.css" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" media="screen and (min-width:600px) and (max-width:1920px)"
+        href="/public/css/userformpc.css" />
+    <link rel="stylesheet" media="screen and (min-width:320px) and (max-width:600px)"
+        href="/public/css/userformphone.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/public/css/userformpc.css" /> -->
     <script type="text/javascript" src="/public/js/query-3.5.1.min.js"></script>
     <script type="text/javascript" src="/public/js/getidinfo.js"></script>
     <script type="text/javascript" src="/public/js/jquery.validate.min.js"></script>
@@ -14,11 +19,11 @@
 <body>
     <div id="container">
         <div id="header">
-            <h1>客户信息登记表</h1>
-            <h3>(填表前请查看重要提示)</h3>
-            <h5>以下为客户信息，请认真填写</h5>
+            <div id="title">客户信息登记表</div>
+            <div id="title-sub1">(填表前请查看重要提示)</div>
+            <div id="title-sub2">以下为客户信息，请认真填写</div>
         </div>
-        <form class="userform" id="userform" name="userform" method="GET" action="http://192.168.0.109:3000/userForm">
+        <form class="userform" id="userform" name="userform" method="GET" action="<%=locals.url%>:3000/userForm">
             <input type="hidden" whichOpenid="openid">
             <input type="hidden" whichid="dbid">
             <div id="content">
@@ -159,6 +164,7 @@
             <div style="text-align: center;">
                 <input id="submit" type="submit" style="display: block;" value="提交">
             </div>
+            <div style="width: 100%;height: 100px;"></div>
         </form>
         <script type="text/javascript" src="/public/js/validator_zh.js"></script>
         <script>

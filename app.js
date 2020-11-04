@@ -33,14 +33,14 @@ const wechat = require('./modules/wechat/wechat');
 //设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');  //设置渲染引擎
-app.set('host', "http://192.168.0.109:3000")
+app.set('host', "http://192.168.0.113:3000")
 app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //设置全局的变量url供模板ejs引用
 //app.locals会在整个生命周期中起作用；而res.locals只会有当前请求中起作用
-app.locals["url"] = "http://192.168.0.109:3000"
+app.locals["url"] = "http://192.168.0.113:3000"
 
 //1.创建User集合规则
 let UserSchema = new mongoose.Schema({
@@ -99,7 +99,7 @@ app.get("/admin/report/", (req, res) => {
       res.send(result[0].reportPage)
       //如果没值返回页面
     } else {
-      res.render('reportLiver', { "data": result[0] })
+      res.render('reportLiver2', { "data": result[0] })
     }
   })
 })
@@ -118,6 +118,8 @@ app.post("/admin/buildpdf", (req, res) => {
       // result[0].pdf=result[0].sampleid + '.pdf'
       UserInfo.update({ "_id": id }, { $set: { pdf: result[0].sampleid + '.pdf' } }, function (err, status) {
         if (err) throw err
+        console.log(status)
+        res.send("success")
       })
 
 
@@ -149,13 +151,13 @@ app.all('/userdata', (req, res) => {
   //如果有这条记录返回存储在数据库的HTML页面
 
 })
-app.get('/reserveLiver_success', (req, res) => res.render('reserveLiver_success'))
 app.get('/reserveLiver', (req, res) => res.render('reserveLiver'))
 app.get('/reserveCervix', (req, res) => res.render('reserveCervix'))
 app.get('/maintaining', (req, res) => res.render('maintaining'))
 app.get('/reserveEpiage', (req, res) => res.render('reserveEpiage'))
 app.get('/checkLiverReport', (req, res) => res.render('checkLiverReport'))
 app.get('/reportLiver', (req, res) => res.render('reportLiver'))
+app.get('/reportLiver2', (req, res) => res.render('reportLiver2'))
 app.get('/reserveLiver_success', (req, res) => res.render('reserveLiver_success'))
 
 app.post("/users", function (req, res) {
@@ -175,14 +177,13 @@ app.post("/saveform", function (req, res) {
 });
 
 app.all("/testre", function (req, res) {
-
   console.info("身份证：" + req.body.identity)
   let identity = req.body.identity;
   UserInfo.find({ identity: identity }, function (err, result) {
     if (err) {
       res.send('noid')
-      return
     }
+    return
     if (result[0].pdf) {
       var pdf = result[0].pdf
       console.info(result[0].pdf);
@@ -216,11 +217,11 @@ app.use(function (req, res, next) {
       //直接查数据库 如果数据库没有就去读取文件中的html页面，有就返回数据库的html页面
     }
     next()
-  
+
   } else if (user || url.split("?")[0] == "/") {
     next()
   }
-   else if (url == "/admin/loginview") {
+  else if (url == "/admin/loginview") {
     next()
   } else if (url == "/admin/login") {
     fs.readFile(__dirname + '/account.txt', 'utf-8', function (err, data) {
@@ -274,6 +275,7 @@ app.get("/admin/member-show", (req, res) => {
 })
 app.post("/admin/saveReport", (req, res) => {
   //根据客户端传来的id查询并更新、插入对应数据
+  console.log("这是报告里面的id??"+req.body.id)
   UserInfo.find({ _id: req.body.id }, function (err, result) {
     if (err) throw err
     result[0].sampleid = req.body.sampleid

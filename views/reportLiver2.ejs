@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <!-- <link rel="stylesheet" media="screen and (min-width:600px) and (max-width:1920px)"
+        href="<%=locals.url%>/public/css/admin/reportpc.css" /> -->
+    <!-- <link rel="stylesheet" media="screen and (min-width:320px) and (max-width:600px)"
+        href="<%=locals.url%>/public/css/admin/reportphone.css" /> -->
+        <!-- <link rel="stylesheet" href="<%=locals.url%>/public/css/admin/reportpc.css" media="print" /> -->
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font: 0.75rem 100% Arial, sans-serif;
+}
+/* page1 start */
+#page1{
+    width: 100%;
+    height: 80rem;
+}
+#page1-part1{
+    width: 100%; height: 22rem;overflow: hidden;
+}
+#address{
+width: 100%;height: 5rem;font-size: 1rem;
+
+}
+#page1-title-outer{
+    width: 100%; height: 6.1re;margin: 0 auto
+}
+#page1-title-sub{
+    width: 100%;height: 0.9375rem;background: #E7EAF1;float: right;position: relative
+}
+#page1-title-sub img{ position: absolute;right: 0;bottom: 0;width: 36%;height: auto}
+#logo-outer {
+    height: 13rem;
+}
+
+#logo {
+    width: 30%;
+    height: 6rem;
+}
+
+#page1-title-cn{
+    width: 100%;
+    height: 3.6rem;
+    background: #0564A6;
+    float: right;
+    padding-top: 0.8rem;
+    line-height: 1.7rem;
+    font-size: 1.4rem;
+    color: white;
+
+}
+#page1-title{
+    width: 100%;
+    height: 2.9rem;
+    background: #C71762;
+    float: right;
+    padding-top: 0.3rem;
+    line-height: 1.3rem;
+}
+#page1-title-left{
+    float: left;width:1.5%;height: 2.9rem;
+}
+#page1-title-en{
+    width: 97%;
+    height: 2.9rem;
+    float: left;
+    font-size: 1.1rem;
+    color: white;
+}
+.block{
+    width: 100%;
+    height: 2rem;
+}
+#page1butimg{
+    width: 70%;
+    margin: 0 auto;
+    height: 20rem;
+    
+}
+#page1butimg img{
+    width: 100%;height:auto;
+}
+.page-end-logo{
+    width: 100%; height: 1.5rem;margin: 0 auto;background: #F7F7F7;overflow: hidden;
+}
+.page-end-logo img{
+    width: 9%;height: auto;
+}
+#info-container{
+    width: 100%;
+    overflow: hidden;
+    height: 35rem;
+     margin: 0 auto;
+     font-size: 1rem;
+     font-weight: 600;
+}
+input {
+    font-size: 1.2rem;
+    margin-left: 0.6rem;
+}
+#sales-center{ width: 100%;height: 2rem;font-size: 1.2rem; color: #0071bc;overflow: hidden;}
+#test-center{
+    width: 100%;height: 2rem;font-size: 1.2rem; color: #0071bc;
+}
+#container1{
+    overflow: hidden; 
+    border-top: 0.1rem saddlebrown solid;
+}
+#container2{
+    overflow: hidden;
+}
+.wrap {
+overflow: hidden;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    padding-left: 1rem;
+    width: 100%
+}
+
+.wrap_grey {
+    overflow: hidden;
+    padding-left: 1rem;
+    height: 3.6rem;
+    line-height: 3.6rem;
+    width: 100%;
+    background: #f7f7f7;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+.whitebar{
+    border: none;height:3rem;line-height: 3rem;
+}
+.greybar{
+    border: 0;height: 3rem;line-height: 3rem; background :#f7f7f7;
+}
+/* page1 end */
+/* page2 start */
+#detectname{
+    width: 100%;
+    margin: 0 auto;
+    height: 2.625rem;
+    line-height: 2.625rem;
+    background: #DFF1FB;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-indent: 0.5em;
+    color: #2C7FB8
+}
+#detectname input{
+    height: 2.0625rem;width: 60%; background: #DFF1FB;border:none
+}
+#detectresult{
+    width: 100%;
+    margin: 0 auto;
+    height: 2.625rem;
+    line-height: 2.625rem;
+    background: #DFF1FB;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-indent: 0.5em;
+    color: #2C7FB8
+}
+#detectresult input{
+    height: 2.0625rem;width: 60%; background: #DFF1FB;border:none
+}
+#youresult{
+    width: 100%;height: 2.5rem;line-height: 2.5rem;color: #2178B4;margin: 0 auto;font-size: 1.3rem;font-weight: 600;
+}
+.result-block{
+    width: 100%;height: 0.4rem;background: #f2f2f2;margin: 0 auto
+}
+#rating-container{
+    width: 100%;
+    height: 19rem;
+    background-color: #f2f2f2;
+    border-radius: 0.6rem;
+}
+#rating{
+    width: 100%;height: 11rem;
+}
+#probability{
+    width: 90%;height:2rem ;margin: 0 auto;margin-left: 1rem;font-size: 0.9rem;padding-top: 0.9rem;font-weight: 600;
+}
+#rating-index{
+    width: 100%;height: 4.3rem;
+}
+#rating-index-container{
+    width: 90%;height: 4.3rem;line-height: 1.5rem; margin: 0 auto;text-align: center;overflow: hidden;
+}
+.rating-index-sub{
+    width: 16%;height: 4.3rem;float: left;
+}
+#rate1{
+    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
+}
+#rate2{
+    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
+}
+#rate3{
+    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
+}
+#rate4{
+    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
+}
+#rate5{
+    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
+}
+#rate6{
+    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
+}
+#rating-percent{
+    width: 100%;height: 1.5rem;overflow: hidden;
+}
+#rating-percent-container{
+    width: 90%;height: 1.5rem;line-height: 1.5rem; margin: 0 auto;text-align: center;
+}
+.rating-percent-sub{
+    width: 16%;height: 1.5rem;float: left;
+}
+#rating-colorfulbar{
+    width: 100%;height: 1.5rem;overflow: hidden;
+}
+#rating-colorfulbar-container{
+    width: 90%;height: 1.5rem;line-height: 1.5rem; margin: 0 auto;text-align: center;
+}
+#color1{
+    width: 16%;height: 1.5rem;float: left;background-color: #8dc553;
+}
+#color2{
+    width: 16%;height: 1.5rem;float: left;background-color: #f1e0cf;
+}
+#color3{
+    width: 16%;height: 1.5rem;float: left;background-color: #ebc6a7;
+}
+#color4{
+    width: 16%;height: 1.5rem;float: left;background-color: #dfa473;
+}
+#color5{
+    width: 16%;height: 1.5rem;float: left;background-color: #e46c0a;
+}
+#color6{
+    width: 16%;height: 1.5rem;float: left;background-color: #953735;
+}
+#rating-number{
+    width: 100%;height: 1.5rem;overflow: hidden;
+}
+#rating-number-container{
+    width: 90%;height: 1.5rem;line-height: 1.5rem; margin: 0 auto;text-align: center;
+}
+.number{
+    width: 16%;height: 1.5rem;float: left;
+}
+#number-of-genes{
+    width: 90%;height:2rem ;line-height: 2rem; margin: 0 auto;margin-left: 1rem;font-size: 0.9rem;font-weight: 600;
+}
+#number-of-genes-eg{
+width: 90%;height: 2rem;margin: 0 auto;margin-left: 0.5rem;font-size: 0.8rem;color: grey;
+}
+#page2-result{
+    width: 100%;height: 9rem;font-size: 0.7rem;border-radius: 0.3rem; background-color: #0C6AAC;font-size: 0.9rem;color: #ffffff; margin: 0 auto
+}
+#page2-result-sub{
+    width: 90%;height: 8rem;margin: 0 auto;padding-top: 1rem;font-size: 1.1rem;
+}
+#page2-result-en{
+width: 100%;height: 9rem;font-size: 0.7rem;border-radius: 0.6rem;font-size: 1rem;color: grey; margin: 0 auto
+}
+#page2-block{
+    width: 100%;height: 2rem;
+}
+/* page2 end */
+/* page3 start */
+#page3-title{
+    width: 100%;height: 3.6rem;font-size: 1rem;border-radius: 0.3rem; background-color: #0C6AAC;font-size: 1.2rem;color: #ffffff; margin: 0 auto
+}
+#page3-title div{
+    width: 97%;height: 3.6rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page3-part1{
+    width: 100%;height: 19rem;overflow: hidden;position:relative;font-size: 1rem;
+}
+#page3-img1{
+    width: 30%;height: auto;
+}
+#page3-part2{
+    width: 100%;height: 13rem;font-size: 1rem;border-radius: 0.3rem; background-color: #fdeada; margin: 0 auto
+}
+#page3-part2-sub{
+    width: 90%;height: 13rem;margin: 0 auto;padding-top: 1rem;
+}
+#page3-part3{
+    width: 100%;height: 16rem;position: relative;
+}
+#page3-part3-sub{
+position: absolute;z-index:2;left:2rem; top:4rem;right: 2rem;bottom: 2rem; color: #ffffff;font-weight: 600;
+}
+/* page3 end */
+/* page4 start */
+#page4-title{
+    width: 100%;height: 3.6rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
+}
+#page4-title-sub{
+    width: 97%;height: 3.6rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page4-part1{
+    width: 100%;height: 29rem;overflow: hidden;position:relative;font-size: 1rem;
+}
+#page4-img1{
+    width: 30%;height: auto;
+}
+/* page4 end */
+/* page5 start */
+#page5-title{
+    width: 100%;height: 5rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
+}
+#page5-title-sub{
+    width: 97%;height: 5rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page5-part1{
+    width: 100%;height: 36rem;overflow: hidden;position:relative;font-size: 1rem;
+}
+#page5-img1{
+    width: 30%;height: auto;
+}
+/* page5 end */
+/* page6 start */
+#page6-title{
+    width: 100%;height: 3.9rem;border-radius: 0.3rem; background-color: #e46c0a;font-size: 1.2rem;color: #ffffff; margin: 0 auto
+}
+#page6-title-sub{
+    width: 97%;height: 3.9rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page6-part1{
+    width: 100%;height: 42rem;overflow: hidden;position:relative;font-size: 1rem;
+}
+#page6-img1{
+    width: 30%;height: auto;
+}
+/* page6 end */
+/* page7 start */
+#page7-title{
+    width: 100%;height: 14rem;font-size: 1rem;border-radius: 0.3rem; background-color: #0564a7; margin: 0 auto
+}
+#page7-title-sub{
+width: 90%;height: 14rem;margin: 0 auto;padding-top: 1.5rem;color: #ffffff;font-size: 1rem;
+}
+#page7-img1{
+    width: 50%;height: 22rem;margin: 0 auto;
+}
+
+/* page7 end */
+/* page8 start */
+#page8-title{
+    width: 100%;height: 5.3rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #00b0f0;color: #ffffff; margin: 0 auto
+}
+#page8-title-sub{
+    width: 90%;height: 5.3rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page8-part1{
+    width: 100%;height: 23rem;overflow: hidden;position:relative;font-size: 1rem;
+}
+#page8-img1{
+    width: 30%;height: auto;
+}
+#page8-img2{
+    width: 30%;height: 29rem;margin: 0 auto;
+}
+/* page8 end */
+/* page9 start */
+#page9-title{
+    width: 100%;height: 7rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #0564a7; margin: 0 auto;
+}
+#page9-title-sub{
+    width: 90%;height: 7rem;margin: 0 auto;padding-top: 1rem;color: #ffffff;font-size: 1rem;
+}
+#page9-part1{
+    width: 100%;height: 15rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
+}
+#page9-part1-sub{
+    width: 100%;height: 15rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
+}
+#page9-part2{
+    width: 100%;height: 12rem;font-size: 1rem;border-radius: 0.3rem; background-color: #e4edf8; margin: 0 auto
+}
+#page9-part2-sub{
+    width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
+}
+/* page9 end */
+/* page10 start */
+#page10-title{
+    width: 100%;height: 3.9rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
+}
+#page10-title-sub{
+    width: 97%;height: 3.9rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page10-part1{
+    width: 100%;height: 23rem;font-size: 1rem; margin: 0 auto
+}
+#page10-part1-sub{
+    width: 100%;height: 24rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
+}
+#page10-img1{
+    width: 40%;height: 23rem;margin: 0 auto;
+}
+#page10-img2{
+    width: 40%;height: 21rem;margin: 0 auto;
+}
+/* page10 end */
+/* page11 start */
+#page11-title{
+    width: 100%;height: 3.9rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
+}
+#page11-title-sub{
+    width: 97%;height: 3.9rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page11-part1{
+    width: 100%;height: 24rem;font-size: 1rem; margin: 0 auto
+}
+#page11-part1-sub{
+    width: 100%;height: 24rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
+}
+#page11-img1{
+    width: 50%;height: 22rem;margin: 0 auto;
+}
+#page11-img2{
+    width: 30%;height: 24rem;margin: 0 auto;
+}
+/* page11 end */
+/* page12 start */
+#page12-title{
+    width: 100%;height: 6.3rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #4f81bd;color: #ffffff; margin: 0 auto
+}
+#page12-title-sub{
+    width: 97%;height: 6.3rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page12-part1{
+    width: 100%;height: 21rem;font-size: 1rem;margin: 0 auto
+}
+#page12-part1-sub{
+    width: 100%;height: 21rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
+}
+#page12-part2{
+    width: 100%;height: 29rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
+}
+#page12-part2-sub{
+    width: 100%;height: 29rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;color: grey;
+}
+#page12-img1{
+    width: 50%;height: 29rem;margin: 0 auto;
+}
+/* page12 end */
+/* page13 start */
+#page13-title{
+    width: 100%;height: 12rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
+}
+#page13-title-sub{
+width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
+}
+#page13-img-container{
+    width: 100%;height: 23rem;overflow: hidden;
+}
+#page13-img1{
+    width: 30%;height: 23rem;margin: 0 auto;float: left;
+}
+#page13-middle{
+    width: 9%;height: 23rem;margin: 0 auto;float: left;
+}
+#page13-img2{
+    width: 33%;height: 12rem;margin: 0 auto;float: left;padding-top: 2rem;
+}
+/* page13 end */
+/* page14 start */
+#page14-title{
+    width: 100%;height: 7.3rem;font-size: 1rem;border-radius: 0.3rem; background-color: #4f81bd;color: #ffffff; margin: 0 auto
+}
+#page14-title-sub{
+    width: 97%;height: 7.3rem;margin: 0 auto;padding-top: 0.5rem;
+}
+#page14-part1{
+    width: 100%;height: 16rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
+}
+#page14-part1-sub{
+    width: 100%;height: 16rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
+}
+#page14-img{
+    width: 50%;height: 24rem;margin: 0 auto;
+}
+#contactus{
+    width: 100%; height: 1rem;margin: 0 auto;font-size: 1rem;
+}
+/* page14 end */
+</style>
+    <script src="<%=locals.url%>/public/js/query-3.5.1.min.js"></script>
+    <script src="<%=locals.url%>/public/js/InputSpinner.js"></script>
+    <title> HKG 肝癌报告</title>
+</head>
+
+<body>
+    <div style="height: auto;width: 90%; margin: 0 auto;">
+        <!-- page1 start -->
+        <div id="page1">
+            <div class="block"></div>
+            <div id="page1-part1">
+                <div id="logo-outer">
+                    <div id="logo">
+                        <img src="<%=locals.url%>/public/img/imgepiliver/57.jpg" style="width: 100%;height: auto">
+                    </div>
+                    <div style="width: 100%;height: 1.6rem;"></div>
+                    <div id="address">
+                        <div> 广东省深圳市南山区松坪山路1号源兴科技大厦东座2楼202室</div>
+                        <div>info@epidia.net</div>
+                        <div>(0755) 8654 6563</div>
+                    </div>
+                </div>
+
+                <div  style="width: 100%;height: 6.1re;margin: 0 auto;overflow: hidden;"></div>
+                <div id="page1-title-outer" >
+                    <div id="page1-title-sub">
+                        <img src="<%=locals.url%>/public/img/imgepiliver/06.jpg">
+                    </div>
+                    <div id="page1-title-cn">
+                        &nbsp;&nbsp; <span style="color: #ffc000;">Epiliver</span> 专有新型血液检测<br> &nbsp;&nbsp;
+                        准确发现早期肝癌的下一代BCD方法
+                    </div>
+                    <div id="page1-title">
+                        <div id="page1-title-left"></div>
+                        <div id="page1-title-en">
+                            Epiliver-a proprietary novel blood test for accurate early detection of liver
+                            cancer (HCC) using a BCD-next generation method.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="block"></div>
+            <div id="info-container">
+                <div id="sales-center" >
+                    销售中心
+                </div>
+                <div id="container1">
+                    <div class="wrap">
+                        <label style="float: left;">顾客编号/Customer ID:</label>
+                        <div style="overflow: hidden;">
+                            <input class="whitebar" id="username"name="username" type="text"autocomplete="off" value="<%=data.sampleid%>">
+                        </div>
+                    </div>
+                    <div class="wrap_grey">
+                        <label style="float: left;">采集样本类型/ Sample type：</label>
+                        <div style="overflow: hidden;">
+                            <input class="greybar" id="sampletype" name="sampletype"autocomplete="off" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="wrap">
+                        <label style="float: left;">样本收集日/Sample Collected on：</label>
+                        <div style="overflow: hidden;">
+                            <input class="whitebar" id="sales-sample-rec-data" name="sales-sample-rec-data"autocomplete="off" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="wrap_grey">
+                        <label style="float: left;">样本编号/Sample ID：</label>
+                        <div style="overflow: hidden;">
+                            <input class="greybar" type="text" id="sampleid" name="sampleid"autocomplete="off" value="<%=data.sampleid%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="block"></div>
+                <div id="test-center" >
+                    检测中心
+                </div>
+                <div id="container2">
+                    <hr style="border:none; border-top: 0.1rem saddlebrown solid;">
+                    <div class="wrap">
+                        <label style="float: left;">样本测序编号/Sample ID:</label>
+                        <div style="overflow: hidden;">
+                            <input class="whitebar" id="sample-sequence-id" name="sample-sequence-id"autocomplete="off" type="text" value="<%=data.sampleid%>">
+                        </div>
+                    </div>
+                    <div class="wrap_grey">
+                        <label style="float: left;">样本收取日/Sample Received on：</label>
+                        <div style="overflow: hidden;">
+                            <input class="greybar" id="lab-sample-rec-data" name="lab-sample-rec-data"autocomplete="off" type="text" value="">
+                        </div>
+                    </div>
+                    <div class="wrap">
+                        <label style="float: left;">检测结果/Test Result：</label>
+                        <div style="overflow: hidden;">
+                            <input class="whitebar" name="test-result" type="text" value=""autocomplete="off" style="color: red;">
+                        </div>
+                    </div>
+                    <hr style="border:none; border-top: 0.1rem grey solid;">
+                </div>
+            </div>
+            <div id="page1butimg">
+                <img src="<%=locals.url%>/public/img/imgepiliver/13.jpg">
+            </div>
+            <div class="page-end-logo" >
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page1 end -->
+        <!--page2 start-->
+        <div id="page2">
+
+            <div class="block"></div>
+            <div id="detectname">检测项目：<input type="text" id="test-programme" name="test-programme"></div>
+
+            <div style="width: 100%;height: 1rem"></div>
+
+            <div id="detectresult">检测结果：<input type="text" class="test-result" name="test-result"></div>
+
+            <div class="block"></div>
+            <div id="youresult">你的结果:<span style="color: green;">下方绿色箭头所示</span></div>
+            <div class="result-block"></div>
+            <div style="width: 100%;height: 2.25rem;margin: 0 auto"></div>
+            <div id="rating-container">
+                <div id="probability" >
+                    可能性/Probability
+                </div>
+                <div id="rating" >
+                    <div style="width: 100%;height: 1rem;"></div>
+                    <div id="rating-index" >
+                        <div id="rating-index-container" >
+                            <div class="rating-index-sub" ><img id="rate1"
+                                    src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
+                            <div  class="rating-index-sub" ><img id="rate2"
+                                    src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
+                            <div class="rating-index-sub" ><img id="rate3"
+                                    src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
+                            <div  class="rating-index-sub"><img id="rate4"
+                                    src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
+                            <div  class="rating-index-sub" ><img id="rate5"
+                                    src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
+                            <div  class="rating-index-sub" ><img id="rate6"
+                                    src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div id="rating-percent" >
+                        <div id="rating-percent-container" >
+                            <div class="rating-percent-sub">&lt;8%</div>
+                            <div class="rating-percent-sub">80%</div>
+                            <div class="rating-percent-sub">90%</div>
+                            <div class="rating-percent-sub">95%</div>
+                            <div class="rating-percent-sub">95%</div>
+                            <div class="rating-percent-sub">95%</div>
+                        </div>
+                    </div>
+                    <div id="rating-colorfulbar" >
+                        <div id="rating-colorfulbar-container">
+                            <div id="color1"></div>
+                            <div id="color2"></div>
+                            <div id="color3"></div>
+                            <div id="color4"></div>
+                            <div id="color5"></div>
+                            <div id="color6"></div>
+                        </div>
+                    </div>
+                    <div id="rating-number" >
+                        <div id="rating-number-container">
+                            <div class="number">1</div>
+                            <div class="number">2</div>
+                            <div class="number">3</div>
+                            <div class="number">4</div>
+                            <div class="number">5</div>
+                            <div class="number">6</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="overflow: hidden;"> 
+                    <div id="number-of-genes" >
+                        基因数量/Number of genes
+                    </div>
+                    <div id="number-of-genes-eg" >
+                        Threshold of 10 methylated copies per gene was used to calculate probability.</div>
+                </div>
+            </div>
+
+
+            <div class="block"></div>
+            <div id="page2-result" >
+                <div id="page2-result-sub" >
+                    本报告（下文有对检测所基于的科学原理详细解释）显示的结果基于我司收集的临床数据集, 同时基于我司独有的甲基化阈值计算公式集，所计算得出的癌症概率。
+                    <br>上图中绿色箭头显示：
+                    <br> <span style="font-size: 1.5rem;">呈甲基化的目标基因为</span> &nbsp;
+                        <input type="text" id="dnarate" name="dnarate" value="" required style="width: 3rem; color: red;text-align: center;" >
+                    &nbsp; 个，<span style="font-size: 1.5rem;">肝癌的概率是</span>&nbsp;
+                        <input type="text" id="cancerrate" name="cancerrate" value="" required style="width: 3rem; color: red;text-align: center;"> 
+                </div>
+            </div>
+            <div id="page2-block"></div>
+            <div id="page2-result-en">
+                The report issued (an example is below) will specify the probability of cancer based on number of genes
+                that
+                have passed a threshold of methylation. This probability is computed based on our current clinical data.
+                In
+                this case the green arrow indicates that the patient has 2 copies that are methylated and therefore the
+                probability of cancer is 90% based on our current clinical data.
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page2 end -->
+
+        <!--page3 start-->
+        <div id="page3">
+            <div class="block"></div>
+            <div id="page3-title" >
+                <div>
+                    为什么发现早起肝癌那么重要？<br>
+                    Why is early detection of liver cancer so important?
+                </div>
+            </div>
+            <div id="page3-part1" >
+                <div class="block"></div>
+                <img src="<%=locals.url%>/public/img/imgepiliver/liver.jpg" id="page3-img1" align="right"
+                    width="120" hspace="5" vspace="5">
+                肝癌/肝细胞癌（HCC）在全球最常见癌症中排名第五。在亚洲流行严重，尤其是乙肝流行的地区，其发生率最高的地区。数亿亚洲人面临罹患肝癌的风险, 特别是患有慢性肝病、肝炎的患者,
+                以及酗酒人群。跟进诸如慢性肝炎患者，并对慢性肝炎到肝癌的发展进行早期诊断将提高治愈率。
+                <br>
+                <span style="color: grey;">
+                    Liver cancer Hepatocellular Carcinoma (HCC) is the fifth most common cancer world-wide. It is
+                    particularly prevalent in Asia, and its occurrence is highest in areas where hepatitis B is
+                    prevalent.
+                    Hundreds of millions of people in Asia are at risk for developing liver cancer particularly people
+                    who
+                    suffer from liver disease, chronic liver inflammation high alcohol uptake. Follow up of high- risk
+                    populations such as chronic hepatitis patients and early diagnosis of transitions from chronic
+                    hepatitis
+                    to HCC would improve cure rates.</span>
+            </div>
+            <div id="page3-part2"  >
+                <div id="page3-part2-sub">
+                    但是，当前的诊断方法包括针对单一某种蛋白质的成像和免疫分析，常常无法及早诊断出肝癌（Flores＆Marrero，2014年），例如甲胎蛋白。<br>
+                    <span style="color: #e46c0a;">主要挑战是实体瘤隐藏在器官内部, 并且需要经过一定时间的发展才表现临床症状。</span> <br>
+                    <span style="color: grey;"> However, current diagnostic methods, which include imaging and
+                        immunoassays with single proteins such as alpha-fetoprotein often fail to diagnose HCC early
+                        (Flores & Marrero, 2014).</span><br>
+                    <span style="color: #e46c0a;">The main challenge is that solid tumors hide in internal organs and
+                        evolve long before they exhibit clinical symptoms.
+                    </span>
+                </div>
+            </div>
+            <div class="block"></div>
+            <div id="page3-part3" >
+                <img src="<%=locals.url%>/public/img/imgepiliver/bloodcell.jpg" alt="" width="100%" height="200">
+                <div id="page3-part3-sub"  >
+                    许多研究表明在血液——这种临床医学上最为易得且常用的生物学样本中找到肿瘤DNA是可能的<br>
+                    <span style="font-weight: 500;">Many studies showed that it is possible to find tumor DNA in one of
+                        the most accessible and
+                        commonly used biological sample in clinical medicine, blood.</span>
+                </div>
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page3 end -->
+        <!-- page4 start -->
+        <div id="page4">
+            <div class="block"></div>
+            <div id="page4-title"  >
+                <div id="page4-title-sub" >
+                    源自于癌细胞的血浆DNA<br>
+                    Cell free tumor- derived DNA in plasma
+                </div>
+            </div>
+            <div id="page4-part1" >
+                <div class="block"></div>
+                <img src="<%=locals.url%>/public/img/imgepiliver/lab.jpg" id="page4-img1" align="right" width="120"
+                    hspace="5" vspace="5">
+                目前可确定的共识是，肿瘤DNA可以进入体内循环系统，甚至出现在临床症状发作之前，即可在血浆成分中被发现（Warton＆Samimi，2015）。并且从血液中分离血浆的过程非常简单，几乎可以在护士/医生诊所，
+                或任何医院的任何临床实验室进行。而主要的挑战是如何对其中的肿瘤DNA与血浆中所有其他正常的DNA进行区分。此外，我们如何知道我们检测到的癌症是否为肝癌或其他癌症，这就如同在干草堆里找一根大头针。
+                <br>
+                <div style="width: 100%;height: 1rem;"></div>
+                尽管对序列突变的筛查一直是很有希望方法，但现在看来，这不是一种检测血液中肿瘤DNA非常有效的途径。<br>
+                <div style="width: 100%;height: 1rem;"></div>
+                <span style="color: grey;">
+                    It is widely established by now that tumor DNA is shed into the body and could be found in the
+                    plasma portion of whole blood even before the onset of clinical symptoms (Warton & Samimi,
+                    2015).<br>
+                    Isolating plasma from blood is a simple procedure that could be performed by any clinical lab in
+                    almost any
+                    hospital or nurse/doctor clinic. <br>
+                    The main challenge is how to tell apart tumor DNA from all other normal DNA that finds itself in
+                    plasma.
+                    And moreover, how do we know if we detect cancer whether it is a liver cancer or
+                    some other cancer. It is like finding a needle in a haystack.<br>
+                    Although screening for sequence mutations has held high promise, it appears now that it is not a
+                    highly effective way for detecting tumor DNA in blood.</span>
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page4 end -->
+        <!-- page5 start -->
+        <div id="page5">
+            <div class="block"></div>
+            <div id="page5-title">
+                <div id="page5-title-sub">
+                    利用新方法发现血漿中的肝癌肿瘤DNA<br>
+                    A new way to detect tumor DNA in blood and determine that it is specifically liver cancer
+                </div>
+            </div>
+            <div id="page5-part1" >
+                <div class="block"></div>
+                <img src="<%=locals.url%>/public/img/imgepiliver/lab2.jpg" id="page5-img1" align="right" width="120"
+                    hspace="5" vspace="5">
+                但是，有一种非常独特新颖且的方法可以检测正常DNA为背景中少量癌症DNA，并且该方法不是通过检查遗传序列，而是通过检查DNA的“表观遗传”特征来实现。麦吉尔（McGill）大学教授,
+                加拿大皇家学会院士Moshe Szyf
+                对癌细胞及其DNA独特的表观遗传特征进行了长达三十年的研究。
+                <br>
+                <div style="width: 100%;height: 1rem;"></div>
+                其研究成果发现只需5毫升血液（2毫升血浆）即可检测出早期肝癌，从而实现对健康人群，肝癌高危人群进行早期肝癌发现。该方法不仅可以检测出癌症，还可以确定癌症起源于肝脏。 这是一项专利发明:
+                全球专利保护程序（PCT/IB2019/ 055855）。<br>
+                <div style="width: 100%;height: 1rem;"></div>
+                <span style="color: grey;">
+                    However, there is a very unique and novel way to detect few molecules of cancer DNA on the
+                    background of normal DNA, it is not by examining the genetic sequence but rather by examining the
+                    “epigenetic” profile of DNA.<br>
+                    Research pioneered by Moshe Szyf a professor at McGill University and a
+                    fellow of the Royal Society of Canada has taken almost three decades to establish the unique
+                    epigenetic characteristics of cancer cells and their DNA. <br>
+                    The fruit of this research is a robust test for early detection of liver cancer that requires just 5
+                    ml of blood (2 ml of plasma) and could
+                    be used for early detection of liver cancer in healthy
+                    people and people who are at a higher risk for liver cancer. <br>
+                    The test does not only detect cancer
+                    but can determine that the cancer originates in the liver. This is a proprietary invention that is
+                    under patent protection process across the world (PCT/IB2019/055855).
+
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div  class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page5 end -->
+        <!-- page6 start -->
+        <div id="page6">
+            <div class="block"></div>
+            <div id="page6-title">
+                <div id="page6-title-sub">
+                    什么是DNA甲基化?<br>
+                    What is DNA methylation?
+                </div>
+            </div>
+            <div id="page6-part1" >
+                <div class="block"></div>
+                <img src="<%=locals.url%>/public/img/imgepiliver/phone.jpg" id="page6-img1" align="right"
+                    width="120" hspace="5" vspace="5">
+                我们体内每个细胞中的DNA就像一台对细胞进行管理的微型计算机，每个人的一生中都需要这样的功能维护以实现身体正常运转并执行所有任务。
+                我们从父母那裡继承了我们的DNA（基因），即这些小型计算机的操作系统。在我们身体的每个细胞中都有相同的DNA。
+                但是，我们的DNA在不同器官不同细胞中的运作方式不同。像任何计算机一样，我们的DNA需要软件来对它进行编程，
+                我们需要在不同类型的细胞中使用不同程序。
+                <br>
+                <div style="width: 100%;height: 1rem;"></div>
+                这种“编程“通过称为DNA甲基化的DNA化学性修饰实现。这种程序是我们还在母亲的子宫中既已设计好的。
+                在进化过程中产生的这种使每个细胞都具有的高精确性DNA甲基化程序，能确保我们所有器官功能正常。
+                像任何软件一样，细胞的DNA甲基化特征相当于是一个脚本。由于适当的脚本可以保证应用程序正常运行，
+                因此正确的DNA甲基化是我们器官功能正常的保障，以实现我们的身体健康。
+
+                <br>
+                <div style="width: 100%;height: 1rem;"></div>
+                <span style="color: grey;">
+                    The DNA that we have in every cell of our body is like a minicomputer that is
+                    managing our cells so that our body functions properly to perform all the tasks
+                    that are required throughout our lives. We inherit from our parents our DNA (the
+                    genes) which is the operating system of this minicomputer. We have the same DNA in every cell of our
+                    body. However, our DNA operates differently in different cells and different organs of our body.
+                    Like any computer, our DNA needs software to program it and we need different programs in different
+                    kinds of cells. Part of the programming is achieved by a chemical coating of DNA called DNA
+                    methylation. <br>
+                    This programming, the software of our DNA is laid down when we develop in the womb of
+                    our mother. A very precise plan that evolved during evolution ensures a highly accurate DNA
+                    methylation program for each cell in our body so that all our organs function accurately. Like any
+                    software, a DNA methylation profile of a cell is a script. As a proper script guarantees proper
+                    functioning of an app, correct DNA methylation profiling guarantees proper function of our organs
+                    and thus, our health and well being.
+
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div  class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page6 end -->
+        <!-- page7 start -->
+        <div id="page7">
+            <div style="width: 100%;height: 5rem;"></div>
+            <div id="page7-title">
+                <div id="page7-title-sub">
+                    <span style="font-size: 1rem;font-weight: 600;"> DNA甲基化在基因上的正确定位</span>
+                    <div style="width: 100%;height: 0.3rem;"></div>
+                    <br>
+                    对DNA位点的正确甲基化可以使基因被激活或关闭。本公司使用最先进的下一代测序方法，仅用1纳克(1克除以1亿)DNA便可绘制出高精准度的甲基化图谱。
+                    <br>
+                    <div style="width: 100%;height: 0.5rem;"></div>
+                    The proper positioning of DNA methylation on genes serves as an on/off switch for genes. Our company
+                    is using most advanced next generation sequencing methods to map at high accuracy methylation
+                    profiles from as little as 1 ng (1 gram divided by a billion) of DNA
+                </div>
+            </div>
+            <div id="page7-img1" >
+                <img src="<%=locals.url%>/public/img/imgepiliver/onoff.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+            <div style="width: 100% ;height: 5rem"></div>
+            <div  class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page7 end -->
+        <!-- page8 start -->
+        <div id="page8">
+            <div class="block"></div>
+            <div id="page8-title">
+                <div id="page8-title-sub">
+                    癌症状态下DNA甲基化被扰乱; 可以用于检测血液中的癌症<br>
+                    DNA methylation is disrupted in cancer; could be used for detection of cancer DNA in blood
+                </div>
+            </div>
+            <div id="page8-part1">
+                <div class="block"></div>
+                <img src="<%=locals.url%>/public/img/imgepiliver/lab3.jpg" id="page8-img1" align="right" width="120"
+                    hspace="5" vspace="5">
+                Szyf是三十六年前最早提出DNA甲基化变化是促使癌症发展的原动力的先驱之一。Szyf和其他人的发现显示DNA甲基化变化在癌症中广泛存在。癌细胞来源的DNA与来自正常组织DNA具有不同的甲基化特征。（图中的气球代表甲基化）。DNA甲基化指引我们朝着发现早期癌症的检测革命方向前进。
+                <br>
+                <div style="width: 100%;height: 1rem;"></div>
+                <span style="color: grey;">
+                    Szyf was amongst the first pioneers that suggested thirty-six years ago that the prime force driving
+                    cancer is a change in DNA methylation. Szyf and others have
+                    shown since that the changes in DNA methylation are broad in cancer.<br>
+                    DNA that is derived from cancer
+                    cells has a different methylation profile than DNA that
+                    comes from normal tissues. (in the figure the balloons represents methylation). DNA methylation
+                    guides us toward a revolution in early detection of cancer.
+
+            </div>
+            <div id="page8-img2">
+                <img src="<%=locals.url%>/public/img/imgepiliver/dnachain.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page8 end -->
+        <!-- page9 start -->
+        <div id="page9">
+            <div class="block"></div>
+            <div id="page9-title">
+                <div id="page9-title-sub">
+                    <span style="font-size: 1rem;font-weight: 600;"> 新颖的EpiLiver检测：区分肝癌和正常之间的DNA（BCD）的强大二元归化差异
+                    </span>
+                    <div style="width: 100%;height: 1rem;"></div>
+                    The novel EpiLiver test: Robust binary categorical differentiation between liver cancer and normal
+                    DNA (BCD).
+                </div>
+            </div>
+            <div id="page9-part1">
+                <div id="page9-part1-sub">
+                    我们的科学家研究了来自大量不同个体的正常组织，血液和癌症样本，并使用特有的方法发现在肝癌、
+                    血液和正常组织之间DAN甲基化特征有明显的差异。<span style="color: red;">我们称这种新方法为BCD：</span>二元归化差异。
+                    该方法能实现对癌症与正常人之间”黑白分明“的差异区分。
+                    <div style="width: 100%;height: 1rem;"></div>
+                    <span style="color: grey;">
+
+                        Our scientists investigated DNA methylation results from normal tissues, blood and cancer from
+                        dozens of people and used proprietary methods to discover methylation profiles that are
+                        categorically different between liver cancer, blood
+                        and normal tissues. <span style="color: red;">We called this new method BCD:</span> Binary
+                        Categorical Differentiation. The method
+                        identifies Black and white differences between cancer and normal.
+                    </span>
+                </div>
+            </div>
+            <div id="page9-part2">
+                <div id="page9-part2-sub">
+                    <ul>
+                        <li>我们的测试包含两个部分</li>
+                        <li>第一个部分称为“检测”，可检测出癌症</li>
+                        <li>二个部分称为“spec”，能确定癌症是肝癌（HCC)</li>
+                    </ul>
+                    <ul>
+                        <li>Our test has two components</li>
+                        <li>The first component is called “detect”, it detects cancer</li>
+                        <li>The second component is called “spec” and it determines that the cancer is liver cancer
+                            {HCC}.</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page9 end -->
+        <!-- page10 start-->
+        <div id="page10">
+            <div class="block"></div>
+            <div id="page10-title">
+                <div id="page10-title-sub">
+                    检测以检测癌症<br>
+                    Detect for detection of cancer
+                </div>
+            </div>
+            <div id="page10-part1">
+                <div id="page10-part1-sub">
+                    利用专有的BCD方法，我们发现了肝癌甲基化特征非常独特，即使在数千条正常DNA中只有5个癌症DNA，
+                    我们仍可以用下一代测序技术检测出癌症。<br>
+                    随后，我们验证了超过10000人的DNA甲基化特征谱。<br>
+                    下图显示了在1442个各种正常的肝组织和血液中，我们开发的甲基化分数可在789名患者样本中检测出肝癌（紫色）。
+                    特异性和敏感性高于95％，曲线下面积是0.9926
+
+                    <div style="width: 100%;height: 1rem;"></div>
+                    <span style="color: grey;">
+                        Using out proprietary BCD method, we discovered HCC methylation profiles that are so unique that
+                        even if we have only 5 copies of DNA from cancer mixed with tens of thousand of copies from
+                        other
+                        cells we could detect it using our method of analysis called next generation sequencing.<br>
+                        We then verified that these DNA methylation profiles that we discovered would indeed discover
+                        cancer
+                        when we examined DNA methylation profiles from more than 10000 people.<br>
+                        The figure below shows that the
+                        methylation score that we developed detects HCC in 789 HCC patients (in purple) but not in a
+                        variety
+                        of normal liver tissue and blood
+                        from 1442 people (each spot represents one person). The specificity and sensitivity are above
+                        95%
+                        and area under the curve is 0.9926
+                    </span>
+                </div>
+            </div>
+            <div id="page10-img1">
+                <img src="<%=locals.url%>/public/img/imgepiliver/chart.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+            <div id="page10-img2">
+                <img src="<%=locals.url%>/public/img/imgepiliver/chart1.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page10 end -->
+        <!-- page11 start-->
+        <div id="page11">
+            <div class="block"></div>
+            <div id="page11-title">
+                <div id="page11-title-sub">
+                    Spec 针对肝癌检测<br>
+                    Spec detects specifically liver cancer
+                </div>
+            </div>
+            <div id="page11-part1">
+                <div id="page11-part1-sub">
+                    但是，真正使我们的方法在该领域独一无二的是我们不仅发现了癌症DNA甲基化的特征，
+                    而且还在特异性接近95％的情况下找到了肝癌DNA甲基化特征。现有大多数可用的测试不能区分肝癌和其他癌症。<br>
+                    下图显示了近8000个不同肿瘤样本基于DNA甲基化结果的Spec测试得分,每个点代表一个人的样本。<br>
+                    测试清楚的区分了肝癌和其他17种癌症（在最右边蓝色的是肝癌。每个点都是 一个样本，其他17种癌症的颜色不同）。
+
+                    <div style="width: 100%;height: 1rem;"></div>
+                    <span style="color: grey;">
+                        However, what makes our test truly unique in the field is that we have also discovered DNA
+                        methylation profiles that can tell that the DNA is not just cancer DNA but liver cancer DNA with
+                        a potential specificity of close to 95%. <br> available test don’t differentiate between liver
+                        and other cancers. The figure below shows the scores for the Spec test across DNA methylation
+                        results from close to 8000 different tumors. Each spot represent a sample from a single person.
+                        <br>The test
+                        clearly differentiates between liver cancer and other 17 cancers
+                        (the liver cancers are in blue in the far right. Each spot is one sample, other 17 cancers are
+                        in different colors).
+                    </span>
+                </div>
+            </div>
+            <div id="page11-img1">
+                <img src="<%=locals.url%>/public/img/imgepiliver/chart2.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+            <div id="page11-img2">
+                <img src="<%=locals.url%>/public/img/imgepiliver/chart3.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page11 end -->
+        <!-- page12 start -->
+        <div id="page12">
+            <div class="block"></div>
+            <div id="page12-title">
+                <div id="page12-title-sub">
+                    403人份样本的BCD下一代Spec临床验证和以血浆中检测肝癌
+                    <br>
+                    Clinical validation of BCD-next generation Spec and Detect for liver cancer detection in plasma from
+                    403 people.
+                </div>
+            </div>
+            <div id="page12-part1">
+                <div id="page12-part1-sub">
+                    总而言之，我们验证了我们的检测标志可以在任何阶段对成千上万个样本和组织进行肝癌甲基化DNA高度准确的分析。
+                    我们使用专有的下一代测序技术开发了可以揭示血浆中数千个DNA甲基化情况的实验室检测方法，并搜索出具有癌症和肝脏特异性的少量DNA。
+                    <div style="width: 100%;height: 0.6rem;"></div>
+                    我们的方法可计算出具有肝癌特异性DNA拷贝数并给出结果。正如我们所预测的，我们验证了血液中其他DNA的背景非常低，
+                    我们可以提供癌症和正常人之间黑白分明的差异。下面的热图显示了对来自孟加拉402人的研究结果。
+                    <div style="width: 100%;height: 0.6rem;"></div>
+                    包括49个健康对照，50个慢性乙肝和从A期到D期的302个癌症病例。每列都是不同的患者。
+                    对于每个患者我们都对5个基因进行了甲基化水平的测序。从颜色上看，红色代表甲基化程度最高，而蓝色的则没有甲基化。
+                    可以看到样本之间明显的红色和蓝色差异。所有对照和慢性肝炎几乎完全是蓝色的，而在癌症患者。癌症与非癌症之间的界线非常清晰。
+
+                </div>
+            </div>
+            <div id="page12-img1">
+                <img src="<%=locals.url%>/public/img/imgepiliver/chart4.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+            <div id="page12-part2">
+                <div id="page12-part2-sub">
+                    In summary, we validated that our detect and spec markers reveal a profile that is highly accurate
+                    for liver cancer DNA at any stage on thousands of samples and tissues using DNA methylation. <br>
+                    <div style="width: 100%;height: 0.6rem;"></div>
+                    HKG epitherapeutics we developed a lab test using a proprietary next generation sequencing based
+                    method
+                    that can reveal the profiles of DNA methylation of thousands of copies of DNA in people plasma and
+                    then searches for the few copies that have cancer-specific and liver-specific
+                    profiles.<br>
+                    <div style="width: 100%;height: 0.6rem;"></div>
+                    Our method counts copies that have cancer-specific and liver - cancer specific
+                    profiles and issues a result. We validated that the background of other DNA in blood is very low as
+                    we had
+                    predicted providing a “black and white”difference between cancer and normal DNA. The “heat map below
+                    shows the results of a study on 402 people from Dhaka Bangladesh.<br>
+                    <div style="width: 100%;height: 0.6rem;"></div> 49 healthy controls, 50
+                    chronic
+                    hepatitis B and 302 cancers from stages A to D. Each column is a different patient. For each patient
+                    we sequence 5 genes. The level of methylation is indicated by the color, red is most methylated and
+                    blue is not methylated. <br>
+                    <div style="width: 100%;height: 0.6rem;"></div>
+                    You can see a clear red and blue difference between the samples. All the
+                    control and chronic hepatitis are almost totally blue while a lot of red is seen in the cancer
+                    patients. The boundary between cancer and non cancer is sharp and clear.
+                </div>
+            </div>
+
+        </div>
+        <!-- page12 end -->
+        <!-- page13 start -->
+        <div id="page13">
+            <div class="block"></div>
+            <div id="page13-title">
+                <div id="page13-title-sub">
+                    下图显示了我们孟加拉国试验中的癌症患者血浆与健康和慢性乙型肝炎患者血浆中的甲基化拷贝数（MCR） ，
+                    大多数人有2至10甲基化拷贝，而在癌症患者中则可能超过10000。
+                    <div style="width: 100%;height: 1rem;"></div>
+                    <span style="color: grey;">
+                        The chart below shows that the number of methylated copies (MCR) in
+                        cancer patient plasma in our Bangladesh trial is dramatically different than in
+                        healthy and chronic hepatitis B patients, most people have between 2 and 10
+                        methylated copies while in cancer patients it could reach more than 10000.
+                    </span>
+                </div>
+            </div>
+            <div id="page13-img-container">
+                <div id="page13-img1" >
+                    <img src="<%=locals.url%>/public/img/imgepiliver/chart5.jpg" alt="" style="width: 100%;height: auto;">
+                </div>
+                <div id="page13-middle"></div>
+                <div id="page13-img2" >
+                    <img src="<%=locals.url%>/public/img/imgepiliver/chart6.jpg" alt="" style="width: 100%;height: auto;">
+                </div>
+            </div>
+            <div style="width: 100% ;height: 2rem;overflow: hidden;"></div>
+            <div class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page13 end -->
+
+        <!-- page14 start -->
+        <div id="page14">
+            <div class="block"></div>
+            <div id="page14-title">
+                <div id="page14-title-sub">
+                    Epiliver的结果是意味着什么?<br>
+                    结果代表了一个个体罹患肝癌的概率
+                    <br>
+                    <div style="width: 100% ;height: 0.6rem"></div>
+                    What do the results of epiLiver test mean? <br>
+                    The results disclose a probability of having liver cancer.
+                </div>
+            </div>
+            <div id="page14-part1">
+                <div id="page14-part1-sub">
+                    来自患者的血浆样品经过EpiLiver
+                    BCD-下一代测试，可提供5种不同基因的高精度甲基化和未甲基化计数的拷贝数。
+                    根据我们当前的临床数据，我们将计算该人患有肝癌的可能性概率。下图显示癌症的可能性概率会随甲基化拷贝数增加而提高。
+                    <div style="width: 100%;height: 1rem;"></div>
+                    <span style="color: grey;">
+                        The plasma samples from the patient is subjected to the epiLiver BCD-next
+                        generation test, which provides a highly accurate count in 5 different genes
+                        of the number of methylated and unmethylated copies. Based on our
+                        current clinical data we will compute a probability that the person has liver
+                        cancer. The chart below shows that the probability of cancer increases
+                        dramatically as the number of methylated copies per gene exceeds a certain
+                        threshold.
+                    </span>
+                </div>
+            </div>
+            <div id="page14-img">
+                <img src="<%=locals.url%>/public/img/imgepiliver/chart7.jpg" alt="" style="width: 100%;height: auto;">
+            </div>
+            <div style="width: 100% ;height: 2rem"></div>
+            <div class="page-end-logo">
+                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
+        </div>
+        <!-- page14 end -->
+        <div id="page-end" style="width: 100%;height: 19rem; margin: 0 auto;overflow: hidden;">
+            <div style="text-align: center;display: block;margin: 3.125rem;">
+                <input id="submit" type="button"
+                    style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
+                    value="SAVE">
+            </div>
+            <div style="text-align: center;display: block;margin: 3.125rem;">
+                <input id="generate_pdf" type="button"
+                    style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
+                    value="GENERATE PDF">
+            </div>
+            <div id="contactus">
+                如有任何疑问，请联系我们：info@epidia.net/(0755) 8654 6563
+            </div>
+        </div>
+        <div style="width: 100% ;height: 6rem;visibility: visible;"></div>
+    </div>
+    <script>
+        $("#dnarate").on("input", function () {
+            var dnarate = parseInt($('#dnarate').val())
+            console.log("this is the sum dnarate value" + dnarate)
+            if (dnarate == 0 || dnarate==1) {
+                $("#rate1").css("visibility", "visible")
+                $("input[name=cancerrate]").attr("value", "<8%")
+                $("#rate2,#rate3,#rate4,#rate5,#rate6").css("visibility", "hidden")
+            } else if (dnarate == 2) {
+                $("#rate2").css("visibility", "visible")
+                $("input[name=cancerrate]").attr("value", "80%")
+                $("#rate1,#rate3,#rate4,#rate5,#rate6").css("visibility", "hidden")
+            } else if (dnarate == 3) {
+                $("#rate3").css("visibility", "visible")
+                $("input[name=cancerrate]").attr("value", "90%")
+                $("#rate1,#rate2,#rate4,#rate5,#rate6").css("visibility", "hidden")
+            } else if (dnarate == 4) {
+                $("#rate4").css("visibility", "visible")
+                $("input[name=cancerrate]").attr("value", "95%")
+                $("#rate1,#rate2,#rate3,#rate5,#rate6").css("visibility", "hidden")
+            } else if (dnarate == 5) {
+                $("#rate5").css("visibility", "visible")
+                $("input[name=cancerrate]").attr("value", "95%")
+                $("#rate1,#rate2,#rate3,#rate4,#rate6").css("visibility", "hidden")
+            } else if (dnarate == 6) {
+                $("#rate6").css("visibility", "visible")
+                $("input[name=cancerrate]").attr("value", "95%")
+                $("#rate1,#rate2,#rate3,#rate4,#rate5").css("visibility", "hidden")
+            }else{
+                alert("Please enter a correct number from 0-6")
+            }
+        })
+       
+        $("input[id=submit]").click(function () {
+            $('input').attr('value', function () {
+                return $(this).val();
+            });
+            var finalHtml = {}
+            finalHtml.dnarate = parseInt($('#dnarate').val()) 
+            finalHtml.id = '<%=data.id%>'
+            finalHtml.sampleid = '<%=data.sampleid%>'
+            finalHtml.reportPage = "<html>" + $('html').html() + "</html>"
+            alert(finalHtml)
+            $.post("/admin/saveReport", finalHtml, function (data) {
+                if (data == "success") alert("保存成功")
+
+            })
+        })
+        $("input[id=generate_pdf]").click(function () {
+            var pdf = {}
+            pdf.id = '<%=data.id%>'
+            pdf.sampleid ='<%=data.sampleid%>'
+            $.post("/admin/buildpdf", pdf, function (data) {
+                if (data == "success") alert("pdf generated success")
+            })
+        })
+    </script>
+
+</body>
+
+</html>
