@@ -8,493 +8,1083 @@
         href="<%=locals.url%>/public/css/admin/reportpc.css" /> -->
     <!-- <link rel="stylesheet" media="screen and (min-width:320px) and (max-width:600px)"
         href="<%=locals.url%>/public/css/admin/reportphone.css" /> -->
-        <!-- <link rel="stylesheet" href="<%=locals.url%>/public/css/admin/reportpc.css" media="print" /> -->
-<style>
-body {
-    margin: 0;
-    padding: 0;
-    font: 0.75rem 100% Arial, sans-serif;
-}
-/* page1 start */
-#page1{
-    width: 100%;
-    height: 80rem;
-}
-#page1-part1{
-    width: 100%; height: 22rem;overflow: hidden;
-}
-#address{
-width: 100%;height: 5rem;font-size: 1rem;
+    <!-- <link rel="stylesheet" href="<%=locals.url%>/public/css/admin/reportpc.css" media="print" /> -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font: 0.75rem 100% Arial, sans-serif;
+        }
 
-}
-#page1-title-outer{
-    width: 100%; height: 6.1re;margin: 0 auto
-}
-#page1-title-sub{
-    width: 100%;height: 0.9375rem;background: #E7EAF1;float: right;position: relative
-}
-#page1-title-sub img{ position: absolute;right: 0;bottom: 0;width: 36%;height: auto}
-#logo-outer {
-    height: 13rem;
-}
+        /* page1 start */
+        #page1 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
 
-#logo {
-    width: 30%;
-    height: 6rem;
-}
+        #page1-part1 {
+            width: 100%;
+            height: 19rem;
+            overflow: hidden;
+        }
 
-#page1-title-cn{
-    width: 100%;
-    height: 3.6rem;
-    background: #0564A6;
-    float: right;
-    padding-top: 0.8rem;
-    line-height: 1.7rem;
-    font-size: 1.4rem;
-    color: white;
+        #address {
+            width: 100%;
+            height: 5rem;
+            font-size: 1rem;
 
-}
-#page1-title{
-    width: 100%;
-    height: 2.9rem;
-    background: #C71762;
-    float: right;
-    padding-top: 0.3rem;
-    line-height: 1.3rem;
-}
-#page1-title-left{
-    float: left;width:1.5%;height: 2.9rem;
-}
-#page1-title-en{
-    width: 97%;
-    height: 2.9rem;
-    float: left;
-    font-size: 1.1rem;
-    color: white;
-}
-.block{
-    width: 100%;
-    height: 2rem;
-}
-#page1butimg{
-    width: 70%;
-    margin: 0 auto;
-    height: 20rem;
-    
-}
-#page1butimg img{
-    width: 100%;height:auto;
-}
-.page-end-logo{
-    width: 100%; height: 1.5rem;margin: 0 auto;background: #F7F7F7;overflow: hidden;
-}
-.page-end-logo img{
-    width: 9%;height: auto;
-}
-#info-container{
-    width: 100%;
-    overflow: hidden;
-    height: 35rem;
-     margin: 0 auto;
-     font-size: 1rem;
-     font-weight: 600;
-}
-input {
-    font-size: 1.2rem;
-    margin-left: 0.6rem;
-}
-#sales-center{ width: 100%;height: 2rem;font-size: 1.2rem; color: #0071bc;overflow: hidden;}
-#test-center{
-    width: 100%;height: 2rem;font-size: 1.2rem; color: #0071bc;
-}
-#container1{
-    overflow: hidden; 
-    border-top: 0.1rem saddlebrown solid;
-}
-#container2{
-    overflow: hidden;
-}
-.wrap {
-overflow: hidden;
-    height: 3.6rem;
-    line-height: 3.6rem;
-    padding-left: 1rem;
-    width: 100%
-}
+        }
 
-.wrap_grey {
-    overflow: hidden;
-    padding-left: 1rem;
-    height: 3.6rem;
-    line-height: 3.6rem;
-    width: 100%;
-    background: #f7f7f7;
-    border-top: 1px solid grey;
-    border-bottom: 1px solid grey;
-}
-.whitebar{
-    border: none;height:3rem;line-height: 3rem;
-}
-.greybar{
-    border: 0;height: 3rem;line-height: 3rem; background :#f7f7f7;
-}
-/* page1 end */
-/* page2 start */
-#detectname{
-    width: 100%;
-    margin: 0 auto;
-    height: 2.625rem;
-    line-height: 2.625rem;
-    background: #DFF1FB;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-indent: 0.5em;
-    color: #2C7FB8
-}
-#detectname input{
-    height: 2.0625rem;width: 60%; background: #DFF1FB;border:none
-}
-#detectresult{
-    width: 100%;
-    margin: 0 auto;
-    height: 2.625rem;
-    line-height: 2.625rem;
-    background: #DFF1FB;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-indent: 0.5em;
-    color: #2C7FB8
-}
-#detectresult input{
-    height: 2.0625rem;width: 60%; background: #DFF1FB;border:none
-}
-#youresult{
-    width: 100%;height: 2.5rem;line-height: 2.5rem;color: #2178B4;margin: 0 auto;font-size: 1.3rem;font-weight: 600;
-}
-.result-block{
-    width: 100%;height: 0.4rem;background: #f2f2f2;margin: 0 auto
-}
-#rating-container{
-    width: 100%;
-    height: 19rem;
-    background-color: #f2f2f2;
-    border-radius: 0.6rem;
-}
-#rating{
-    width: 100%;height: 11rem;
-}
-#probability{
-    width: 90%;height:2rem ;margin: 0 auto;margin-left: 1rem;font-size: 0.9rem;padding-top: 0.9rem;font-weight: 600;
-}
-#rating-index{
-    width: 100%;height: 4.3rem;
-}
-#rating-index-container{
-    width: 90%;height: 4.3rem;line-height: 1.5rem; margin: 0 auto;text-align: center;overflow: hidden;
-}
-.rating-index-sub{
-    width: 16%;height: 4.3rem;float: left;
-}
-#rate1{
-    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
-}
-#rate2{
-    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
-}
-#rate3{
-    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
-}
-#rate4{
-    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
-}
-#rate5{
-    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
-}
-#rate6{
-    width: 15%;height: auto;margin: 0 auto; visibility: hidden;
-}
-#rating-percent{
-    width: 100%;height: 1.5rem;overflow: hidden;
-}
-#rating-percent-container{
-    width: 90%;height: 1.5rem;line-height: 1.5rem; margin: 0 auto;text-align: center;
-}
-.rating-percent-sub{
-    width: 16%;height: 1.5rem;float: left;
-}
-#rating-colorfulbar{
-    width: 100%;height: 1.5rem;overflow: hidden;
-}
-#rating-colorfulbar-container{
-    width: 90%;height: 1.5rem;line-height: 1.5rem; margin: 0 auto;text-align: center;
-}
-#color1{
-    width: 16%;height: 1.5rem;float: left;background-color: #8dc553;
-}
-#color2{
-    width: 16%;height: 1.5rem;float: left;background-color: #f1e0cf;
-}
-#color3{
-    width: 16%;height: 1.5rem;float: left;background-color: #ebc6a7;
-}
-#color4{
-    width: 16%;height: 1.5rem;float: left;background-color: #dfa473;
-}
-#color5{
-    width: 16%;height: 1.5rem;float: left;background-color: #e46c0a;
-}
-#color6{
-    width: 16%;height: 1.5rem;float: left;background-color: #953735;
-}
-#rating-number{
-    width: 100%;height: 1.5rem;overflow: hidden;
-}
-#rating-number-container{
-    width: 90%;height: 1.5rem;line-height: 1.5rem; margin: 0 auto;text-align: center;
-}
-.number{
-    width: 16%;height: 1.5rem;float: left;
-}
-#number-of-genes{
-    width: 90%;height:2rem ;line-height: 2rem; margin: 0 auto;margin-left: 1rem;font-size: 0.9rem;font-weight: 600;
-}
-#number-of-genes-eg{
-width: 90%;height: 2rem;margin: 0 auto;margin-left: 0.5rem;font-size: 0.8rem;color: grey;
-}
-#page2-result{
-    width: 100%;height: 9rem;font-size: 0.7rem;border-radius: 0.3rem; background-color: #0C6AAC;font-size: 0.9rem;color: #ffffff; margin: 0 auto
-}
-#page2-result-sub{
-    width: 90%;height: 8rem;margin: 0 auto;padding-top: 1rem;font-size: 1.1rem;
-}
-#page2-result-en{
-width: 100%;height: 9rem;font-size: 0.7rem;border-radius: 0.6rem;font-size: 1rem;color: grey; margin: 0 auto
-}
-#page2-block{
-    width: 100%;height: 2rem;
-}
-/* page2 end */
-/* page3 start */
-#page3-title{
-    width: 100%;height: 3.6rem;font-size: 1rem;border-radius: 0.3rem; background-color: #0C6AAC;font-size: 1.2rem;color: #ffffff; margin: 0 auto
-}
-#page3-title div{
-    width: 97%;height: 3.6rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page3-part1{
-    width: 100%;height: 19rem;overflow: hidden;position:relative;font-size: 1rem;
-}
-#page3-img1{
-    width: 30%;height: auto;
-}
-#page3-part2{
-    width: 100%;height: 13rem;font-size: 1rem;border-radius: 0.3rem; background-color: #fdeada; margin: 0 auto
-}
-#page3-part2-sub{
-    width: 90%;height: 13rem;margin: 0 auto;padding-top: 1rem;
-}
-#page3-part3{
-    width: 100%;height: 16rem;position: relative;
-}
-#page3-part3-sub{
-position: absolute;z-index:2;left:2rem; top:4rem;right: 2rem;bottom: 2rem; color: #ffffff;font-weight: 600;
-}
-/* page3 end */
-/* page4 start */
-#page4-title{
-    width: 100%;height: 3.6rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
-}
-#page4-title-sub{
-    width: 97%;height: 3.6rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page4-part1{
-    width: 100%;height: 29rem;overflow: hidden;position:relative;font-size: 1rem;
-}
-#page4-img1{
-    width: 30%;height: auto;
-}
-/* page4 end */
-/* page5 start */
-#page5-title{
-    width: 100%;height: 5rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
-}
-#page5-title-sub{
-    width: 97%;height: 5rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page5-part1{
-    width: 100%;height: 36rem;overflow: hidden;position:relative;font-size: 1rem;
-}
-#page5-img1{
-    width: 30%;height: auto;
-}
-/* page5 end */
-/* page6 start */
-#page6-title{
-    width: 100%;height: 3.9rem;border-radius: 0.3rem; background-color: #e46c0a;font-size: 1.2rem;color: #ffffff; margin: 0 auto
-}
-#page6-title-sub{
-    width: 97%;height: 3.9rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page6-part1{
-    width: 100%;height: 42rem;overflow: hidden;position:relative;font-size: 1rem;
-}
-#page6-img1{
-    width: 30%;height: auto;
-}
-/* page6 end */
-/* page7 start */
-#page7-title{
-    width: 100%;height: 14rem;font-size: 1rem;border-radius: 0.3rem; background-color: #0564a7; margin: 0 auto
-}
-#page7-title-sub{
-width: 90%;height: 14rem;margin: 0 auto;padding-top: 1.5rem;color: #ffffff;font-size: 1rem;
-}
-#page7-img1{
-    width: 50%;height: 22rem;margin: 0 auto;
-}
+        #page1-title-outer {
+            width: 100%;
+            height: 6.1rem;
+            margin: 0 auto
+        }
 
-/* page7 end */
-/* page8 start */
-#page8-title{
-    width: 100%;height: 5.3rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #00b0f0;color: #ffffff; margin: 0 auto
-}
-#page8-title-sub{
-    width: 90%;height: 5.3rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page8-part1{
-    width: 100%;height: 23rem;overflow: hidden;position:relative;font-size: 1rem;
-}
-#page8-img1{
-    width: 30%;height: auto;
-}
-#page8-img2{
-    width: 30%;height: 29rem;margin: 0 auto;
-}
-/* page8 end */
-/* page9 start */
-#page9-title{
-    width: 100%;height: 7rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #0564a7; margin: 0 auto;
-}
-#page9-title-sub{
-    width: 90%;height: 7rem;margin: 0 auto;padding-top: 1rem;color: #ffffff;font-size: 1rem;
-}
-#page9-part1{
-    width: 100%;height: 15rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
-}
-#page9-part1-sub{
-    width: 100%;height: 15rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
-}
-#page9-part2{
-    width: 100%;height: 12rem;font-size: 1rem;border-radius: 0.3rem; background-color: #e4edf8; margin: 0 auto
-}
-#page9-part2-sub{
-    width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
-}
-/* page9 end */
-/* page10 start */
-#page10-title{
-    width: 100%;height: 3.9rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
-}
-#page10-title-sub{
-    width: 97%;height: 3.9rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page10-part1{
-    width: 100%;height: 23rem;font-size: 1rem; margin: 0 auto
-}
-#page10-part1-sub{
-    width: 100%;height: 24rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
-}
-#page10-img1{
-    width: 40%;height: 23rem;margin: 0 auto;
-}
-#page10-img2{
-    width: 40%;height: 21rem;margin: 0 auto;
-}
-/* page10 end */
-/* page11 start */
-#page11-title{
-    width: 100%;height: 3.9rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #e46c0a;color: #ffffff; margin: 0 auto
-}
-#page11-title-sub{
-    width: 97%;height: 3.9rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page11-part1{
-    width: 100%;height: 24rem;font-size: 1rem; margin: 0 auto
-}
-#page11-part1-sub{
-    width: 100%;height: 24rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
-}
-#page11-img1{
-    width: 50%;height: 22rem;margin: 0 auto;
-}
-#page11-img2{
-    width: 30%;height: 24rem;margin: 0 auto;
-}
-/* page11 end */
-/* page12 start */
-#page12-title{
-    width: 100%;height: 6.3rem;font-size: 1.2rem;border-radius: 0.3rem; background-color: #4f81bd;color: #ffffff; margin: 0 auto
-}
-#page12-title-sub{
-    width: 97%;height: 6.3rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page12-part1{
-    width: 100%;height: 21rem;font-size: 1rem;margin: 0 auto
-}
-#page12-part1-sub{
-    width: 100%;height: 21rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
-}
-#page12-part2{
-    width: 100%;height: 29rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
-}
-#page12-part2-sub{
-    width: 100%;height: 29rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;color: grey;
-}
-#page12-img1{
-    width: 50%;height: 29rem;margin: 0 auto;
-}
-/* page12 end */
-/* page13 start */
-#page13-title{
-    width: 100%;height: 12rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
-}
-#page13-title-sub{
-width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
-}
-#page13-img-container{
-    width: 100%;height: 23rem;overflow: hidden;
-}
-#page13-img1{
-    width: 30%;height: 23rem;margin: 0 auto;float: left;
-}
-#page13-middle{
-    width: 9%;height: 23rem;margin: 0 auto;float: left;
-}
-#page13-img2{
-    width: 33%;height: 12rem;margin: 0 auto;float: left;padding-top: 2rem;
-}
-/* page13 end */
-/* page14 start */
-#page14-title{
-    width: 100%;height: 7.3rem;font-size: 1rem;border-radius: 0.3rem; background-color: #4f81bd;color: #ffffff; margin: 0 auto
-}
-#page14-title-sub{
-    width: 97%;height: 7.3rem;margin: 0 auto;padding-top: 0.5rem;
-}
-#page14-part1{
-    width: 100%;height: 16rem;font-size: 1rem;font-size: 1rem; margin: 0 auto
-}
-#page14-part1-sub{
-    width: 100%;height: 16rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
-}
-#page14-img{
-    width: 50%;height: 24rem;margin: 0 auto;
-}
-#contactus{
-    width: 100%; height: 1rem;margin: 0 auto;font-size: 1rem;
-}
-/* page14 end */
-</style>
+        #page1-title-sub {
+            width: 100%;
+            height: 0.9375rem;
+            background: #E7EAF1;
+            float: right;
+            position: relative
+        }
+
+        #page1-title-sub img {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 36%;
+            height: auto
+        }
+
+        #logo-outer {
+            height: 10rem;
+        }
+
+        #logo {
+            width: 30%;
+            height: 4rem;
+        }
+
+        #page1-title-cn {
+            width: 100%;
+            height: 3.6rem;
+            background: #0564A6;
+            float: right;
+            padding-top: 0.8rem;
+            line-height: 1.7rem;
+            font-size: 1.2rem;
+            color: white;
+
+        }
+
+        #page1-title {
+            width: 100%;
+            height: 2.9rem;
+            background: #C71762;
+            float: right;
+            line-height: 1.3rem;
+        }
+
+        #page1-title-left {
+            float: left;
+            width: 1.5%;
+            height: 2.9rem;
+        }
+
+        #page1-title-en {
+            width: 97%;
+            height: 2.9rem;
+            line-height: 2.9rem;
+            float: left;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .block {
+            width: 100%;
+            height: 4rem;
+        }
+
+        #page1butimg {
+            width: 56%;
+            margin: 0 auto;
+            height: 20rem;
+
+        }
+
+        #page1butimg img {
+            width: 100%;
+            height: auto;
+        }
+
+        .page-end-logo {
+            width: 100%;
+            height: 1rem;
+            margin: 0 auto;
+            background: #F7F7F7;
+            overflow: hidden;
+        }
+
+        .page-end-logo img {
+            width: 9%;
+            height: auto;
+        }
+
+        #info-container {
+            width: 100%;
+            overflow: hidden;
+            height: 34rem;
+            margin: 0 auto;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        input {
+            font-size: 1.2rem;
+            margin-left: 0.6rem;
+        }
+
+        #sales-center {
+            width: 100%;
+            height: 2rem;
+            font-size: 1.2rem;
+            color: #0071bc;
+            overflow: hidden;
+        }
+
+        #test-center {
+            width: 100%;
+            height: 2rem;
+            font-size: 1.2rem;
+            color: #0071bc;
+        }
+
+        #container1 {
+            overflow: hidden;
+            border-top: 0.1rem saddlebrown solid;
+        }
+
+        #container2 {
+            overflow: hidden;
+        }
+
+        .wrap {
+            overflow: hidden;
+            height: 3.6rem;
+            line-height: 3.6rem;
+            padding-left: 1rem;
+            width: 100%
+        }
+
+        .wrap_grey {
+            overflow: hidden;
+            padding-left: 1rem;
+            height: 3.6rem;
+            line-height: 3.6rem;
+            width: 100%;
+            background: #f7f7f7;
+            border-top: 1px solid grey;
+            border-bottom: 1px solid grey;
+        }
+
+        .whitebar {
+            border: none;
+            height: 2.8rem;
+            line-height: 2.8rem;
+            margin-top: 0.3rem;
+        }
+
+        .greybar {
+            border: 0;
+            height: 2.8rem;
+            line-height: 2.8rem;
+            background: #f7f7f7;
+            margin-top: 0.3rem;
+        }
+
+        /* page1 end */
+        /* page2 start */
+        #page2 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #detectname {
+            width: 100%;
+            margin: 0 auto;
+            height: 2.625rem;
+            line-height: 2.625rem;
+            background: #DFF1FB;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-indent: 0.5em;
+            color: #2C7FB8
+        }
+
+        #detectname input {
+            height: 2.0625rem;
+            width: 60%;
+            background: #DFF1FB;
+            border: none
+        }
+
+        #detectresult {
+            width: 100%;
+            margin: 0 auto;
+            height: 2.625rem;
+            line-height: 2.625rem;
+            background: #DFF1FB;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-indent: 0.5em;
+            color: #2C7FB8
+        }
+
+        #detectresult input {
+            height: 2.0625rem;
+            width: 60%;
+            background: #DFF1FB;
+            border: none
+        }
+
+        #youresult {
+            width: 100%;
+            height: 2.5rem;
+            line-height: 2.5rem;
+            color: #2178B4;
+            margin: 0 auto;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .result-block {
+            width: 100%;
+            height: 0.4rem;
+            background: #f2f2f2;
+            margin: 0 auto
+        }
+
+        #rating-container {
+            width: 100%;
+            height: 19rem;
+            background-color: #f2f2f2;
+            border-radius: 0.6rem;
+        }
+
+        #rating {
+            width: 100%;
+            height: 11rem;
+        }
+
+        #probability {
+            width: 90%;
+            height: 2rem;
+            margin: 0 auto;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            padding-top: 0.9rem;
+            font-weight: 600;
+        }
+
+        #rating-index {
+            width: 100%;
+            height: 4.3rem;
+        }
+
+        #rating-index-container {
+            width: 90%;
+            height: 4.3rem;
+            line-height: 1.5rem;
+            margin: 0 auto;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .rating-index-sub {
+            width: 16%;
+            height: 4.3rem;
+            float: left;
+        }
+
+        #rate1 {
+            width: 15%;
+            height: auto;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+
+        #rate2 {
+            width: 15%;
+            height: auto;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+
+        #rate3 {
+            width: 15%;
+            height: auto;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+
+        #rate4 {
+            width: 15%;
+            height: auto;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+
+        #rate5 {
+            width: 15%;
+            height: auto;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+
+        #rate6 {
+            width: 15%;
+            height: auto;
+            margin: 0 auto;
+            visibility: hidden;
+        }
+
+        #rating-percent {
+            width: 100%;
+            height: 1.5rem;
+            overflow: hidden;
+        }
+
+        #rating-percent-container {
+            width: 90%;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .rating-percent-sub {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+        }
+
+        #rating-colorfulbar {
+            width: 100%;
+            height: 1.5rem;
+            overflow: hidden;
+        }
+
+        #rating-colorfulbar-container {
+            width: 90%;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #color1 {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+            background-color: #8dc553;
+        }
+
+        #color2 {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+            background-color: #f1e0cf;
+        }
+
+        #color3 {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+            background-color: #ebc6a7;
+        }
+
+        #color4 {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+            background-color: #dfa473;
+        }
+
+        #color5 {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+            background-color: #e46c0a;
+        }
+
+        #color6 {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+            background-color: #953735;
+        }
+
+        #rating-number {
+            width: 100%;
+            height: 1.5rem;
+            overflow: hidden;
+        }
+
+        #rating-number-container {
+            width: 90%;
+            height: 1.5rem;
+            line-height: 1.5rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .number {
+            width: 16%;
+            height: 1.5rem;
+            float: left;
+        }
+
+        #number-of-genes {
+            width: 90%;
+            height: 2rem;
+            line-height: 2rem;
+            margin: 0 auto;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        #number-of-genes-eg {
+            width: 90%;
+            height: 2rem;
+            margin: 0 auto;
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+            color: grey;
+        }
+
+        #page2-result {
+            width: 100%;
+            height: 13rem;
+            border-radius: 0.3rem;
+            background-color: #0C6AAC;
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page2-result-sub {
+            width: 90%;
+            height: 8rem;
+            margin: 0 auto;
+            padding-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        #page2-result-en {
+            width: 100%;
+            height: 13rem;
+            border-radius: 0.6rem;
+            font-size: 1rem;
+            color: grey;
+            margin: 0 auto
+        }
+
+        #page2-block {
+            width: 100%;
+            height: 2rem;
+        }
+
+        /* page2 end */
+        /* page3 start */
+        #page3 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #page3-title {
+            width: 100%;
+            height: 3.6rem;
+            font-size: 1rem;
+            border-radius: 0.3rem;
+            background-color: #0C6AAC;
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page3-title div {
+            width: 97%;
+            height: 3.6rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page3-part1 {
+            width: 100%;
+            height: 19rem;
+            overflow: hidden;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        #page3-img1 {
+            width: 30%;
+            height: auto;
+        }
+
+        #page3-part2 {
+            width: 100%;
+            height: 13rem;
+            font-size: 1rem;
+            border-radius: 0.3rem;
+            background-color: #fdeada;
+            margin: 0 auto
+        }
+
+        #page3-part2-sub {
+            width: 90%;
+            height: 13rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+        }
+
+        #page3-part3 {
+            width: 100%;
+            height: 21rem;
+            position: relative;
+        }
+
+        #page3-part3-sub {
+            position: absolute;
+            z-index: 2;
+            left: 2rem;
+            top: 4rem;
+            right: 2rem;
+            bottom: 2rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        /* page3 end */
+        /* page4 start */
+        #page4 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #page4-title {
+            width: 100%;
+            height: 3.6rem;
+            font-size: 1.2rem;
+            border-radius: 0.3rem;
+            background-color: #e46c0a;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page4-title-sub {
+            width: 97%;
+            height: 3.6rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page4-part1 {
+            width: 100%;
+            height: 63rem;
+            overflow: hidden;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        #page4-img1 {
+            width: 30%;
+            height: auto;
+        }
+
+        /* page4 end */
+        /* page5 start */
+        #page5 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #page5-title {
+            width: 100%;
+            height: 5rem;
+            font-size: 1.2rem;
+            border-radius: 0.3rem;
+            background-color: #e46c0a;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page5-title-sub {
+            width: 97%;
+            height: 5rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page5-part1 {
+            width: 100%;
+            height: 63rem;
+            overflow: hidden;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        #page5-img1 {
+            width: 30%;
+            height: auto;
+        }
+
+        /* page5 end */
+        /* page6 start */
+        #page6 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #page6-title {
+            width: 100%;
+            height: 3.9rem;
+            border-radius: 0.3rem;
+            background-color: #e46c0a;
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page6-title-sub {
+            width: 97%;
+            height: 3.9rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page6-part1 {
+            width: 100%;
+            height: 56rem;
+            overflow: hidden;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        #page6-img1 {
+            width: 30%;
+            height: auto;
+        }
+
+        /* page6 end */
+        /* page7 start */
+        #page7 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #page7-title {
+            width: 100%;
+            height: 14rem;
+            font-size: 1rem;
+            border-radius: 0.3rem;
+            background-color: #0564a7;
+            margin: 0 auto
+        }
+
+        #page7-title-sub {
+            width: 90%;
+            height: 14rem;
+            margin: 0 auto;
+            padding-top: 1.5rem;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        #page7-img1 {
+            width: 50%;
+            height: 39rem;
+            margin: 0 auto;
+        }
+
+        /* page7 end */
+        /* page8 start */
+        #page8 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #page8-title {
+            width: 100%;
+            height: 5.3rem;
+            font-size: 1.2rem;
+            border-radius: 0.3rem;
+            background-color: #00b0f0;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page8-title-sub {
+            width: 90%;
+            height: 5.3rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page8-part1 {
+            width: 100%;
+            height: 29rem;
+            overflow: hidden;
+            position: relative;
+            font-size: 1rem;
+        }
+
+        #page8-img1 {
+            width: 30%;
+            height: auto;
+        }
+
+        #page8-img2 {
+            width: 30%;
+            height: 37rem;
+            margin: 0 auto;
+        }
+
+        /* page8 end */
+        /* page9 start */
+        #page9 {
+            width: 100%;
+            height: 82rem;
+            overflow: hidden;
+        }
+
+        #page9-title {
+            width: 100%;
+            height: 7rem;
+            font-size: 1.2rem;
+            border-radius: 0.3rem;
+            background-color: #0564a7;
+            margin: 0 auto;
+        }
+
+        #page9-title-sub {
+            width: 90%;
+            height: 7rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            color: #ffffff;
+            font-size: 1rem;
+        }
+
+        #page9-part1 {
+            width: 100%;
+            height: 15rem;
+            font-size: 1rem;
+            font-size: 1rem;
+            margin: 0 auto
+        }
+
+        #page9-part1-sub {
+            width: 100%;
+            height: 15rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+        }
+
+        #page9-part2 {
+            width: 100%;
+            height: 12rem;
+            font-size: 1rem;
+            border-radius: 0.3rem;
+            background-color: #e4edf8;
+            margin: 0 auto
+        }
+
+        #page9-part2-sub {
+            width: 100%;
+            height: 12rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+        }
+
+        /* page9 end */
+        /* page10 start */
+        #page10 {
+            width: 100%;
+            height: 80rem;
+            overflow: hidden;
+        }
+
+        #page10-title {
+            width: 100%;
+            height: 3.9rem;
+            font-size: 1.2rem;
+            border-radius: 0.3rem;
+            background-color: #e46c0a;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page10-title-sub {
+            width: 97%;
+            height: 3.9rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page10-part1 {
+            width: 100%;
+            height: 23rem;
+            font-size: 1rem;
+            margin: 0 auto
+        }
+
+        #page10-part1-sub {
+            width: 100%;
+            height: 24rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+        }
+
+        #page10-img1 {
+            width: 40%;
+            height: 21rem;
+            margin: 0 auto;
+        }
+
+        #page10-img2 {
+            width: 40%;
+            height: 19rem;
+            margin: 0 auto;
+        }
+
+        /* page10 end */
+        /* page11 start */
+        #page11 {
+            width: 100%;
+            height: 80rem;
+            overflow: hidden;
+        }
+
+        #page11-title {
+            width: 100%;
+            height: 3.9rem;
+            font-size: 1.2rem;
+            border-radius: 0.3rem;
+            background-color: #e46c0a;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page11-title-sub {
+            width: 97%;
+            height: 3.9rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page11-part1 {
+            width: 100%;
+            height: 24rem;
+            font-size: 1rem;
+            margin: 0 auto
+        }
+
+        #page11-part1-sub {
+            width: 100%;
+            height: 24rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+        }
+
+        #page11-img1 {
+            width: 50%;
+            height: 22rem;
+            margin: 0 auto;
+        }
+
+        #page11-img2 {
+            width: 30%;
+            height: 19rem;
+            margin: 0 auto;
+        }
+
+        /* page11 end */
+        /* page12 start */
+        #page12 {
+            width: 100%;
+            height: 80rem;
+            overflow: hidden;
+        }
+
+        #page12-title {
+            width: 100%;
+            height: 6.3rem;
+            font-size: 1.2rem;
+            border-radius: 0.3rem;
+            background-color: #4f81bd;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page12-title-sub {
+            width: 97%;
+            height: 6.3rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page12-part1 {
+            width: 100%;
+            height: 16rem;
+            font-size: 1rem;
+            margin: 0 auto
+        }
+
+        #page12-part1-sub {
+            width: 100%;
+            height: 21rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+        }
+
+        #page12-part2 {
+            width: 100%;
+            height: 22rem;
+            font-size: 1rem;
+            font-size: 1rem;
+            margin: 0 auto
+        }
+
+        #page12-part2-sub {
+            width: 100%;
+            height: 22rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+            color: grey;
+        }
+
+        #page12-img1 {
+            width: 50%;
+            height: 24rem;
+            margin: 0 auto;
+        }
+
+        /* page12 end */
+        /* page13 start */
+        #page13 {
+            width: 100%;
+            height: 80rem;
+            overflow: hidden;
+        }
+
+        #page13-title {
+            width: 100%;
+            height: 23rem;
+            font-size: 1rem;
+            font-size: 1rem;
+            margin: 0 auto
+        }
+
+        #page13-title-sub {
+            width: 100%;
+            height: 12rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+        }
+
+        #page13-img-container {
+            width: 100%;
+            height: 44rem;
+            overflow: hidden;
+        }
+
+        #page13-img1 {
+            width: 35%;
+            height: 26rem;
+            margin: 0 auto;
+        }
+
+        #page13-img2 {
+            width: 35%;
+            height: 29rem;
+            margin: 0 auto;
+        }
+
+        /* page13 end */
+        /* page14 start */
+        #page14 {
+            width: 100%;
+            height: 80rem;
+            overflow: hidden;
+        }
+
+        #page14-title {
+            width: 100%;
+            height: 7.3rem;
+            font-size: 1rem;
+            border-radius: 0.3rem;
+            background-color: #4f81bd;
+            color: #ffffff;
+            margin: 0 auto
+        }
+
+        #page14-title-sub {
+            width: 97%;
+            height: 7.3rem;
+            margin: 0 auto;
+            padding-top: 0.5rem;
+        }
+
+        #page14-part1 {
+            width: 100%;
+            height: 16rem;
+            font-size: 1rem;
+            font-size: 1rem;
+            margin: 0 auto
+        }
+
+        #page14-part1-sub {
+            width: 100%;
+            height: 16rem;
+            margin: 0 auto;
+            padding-top: 1rem;
+            font-size: 1rem;
+        }
+
+        #page14-img {
+            width: 50%;
+            height: 23rem;
+            margin: 0 auto;
+        }
+
+        #contactus {
+            width: 100%;
+            height: 1rem;
+            margin: 0 auto;
+            font-size: 1rem;
+            text-align: right;
+        }
+
+        /* page14 end */
+    </style>
     <script src="<%=locals.url%>/public/js/query-3.5.1.min.js"></script>
     <script src="<%=locals.url%>/public/js/InputSpinner.js"></script>
     <title> HKG 肝癌报告</title>
@@ -518,8 +1108,8 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     </div>
                 </div>
 
-                <div  style="width: 100%;height: 6.1re;margin: 0 auto;overflow: hidden;"></div>
-                <div id="page1-title-outer" >
+                <div style="width: 100%;height: 6.1re;margin: 0 auto;overflow: hidden;"></div>
+                <div id="page1-title-outer">
                     <div id="page1-title-sub">
                         <img src="<%=locals.url%>/public/img/imgepiliver/06.jpg">
                     </div>
@@ -537,39 +1127,43 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
 
                 </div>
             </div>
-            <div class="block"></div>
+            <div style="width: 100%;height: 2rem;"></div>
             <div id="info-container">
-                <div id="sales-center" >
+                <div id="sales-center">
                     销售中心
                 </div>
                 <div id="container1">
                     <div class="wrap">
                         <label style="float: left;">顾客编号/Customer ID:</label>
                         <div style="overflow: hidden;">
-                            <input class="whitebar" id="username"name="username" type="text"autocomplete="off" value="<%=data.sampleid%>">
+                            <input class="whitebar" id="username" name="username" type="text" autocomplete="off"
+                                value="<%=data.sampleid%>">
                         </div>
                     </div>
                     <div class="wrap_grey">
                         <label style="float: left;">采集样本类型/ Sample type：</label>
                         <div style="overflow: hidden;">
-                            <input class="greybar" id="sampletype" name="sampletype"autocomplete="off" type="text" value="">
+                            <input class="greybar" id="sampletype" name="sampletype" autocomplete="off" type="text"
+                                value="">
                         </div>
                     </div>
                     <div class="wrap">
                         <label style="float: left;">样本收集日/Sample Collected on：</label>
                         <div style="overflow: hidden;">
-                            <input class="whitebar" id="sales-sample-rec-data" name="sales-sample-rec-data"autocomplete="off" type="text" value="">
+                            <input class="whitebar" id="sales-sample-rec-data" name="sales-sample-rec-data"
+                                autocomplete="off" type="text" value="">
                         </div>
                     </div>
                     <div class="wrap_grey">
                         <label style="float: left;">样本编号/Sample ID：</label>
                         <div style="overflow: hidden;">
-                            <input class="greybar" type="text" id="sampleid" name="sampleid"autocomplete="off" value="<%=data.sampleid%>">
+                            <input class="greybar" type="text" id="sampleid" name="sampleid" autocomplete="off"
+                                value="<%=data.sampleid%>">
                         </div>
                     </div>
                 </div>
-                <div class="block"></div>
-                <div id="test-center" >
+                <div style="width: 100%;height: 2rem;"></div>
+                <div id="test-center">
                     检测中心
                 </div>
                 <div id="container2">
@@ -577,19 +1171,22 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     <div class="wrap">
                         <label style="float: left;">样本测序编号/Sample ID:</label>
                         <div style="overflow: hidden;">
-                            <input class="whitebar" id="sample-sequence-id" name="sample-sequence-id"autocomplete="off" type="text" value="<%=data.sampleid%>">
+                            <input class="whitebar" id="sample-sequence-id" name="sample-sequence-id" autocomplete="off"
+                                type="text" value="<%=data.sampleid%>">
                         </div>
                     </div>
                     <div class="wrap_grey">
                         <label style="float: left;">样本收取日/Sample Received on：</label>
                         <div style="overflow: hidden;">
-                            <input class="greybar" id="lab-sample-rec-data" name="lab-sample-rec-data"autocomplete="off" type="text" value="">
+                            <input class="greybar" id="lab-sample-rec-data" name="lab-sample-rec-data"
+                                autocomplete="off" type="text" value="">
                         </div>
                     </div>
                     <div class="wrap">
                         <label style="float: left;">检测结果/Test Result：</label>
                         <div style="overflow: hidden;">
-                            <input class="whitebar" name="test-result" type="text" value=""autocomplete="off" style="color: red;">
+                            <input class="whitebar" name="test-result" type="text" value="" autocomplete="off"
+                                style="color: red;">
                         </div>
                     </div>
                     <hr style="border:none; border-top: 0.1rem grey solid;">
@@ -598,7 +1195,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
             <div id="page1butimg">
                 <img src="<%=locals.url%>/public/img/imgepiliver/13.jpg">
             </div>
-            <div class="page-end-logo" >
+            <div class="page-end-logo">
                 <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
@@ -613,34 +1210,34 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
 
             <div id="detectresult">检测结果：<input type="text" class="test-result" name="test-result"></div>
 
-            <div class="block"></div>
+            <div style="width: 100%;height: 4rem;"></div>
             <div id="youresult">你的结果:<span style="color: green;">下方绿色箭头所示</span></div>
             <div class="result-block"></div>
-            <div style="width: 100%;height: 2.25rem;margin: 0 auto"></div>
+            <div style="width: 100%;height: 4rem;margin: 0 auto"></div>
             <div id="rating-container">
-                <div id="probability" >
+                <div id="probability">
                     可能性/Probability
                 </div>
-                <div id="rating" >
+                <div id="rating">
                     <div style="width: 100%;height: 1rem;"></div>
-                    <div id="rating-index" >
-                        <div id="rating-index-container" >
-                            <div class="rating-index-sub" ><img id="rate1"
+                    <div id="rating-index">
+                        <div id="rating-index-container">
+                            <div class="rating-index-sub"><img id="rate1"
                                     src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
-                            <div  class="rating-index-sub" ><img id="rate2"
+                            <div class="rating-index-sub"><img id="rate2"
                                     src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
-                            <div class="rating-index-sub" ><img id="rate3"
+                            <div class="rating-index-sub"><img id="rate3"
                                     src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
-                            <div  class="rating-index-sub"><img id="rate4"
+                            <div class="rating-index-sub"><img id="rate4"
                                     src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
-                            <div  class="rating-index-sub" ><img id="rate5"
+                            <div class="rating-index-sub"><img id="rate5"
                                     src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
-                            <div  class="rating-index-sub" ><img id="rate6"
+                            <div class="rating-index-sub"><img id="rate6"
                                     src="<%=locals.url%>/public/img/imgepiliver/green-arrow.png" alt=""></div>
                         </div>
                     </div>
-                    <div id="rating-percent" >
-                        <div id="rating-percent-container" >
+                    <div id="rating-percent">
+                        <div id="rating-percent-container">
                             <div class="rating-percent-sub">&lt;8%</div>
                             <div class="rating-percent-sub">80%</div>
                             <div class="rating-percent-sub">90%</div>
@@ -649,7 +1246,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                             <div class="rating-percent-sub">95%</div>
                         </div>
                     </div>
-                    <div id="rating-colorfulbar" >
+                    <div id="rating-colorfulbar">
                         <div id="rating-colorfulbar-container">
                             <div id="color1"></div>
                             <div id="color2"></div>
@@ -659,7 +1256,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                             <div id="color6"></div>
                         </div>
                     </div>
-                    <div id="rating-number" >
+                    <div id="rating-number">
                         <div id="rating-number-container">
                             <div class="number">1</div>
                             <div class="number">2</div>
@@ -670,25 +1267,28 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                         </div>
                     </div>
                 </div>
-                <div style="overflow: hidden;"> 
-                    <div id="number-of-genes" >
+                <div style="overflow: hidden;">
+                    <div id="number-of-genes">
                         基因数量/Number of genes
                     </div>
-                    <div id="number-of-genes-eg" >
+                    <div id="number-of-genes-eg">
                         Threshold of 10 methylated copies per gene was used to calculate probability.</div>
                 </div>
             </div>
 
 
-            <div class="block"></div>
-            <div id="page2-result" >
-                <div id="page2-result-sub" >
+            <div style="width: 100%;height:6rem;overflow: hidden;"></div>
+            <div id="page2-result">
+                <div id="page2-result-sub">
                     本报告（下文有对检测所基于的科学原理详细解释）显示的结果基于我司收集的临床数据集, 同时基于我司独有的甲基化阈值计算公式集，所计算得出的癌症概率。
-                    <br>上图中绿色箭头显示：
-                    <br> <span style="font-size: 1.5rem;">呈甲基化的目标基因为</span> &nbsp;
-                        <input type="text" id="dnarate" name="dnarate" value="" required style="width: 3rem; color: red;text-align: center;" >
-                    &nbsp; 个，<span style="font-size: 1.5rem;">肝癌的概率是</span>&nbsp;
-                        <input type="text" id="cancerrate" name="cancerrate" value="" required style="width: 3rem; color: red;text-align: center;"> 
+                    <br>
+                    <div style="width: 100%;height: 3rem;line-height: 3rem;"> 上图中绿色箭头显示：</div>
+                    <br> <span style="font-size: 1.3rem;">呈甲基化的目标基因为</span> &nbsp;
+                    <input type="text" id="dnarate" autocomplete="off" name="dnarate" value="" required
+                        style="width: 3rem; color: red;text-align: center;">
+                    &nbsp; 个，<span style="font-size: 1.3rem;">肝癌的概率是</span>&nbsp;
+                    <input type="text" id="cancerrate" name="cancerrate" value="" autocomplete="off" required
+                        style="width: 3rem; color: red;text-align: center;">
                 </div>
             </div>
             <div id="page2-block"></div>
@@ -700,7 +1300,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                 this case the green arrow indicates that the patient has 2 copies that are methylated and therefore the
                 probability of cancer is 90% based on our current clinical data.
             </div>
-            <div style="width: 100% ;height: 2rem"></div>
+            <div style="width: 100% ;height: 6rem"></div>
             <div class="page-end-logo">
                 <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
@@ -710,16 +1310,16 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
         <!--page3 start-->
         <div id="page3">
             <div class="block"></div>
-            <div id="page3-title" >
+            <div id="page3-title">
                 <div>
-                    为什么发现早起肝癌那么重要？<br>
+                    为什么发现早期肝癌那么重要？<br>
                     Why is early detection of liver cancer so important?
                 </div>
             </div>
-            <div id="page3-part1" >
-                <div class="block"></div>
-                <img src="<%=locals.url%>/public/img/imgepiliver/liver.jpg" id="page3-img1" align="right"
-                    width="120" hspace="5" vspace="5">
+            <div class="block"></div>
+            <div id="page3-part1">
+                <img src="<%=locals.url%>/public/img/imgepiliver/liver.jpg" id="page3-img1" align="right" width="120"
+                    hspace="5" vspace="5">
                 肝癌/肝细胞癌（HCC）在全球最常见癌症中排名第五。在亚洲流行严重，尤其是乙肝流行的地区，其发生率最高的地区。数亿亚洲人面临罹患肝癌的风险, 特别是患有慢性肝病、肝炎的患者,
                 以及酗酒人群。跟进诸如慢性肝炎患者，并对慢性肝炎到肝癌的发展进行早期诊断将提高治愈率。
                 <br>
@@ -734,7 +1334,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     hepatitis
                     to HCC would improve cure rates.</span>
             </div>
-            <div id="page3-part2"  >
+            <div id="page3-part2">
                 <div id="page3-part2-sub">
                     但是，当前的诊断方法包括针对单一某种蛋白质的成像和免疫分析，常常无法及早诊断出肝癌（Flores＆Marrero，2014年），例如甲胎蛋白。<br>
                     <span style="color: #e46c0a;">主要挑战是实体瘤隐藏在器官内部, 并且需要经过一定时间的发展才表现临床症状。</span> <br>
@@ -746,32 +1346,32 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     </span>
                 </div>
             </div>
-            <div class="block"></div>
-            <div id="page3-part3" >
+            <div style="width: 100%;height: 6rem;"></div>
+            <div id="page3-part3">
                 <img src="<%=locals.url%>/public/img/imgepiliver/bloodcell.jpg" alt="" width="100%" height="200">
-                <div id="page3-part3-sub"  >
+                <div id="page3-part3-sub">
                     许多研究表明在血液——这种临床医学上最为易得且常用的生物学样本中找到肿瘤DNA是可能的<br>
                     <span style="font-weight: 500;">Many studies showed that it is possible to find tumor DNA in one of
                         the most accessible and
                         commonly used biological sample in clinical medicine, blood.</span>
                 </div>
             </div>
-            <div style="width: 100% ;height: 2rem"></div>
+            <div style="width: 100% ;height: 7rem"></div>
             <div class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page3 end -->
         <!-- page4 start -->
         <div id="page4">
             <div class="block"></div>
-            <div id="page4-title"  >
-                <div id="page4-title-sub" >
+            <div id="page4-title">
+                <div id="page4-title-sub">
                     源自于癌细胞的血浆DNA<br>
                     Cell free tumor- derived DNA in plasma
                 </div>
             </div>
-            <div id="page4-part1" >
+            <div id="page4-part1">
                 <div class="block"></div>
                 <img src="<%=locals.url%>/public/img/imgepiliver/lab.jpg" id="page4-img1" align="right" width="120"
                     hspace="5" vspace="5">
@@ -797,7 +1397,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
             </div>
             <div style="width: 100% ;height: 2rem"></div>
             <div class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page4 end -->
@@ -810,7 +1410,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     A new way to detect tumor DNA in blood and determine that it is specifically liver cancer
                 </div>
             </div>
-            <div id="page5-part1" >
+            <div id="page5-part1">
                 <div class="block"></div>
                 <img src="<%=locals.url%>/public/img/imgepiliver/lab2.jpg" id="page5-img1" align="right" width="120"
                     hspace="5" vspace="5">
@@ -838,9 +1438,9 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     under patent protection process across the world (PCT/IB2019/055855).
 
             </div>
-            <div style="width: 100% ;height: 2rem"></div>
-            <div  class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            <div style="width: 100% ;height: 3rem"></div>
+            <div class="page-end-logo">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page5 end -->
@@ -853,10 +1453,10 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     What is DNA methylation?
                 </div>
             </div>
-            <div id="page6-part1" >
+            <div id="page6-part1">
                 <div class="block"></div>
-                <img src="<%=locals.url%>/public/img/imgepiliver/phone.jpg" id="page6-img1" align="right"
-                    width="120" hspace="5" vspace="5">
+                <img src="<%=locals.url%>/public/img/imgepiliver/phone.jpg" id="page6-img1" align="right" width="120"
+                    hspace="5" vspace="5">
                 我们体内每个细胞中的DNA就像一台对细胞进行管理的微型计算机，每个人的一生中都需要这样的功能维护以实现身体正常运转并执行所有任务。
                 我们从父母那裡继承了我们的DNA（基因），即这些小型计算机的操作系统。在我们身体的每个细胞中都有相同的DNA。
                 但是，我们的DNA在不同器官不同细胞中的运作方式不同。像任何计算机一样，我们的DNA需要软件来对它进行编程，
@@ -887,9 +1487,9 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     and thus, our health and well being.
 
             </div>
-            <div style="width: 100% ;height: 2rem"></div>
-            <div  class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            <div style="width: 100% ;height: 12rem"></div>
+            <div class="page-end-logo">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page6 end -->
@@ -909,12 +1509,13 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     profiles from as little as 1 ng (1 gram divided by a billion) of DNA
                 </div>
             </div>
-            <div id="page7-img1" >
+            <div style="width: 100%;height: 9rem;"></div>
+            <div id="page7-img1">
                 <img src="<%=locals.url%>/public/img/imgepiliver/onoff.jpg" alt="" style="width: 100%;height: auto;">
             </div>
-            <div style="width: 100% ;height: 5rem"></div>
-            <div  class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            <div style="width: 100% ;height: 9rem"></div>
+            <div class="page-end-logo">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page7 end -->
@@ -950,13 +1551,14 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
 
             <div style="width: 100% ;height: 2rem"></div>
             <div class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page8 end -->
         <!-- page9 start -->
         <div id="page9">
             <div class="block"></div>
+            <div style="width: 100%;height: 2rem;"></div>
             <div id="page9-title">
                 <div id="page9-title-sub">
                     <span style="font-size: 1rem;font-weight: 600;"> 新颖的EpiLiver检测：区分肝癌和正常之间的DNA（BCD）的强大二元归化差异
@@ -966,6 +1568,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     DNA (BCD).
                 </div>
             </div>
+            <div class="block"></div>
             <div id="page9-part1">
                 <div id="page9-part1-sub">
                     我们的科学家研究了来自大量不同个体的正常组织，血液和癌症样本，并使用特有的方法发现在肝癌、
@@ -983,6 +1586,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     </span>
                 </div>
             </div>
+            <div class="block"></div>
             <div id="page9-part2">
                 <div id="page9-part2-sub">
                     <ul>
@@ -998,9 +1602,9 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     </ul>
                 </div>
             </div>
-            <div style="width: 100% ;height: 2rem"></div>
+            <div style="width: 100% ;height: 29rem"></div>
             <div class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page9 end -->
@@ -1013,6 +1617,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     Detect for detection of cancer
                 </div>
             </div>
+            <div class="block"></div>
             <div id="page10-part1">
                 <div id="page10-part1-sub">
                     利用专有的BCD方法，我们发现了肝癌甲基化特征非常独特，即使在数千条正常DNA中只有5个癌症DNA，
@@ -1048,7 +1653,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
             </div>
             <div style="width: 100% ;height: 2rem"></div>
             <div class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page10 end -->
@@ -1061,6 +1666,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     Spec detects specifically liver cancer
                 </div>
             </div>
+            <div class="block"></div>
             <div id="page11-part1">
                 <div id="page11-part1-sub">
                     但是，真正使我们的方法在该领域独一无二的是我们不仅发现了癌症DNA甲基化的特征，
@@ -1105,6 +1711,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     403 people.
                 </div>
             </div>
+            <div class="block"></div>
             <div id="page12-part1">
                 <div id="page12-part1-sub">
                     总而言之，我们验证了我们的检测标志可以在任何阶段对成千上万个样本和组织进行肝癌甲基化DNA高度准确的分析。
@@ -1149,12 +1756,15 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     patients. The boundary between cancer and non cancer is sharp and clear.
                 </div>
             </div>
-
+            <div style="width: 100% ;height: 2rem;overflow: hidden;"></div>
+            <div class="page-end-logo">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
         </div>
         <!-- page12 end -->
         <!-- page13 start -->
         <div id="page13">
-            <div class="block"></div>
+            <div style="width: 100%;height: 6rem;"></div>
             <div id="page13-title">
                 <div id="page13-title-sub">
                     下图显示了我们孟加拉国试验中的癌症患者血浆与健康和慢性乙型肝炎患者血浆中的甲基化拷贝数（MCR） ，
@@ -1169,24 +1779,26 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                 </div>
             </div>
             <div id="page13-img-container">
-                <div id="page13-img1" >
-                    <img src="<%=locals.url%>/public/img/imgepiliver/chart5.jpg" alt="" style="width: 100%;height: auto;">
+                <div id="page13-img1">
+                    <img src="<%=locals.url%>/public/img/imgepiliver/chart5.jpg" alt=""
+                        style="width: 100%;height: auto;">
                 </div>
                 <div id="page13-middle"></div>
-                <div id="page13-img2" >
-                    <img src="<%=locals.url%>/public/img/imgepiliver/chart6.jpg" alt="" style="width: 100%;height: auto;">
+                <div id="page13-img2">
+                    <img src="<%=locals.url%>/public/img/imgepiliver/chart6.jpg" alt=""
+                        style="width: 100%;height: auto;">
                 </div>
             </div>
-            <div style="width: 100% ;height: 2rem;overflow: hidden;"></div>
+            <div style="width: 100% ;height: 4rem;overflow: hidden;"></div>
             <div class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
             </div>
         </div>
         <!-- page13 end -->
 
         <!-- page14 start -->
         <div id="page14">
-            <div class="block"></div>
+            <div style="width: 100%;height: 9rem;"></div>
             <div id="page14-title">
                 <div id="page14-title-sub">
                     Epiliver的结果是意味着什么?<br>
@@ -1197,6 +1809,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                     The results disclose a probability of having liver cancer.
                 </div>
             </div>
+            <div class="block"></div>
             <div id="page14-part1">
                 <div id="page14-part1-sub">
                     来自患者的血浆样品经过EpiLiver
@@ -1217,34 +1830,33 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
             <div id="page14-img">
                 <img src="<%=locals.url%>/public/img/imgepiliver/chart7.jpg" alt="" style="width: 100%;height: auto;">
             </div>
-            <div style="width: 100% ;height: 2rem"></div>
-            <div class="page-end-logo">
-                <img  src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            <div id="page-end" style="width: 100%;height: 16rem; margin: 0 auto;overflow: hidden;">
+                <div style="text-align: center;display: block;margin: 3.125rem;">
+                    <input id="submit" type="button"
+                        style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
+                        value="SAVE">
+                </div>
+                <div style="text-align: center;display: block;margin: 3.125rem;">
+                    <input id="generate_pdf" type="button"
+                        style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
+                        value="GENERATE PDF">
+                </div>
             </div>
-        </div>
-        <!-- page14 end -->
-        <div id="page-end" style="width: 100%;height: 19rem; margin: 0 auto;overflow: hidden;">
-            <div style="text-align: center;display: block;margin: 3.125rem;">
-                <input id="submit" type="button"
-                    style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
-                    value="SAVE">
-            </div>
-            <div style="text-align: center;display: block;margin: 3.125rem;">
-                <input id="generate_pdf" type="button"
-                    style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
-                    value="GENERATE PDF">
-            </div>
+            <div style="width: 100% ;height: 3rem"></div>
             <div id="contactus">
                 如有任何疑问，请联系我们：info@epidia.net/(0755) 8654 6563
             </div>
+            <div class="page-end-logo">
+                <img src="<%=locals.url%>/public/img/imgepiliver/14.jpg">
+            </div>
         </div>
-        <div style="width: 100% ;height: 6rem;visibility: visible;"></div>
+            <!-- page14 end -->
     </div>
     <script>
         $("#dnarate").on("input", function () {
             var dnarate = parseInt($('#dnarate').val())
             console.log("this is the sum dnarate value" + dnarate)
-            if (dnarate == 0 || dnarate==1) {
+            if (dnarate == 0 || dnarate == 1) {
                 $("#rate1").css("visibility", "visible")
                 $("input[name=cancerrate]").attr("value", "<8%")
                 $("#rate2,#rate3,#rate4,#rate5,#rate6").css("visibility", "hidden")
@@ -1268,17 +1880,17 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
                 $("#rate6").css("visibility", "visible")
                 $("input[name=cancerrate]").attr("value", "95%")
                 $("#rate1,#rate2,#rate3,#rate4,#rate5").css("visibility", "hidden")
-            }else{
+            } else {
                 alert("Please enter a correct number from 0-6")
             }
         })
-       
+
         $("input[id=submit]").click(function () {
             $('input').attr('value', function () {
                 return $(this).val();
             });
             var finalHtml = {}
-            finalHtml.dnarate = parseInt($('#dnarate').val()) 
+            finalHtml.dnarate = parseInt($('#dnarate').val())
             finalHtml.id = '<%=data.id%>'
             finalHtml.sampleid = '<%=data.sampleid%>'
             finalHtml.reportPage = "<html>" + $('html').html() + "</html>"
@@ -1291,7 +1903,7 @@ width: 100%;height: 12rem;margin: 0 auto;padding-top: 1rem;font-size: 1rem;
         $("input[id=generate_pdf]").click(function () {
             var pdf = {}
             pdf.id = '<%=data.id%>'
-            pdf.sampleid ='<%=data.sampleid%>'
+            pdf.sampleid = '<%=data.sampleid%>'
             $.post("/admin/buildpdf", pdf, function (data) {
                 if (data == "success") alert("pdf generated success")
             })

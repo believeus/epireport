@@ -105,21 +105,21 @@
 		<!--普通弹窗-->
 		<div class="hsycms-model-mask" id="mask-alert"></div>
 		<div class="hsycms-model hsycms-model-alert" id="alert">
-			<div class="hscysm-model-title">温馨提示</div>
-			<div class="hsycms-model-text">这里是内容</div>
+			<div class="hscysm-model-title">Notification</div>
+			<div class="hsycms-model-text">You have add: </div>
 			<div class="hsycms-model-btn">
-				<button type="button ok">确定</button>
+				<button type="button ok">OK</button>
 			</div>
 		</div>
 
 		<!--询问弹窗-->
 		<div class="hsycms-model-mask" id="mask-confirm"></div>
 		<div class="hsycms-model hsycms-model-confirm" id="confirm">
-			<div class="hscysm-model-title">温馨提示</div>
-			<div class="hsycms-model-text">确定要操作？</div>
+			<div class="hscysm-model-title">Notification</div>
+			<div class="hsycms-model-text">Are you sure you want to delete？</div>
 			<div class="hsycms-model-btn">
-				<button type="button" class="cancel">取消</button>
-				<button type="button" class="ok">确定</button>
+				<button type="button" class="cancel">Cancel</button>
+				<button type="button" class="ok">OK</button>
 			</div>
 		</div>
 	</div>
@@ -161,7 +161,7 @@
 
 		//询问弹窗
 		function confirm() {
-			hsycms.confirm('confirm', '确定要这么做',
+			hsycms.confirm('confirm', 'Are you sure to delete?',
 				function (res) {
 					hsycms.success('success', '点击了确定');
 					var vdata = {}
