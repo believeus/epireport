@@ -79,8 +79,8 @@
 							</u>
 						</td> -->
 						<td>
-							<input type="text" name="sampleid" value="<%=item.sampleid %>">
-							<input type="hidden" value="<%=item._id%>">
+							<input type="text"  value="<%=item.sampleid %>">
+							<input type="hidden" name="sampleid" value="<%=item._id%>">
 						</td>
 						<td>
 							<a id="detail" style="text-decoration:underline"
@@ -93,8 +93,7 @@
 								title="Report Parameter">Report Parameter</a>
 						</td>
 						<td>
-							<button id="delete" type="button" onclick="confirm()"
-								style="background:#14bf24;">Delete</button>
+							<button id="delete" type="button" onclick="confirm(this)" style="background:#14bf24;">Delete</button>
 						</td>
 					</tr>
 					<% }) 
@@ -160,13 +159,13 @@
 		})
 
 		//询问弹窗
-		function confirm() {
+		function confirm(obj) {
 			hsycms.confirm('confirm', 'Are you sure to delete?',
 				function (res) {
 					hsycms.success('success', '点击了确定');
 					var vdata = {}
-					vdata.id = $("input[name=sampleid]").next().val()
-					console.log(vdata.id)
+					//获取该条数据的数据库id
+					vdata.id =$(obj).parent().parent().find("input[name=sampleid]").val()
 					$.post("/admin/delete", vdata, function (data) {
 						if(data=="success"){
 						location.replace(location.href)

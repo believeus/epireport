@@ -50,15 +50,15 @@ $().ready(function () {
         messages: {
             name: {
                 required: "请输入用户名",
-                minlength: "用户名最少由2个字符",
-                maxlength: "最多34个字符"
+                minlength: "用户名最少输入2个文字",
+                maxlength: "用户名超出上限"
             },
             ethnic: {
-                minlength: "长度不能小于2个字符"
+                minlength: "长度不能小于个文字"
             },
             address: {
                 required: "请输入地址",
-                minlength: "地址最少不低于10位字符",
+                minlength: "请输入详细地址",
             },
             identify: {
                 required: "请输入您的身份证号码",
@@ -93,7 +93,7 @@ $().ready(function () {
                 $.post("/saveform", finalHtml, function (data) {
                     if (data == "success") {
                         alert("您的信息已保存成功")
-                        window.location.href = "http://192.168.0.109:3000/reserveLiver_success"
+                        window.location.href = "http://192.168.0.111:3000/reserveLiver_success"
                     } else {
                         alert("出错")
                     }
