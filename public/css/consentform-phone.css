@@ -1,5 +1,4 @@
 body {
-  padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -7,8 +6,7 @@ a {
   color: #00B7FF;
 }
 #container{width: 90%;height: auto;margin: 0 auto;}
-p{margin-top:34px ;margin-bottom: 34px;}
-h1{text-align: center;margin-bottom: 23px;}
+h2{text-align: center;margin-bottom: 23px;}
 label{
   font-size: 18px;
 }
@@ -30,7 +28,7 @@ input{
     border-radius: 10px;
     color: white;
   }
-  #sign-name{font-size: 14px;
+  #sign-name{font-size: 14px;font-weight: 600;
   }
-  #sign-date{font-size: 14px;
+  #sign-date{font-size: 14px;font-weight: 600;
   }
