@@ -3,13 +3,17 @@
 
 <head>
   <title>肝癌预约知情同意书</title>
-  <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+  <link rel="stylesheet" media="screen and (min-width:600px) and (max-width:1920px)"
+    href="/public/css/consentform-pc.css" />
+  <link rel="stylesheet" media="screen and (min-width:320px) and (max-width:600px)"
+    href="/public/css/consentform-phone.css" />
   <script type="text/javascript" src="/public/js/query-3.5.1.min.js"></script>
 </head>
 
 <body>
   <div id="container">
-    
+
     <form action="/index" method="post">
       <h1 style="text-align: center;">肝癌预约知情同意书</h1>
       <div style="width: 100%;height: 20px;"></div>
@@ -25,40 +29,42 @@
         始终保护您的个人隐私。此外，您有权利在不告知我们原因的前提下随时退出本次筛查。
       </p>
       <h4>如您以详细阅读以上告知内容，并以知晓筛查的指导价值，愿意承担可能因筛查带来的相关身心风险，请签字同意做此项筛查。</h4>
-      <div style="margin-top:34px ;margin-bottom: 34px;font-size: 26px;">
-        <span >受检者或授权家属确认签字:</span>
-        <input type="text" id="signname" name="signname" ></input>
+      <div id="sign-name">
+        <span>受检者或授权家属确认签字:</span>
+        <input type="text" id="signname" name="signname" autocomplete="off" value=""></input>
       </div>
-      <div style="margin-top:34px ;margin-bottom: 34px;font-size: 26px;">
-        <span >日期：</span>
-        <input type="" id="signdate" name="signdate" value=""></input>
+      <div style="width: 100%;height: 10px;"></div>
+      <div id="sign-date">
+        <span>日期：</span>
+        <input type="" id="signdate" name="signdate" autocomplete="off" value=""></input>
       </div>
+      <div style="width: 100%;height: 30px;"></div>
       <div style="text-align: center;">
-        <input id="button" type="button" value="submit">
+        <input id="button" type="button" value="提交">
       </div>
       <div style="width: 100%;height: 100px;"></div>
     </form>
     <script>
       console.info(window.location.href)
-      $("#signname").blur(function(){
+      $("#signname").blur(function () {
         var myDate = new Date();
-        var year = myDate.getFullYear();       
-        var month = myDate.getMonth() + 1; 
-        var day = myDate.getDate(); 
-        var currentTime=year+"-"+month+"-"+day
-        $("input[id=signdate]").attr("value",currentTime);
+        var year = myDate.getFullYear();
+        var month = myDate.getMonth() + 1;
+        var day = myDate.getDate();
+        var currentTime = year + "-" + month + "-" + day
+        $("input[id=signdate]").attr("value", currentTime);
       })
       $("#button").click(function () {
         userData = {};
         userData.signname = $("#signname").val()
         userData.signdate = $("#signdate").val()
-        userData.htmlpage=$("html").html();
-        $.post("/users",  userData, function (data) {
-          if(data=="success"){
-            window.location.href="<%=locals.url%>/userdata"
+        userData.htmlpage = $("html").html();
+        $.post("/users", userData, function (data) {
+          if (data == "success") {
+            window.location.href = "<%=locals.url%>/userdata"
           }
         })
-        
+
       })
     </script>
 </body>
