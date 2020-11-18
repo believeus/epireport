@@ -264,7 +264,7 @@
 
         #probability-of-epiLivercancer input {
             height: 2.5rem;
-            width: 10%;
+            width: 15%;
             background: #DFF1FB;
             border: none
         }
@@ -283,7 +283,7 @@
 
         #cancer input {
             height: 2.5rem;
-            width: 10%;
+            width: 15%;
             background: #DFF1FB;
             border: none
         }
@@ -1345,8 +1345,7 @@
             </div>
 
             <div style="width: 100%;height: 2rem;overflow: hidden;"></div>
-            <div id="youresult">你的结果/Your Result Parameters:<span style="color: green;">下方绿色箭头所示/see the green arrow
-                    below</span></div>
+            <div id="youresult">你的结果/Your Result Parameters:<span style="color: green;font-size: 0.8rem;">下方绿色箭头所示</span></div>
             <div class="result-block"></div>
             <div style="width: 100%;height: 2rem;margin: 0 auto"></div>
             <div id="rating-container">
@@ -1388,13 +1387,13 @@
                     <div id="rating-percent">
                         <div id="rating-percent-container">
                             <div class="rating-percent-sub-title">概率/Probability:</div>
-                            <div class="rating-percent-sub">0%</div>
-                            <div class="rating-percent-sub">30%</div>
-                            <div class="rating-percent-sub">70%</div>
-                            <div class="rating-percent-sub">75%</div>
-                            <div class="rating-percent-sub">89%</div>
-                            <div class="rating-percent-sub">91%</div>
-                            <div class="rating-percent-sub">97%</div>
+                            <div class="rating-percent-sub">-0.83-0</div>
+                            <div class="rating-percent-sub">0-0.17</div>
+                            <div class="rating-percent-sub">0.17-0.34</div>
+                            <div class="rating-percent-sub">0.34-0.51</div>
+                            <div class="rating-percent-sub">0.51-0.68</div>
+                            <div class="rating-percent-sub">0.68-0.85</div>
+                            <div class="rating-percent-sub">0.85-1</div>
                         </div>
                     </div>
                     <div id="rating-colorfulbar">
@@ -1463,7 +1462,7 @@
                     M分数阈值越低，检测到的癌症就越多，但我们也会得到更多的假阳性，因此灵敏度提高了，但特异性降低了。
                     <div style="width: 100%;height:0.5rem;overflow: hidden;"></div>
                     <span
-                        style="color: red;">建议</span>-我们建议，如果您的M评分高于4，且概率高于0.7/70%，请就是否应进行其他类型的检查向医生咨询。您可能还考虑重复Epiliver测试。以下页面包含有关测试的其他基本信息。
+                        style="color: red;">建议</span>-我们建议，如果您的M评分高于4，且概率高于0.7/70%，请考虑是否应进行其他类型的检查或向医生咨询。您也可以选择进行重复Epiliver测试。以下页面包含有关测试的其他基本信息。
                 </div>
             </div>
             <div id="page2-block"></div>
@@ -2060,31 +2059,25 @@
             console.log("shurudeshi" + dnarate)
             if (dnarate < 0) {
                 $("#rate0").css("visibility", "visible")
-                $("input[name=livercancerrate]").attr("value", "0%")
                 $("#rate1,#rate2,#rate3,#rate4,#rate5,#rate6").css("visibility", "hidden")
             } else if (dnarate == 0) {
                 $("#rate1").css("visibility", "visible")
-                $("input[name=livercancerrate]").attr("value", "1%-30%")
                 $("#rate0,#rate2,#rate3,#rate4,#rate5,#rate6").css("visibility", "hidden")
             } else if (dnarate == 1) {
                 $("#rate2").css("visibility", "visible")
-                $("input[name=livercancerrate]").attr("value", "30%-70%")
                 $("#rate0,#rate1,#rate3,#rate4,#rate5,#rate6").css("visibility", "hidden")
             } else if (dnarate == 2) {
                 $("#rate3").css("visibility", "visible")
-                $("input[name=livercancerrate]").attr("value", "70%-75%")
                 $("#rate0,#rate1,#rate2,#rate4,#rate5,#rate6").css("visibility", "hidden")
             } else if (dnarate == 3) {
                 $("#rate4").css("visibility", "visible")
-                $("input[name=livercancerrate]").attr("value", "76%-89%")
                 $("#rate0,#rate1,#rate2,#rate3,#rate5,#rate6").css("visibility", "hidden")
             } else if (dnarate == 4) {
                 $("#rate5").css("visibility", "visible")
-                $("input[name=livercancerrate]").attr("value", "90%-91%")
                 $("#rate0,#rate1,#rate2,#rate3,#rate4,#rate6").css("visibility", "hidden")
             } else if (dnarate >= 5) {
                 $("#rate6").css("visibility", "visible")
-                $("input[name=livercancerrate]").attr("value", "92%-97%")
+                // $("input[name=livercancerrate]").attr("value", "92%-97%")
                 $("#rate0,#rate1,#rate2,#rate3,#rate4,#rate5").css("visibility", "hidden")
             }
         })
