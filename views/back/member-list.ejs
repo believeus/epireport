@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -8,21 +8,52 @@
 	<meta name="viewport"
 		content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
-	<!--[if lt IE 9]>
+	<!-- [if lt IE 9]>
 <script type="text/javascript" src="lib/html5shiv.js"></script>
-<![endif]-->
+<![endif] -->
 	<link rel="stylesheet" type="text/css" href="../../public/h-ui/css/H-ui.min.css" />
 	<link rel="stylesheet" type="text/css" href="../../public/h-ui.admin/css/H-ui.admin.css" />
 	<link rel="stylesheet" type="text/css" href="../../public/js/1.0.8/iconfont.css" />
 	<link rel="stylesheet" type="text/css" href="../../public/h-ui.admin/skin/default/skin.css" id="skin" />
 	<link rel="stylesheet" type="text/css" href="../../public/h-ui.admin/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="../../public/css/hsycmsAlert.css" />
-	<!--[if IE 6]>
-<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
-<script>DD_belatedPNG.fix('*');</script>
-<![endif]-->
+	<link rel="stylesheet" href="../../public/css/jquery.pagination.css" />
+
 	<title>epiLiver Users</title>
 </head>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		font-family: "微软雅黑";
+		background: #eee;
+	}
+
+
+
+	.box {
+		width: 800px;
+		margin: 50px auto 0;
+		height: 34px;
+	}
+
+	.page {
+		width: 600px;
+	}
+
+	.info {
+		width: 200px;
+		height: 34px;
+		line-height: 34px;
+	}
+
+	.fl {
+		float: left;
+	}
+</style>
 
 <body>
 	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> Home <span class="c-gray en">&gt;</span> epiLiver Users
@@ -46,87 +77,93 @@
 					class="btn btn-primary radius">
 					<i class="Hui-iconfont">&#xe600;</i> 添加用户
 				</a>
-			</span>
-			<span class="r">共有数据：<strong>88</strong> 条</span> </div> -->
-		<div class="mt-20">
-			<table class="table table-border table-bordered table-hover table-bg table-sort">
-				<thead>
-					<tr class="text-c">
-						<th width="25"><input type="checkbox" name="" value=""></th>
-						<th width="30">ID</th>
-						<th width="60">User Name</th>
-						<th width="90">Sample Type</th>
-						<th width="80">Sample NO.</th>
-						<th width="100">User Form</th>
-						<th width="100">Report Parameters Setting</th>
-						<th width="100">Operation</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% data.forEach(function(item,index){%>
-					<tr class="text-c">
+			</span> -->
+		<span class="r">共有数据：<strong><%=count%> </strong> 条</span> </div>
+	<div class="mt-20">
+		<table class="table table-border table-bordered table-hover table-bg table-sort">
+			<thead>
+				<tr class="text-c">
+					<th width="25"><input type="checkbox" name="" value=""></th>
+					<th width="20">ID</th>
+					<th width="60">User Name</th>
+					<th width="80">Sample Type</th>
+					<th width="60">Sample NO.</th>
+					<th width="80">User Form</th>
+					<th width="110">Report Parameters Setting</th>
+					<th width="100">Operation</th>
+				</tr>
+			</thead>
+			<tbody id="tbody">
+				<% data.forEach(function(item,index){%>
+				<tr class="text-c">
 
-						<td><input type="checkbox" value="<%=item._id%>" name=""></td>
-						<td><%=index+1%></td>
-						<td><%=item.username%></td>
-						<td><select id="sample_type">
-								<option value="Plasma">Plasma</option>
-								<option value="Saliva">Saliva</option>
-							</select>
-						</td>
-						<!-- <td><u style="cursor:pointer" class="text-primary"
-								onclick="member_show('<%=item.username %>','/admin/member-show','<%=item.sampleid %>','<%=item.sampleid %>','<%=item.sampleid %>')"><%=item.sampleid %>
-							</u>
-						</td> -->
-						<td>
-							<input type="text"  value="<%=item.sampleid %>">
-							<input type="hidden" name="sampleid" value="<%=item._id%>">
-						</td>
-						<td>
-							<a id="detail" style="text-decoration:underline"
-								onClick="article_edit('Detail information','/admin/detail?id=<%=item.id%>','10002')"
-								title="Detail">Detail</a>
-						</td>
-						<td>
-							<a id="report_parameter" style="text-decoration:underline"
-								onClick="article_edit('Report Parameter','/admin/report?id=<%=item.id%>','10002')"
-								title="Report Parameter">Report Parameter</a>
-						</td>
-						<td>
-							<button id="delete" type="button" onclick="confirm(this)" style="background:#14bf24;">Delete</button>
-						</td>
-					</tr>
-					<% }) 
+					<td><input type="checkbox" value="<%=item._id%>" name=""></td>
+					<td><%=index+1%></td>
+					<td><%=item.username%></td>
+					<td><select id="sample_type">
+							<option value="Plasma">Plasma</option>
+							<option value="Saliva">Saliva</option>
+						</select>
+					</td>
+					<td>
+						<input type="text" value="<%=item.sampleid %>">
+						<input type="hidden" name="sampleid" value="<%=item._id%>">
+					</td>
+					<td>
+						<a id="detail" style="text-decoration:underline"
+							onClick="article_edit('Detail information','/admin/detail?id=<%=item.id%>','10002')"
+							title="Detail">Detail</a>
+					</td>
+					<td>
+						<a id="report_parameter" style="text-decoration:underline"
+							onClick="article_edit('Report Parameter','/admin/report?id=<%=item.id%>','10002')"
+							title="Report Parameter">Report Parameter</a>
+					</td>
+					<td>
+						<button id="delete" type="button" onclick="confirm(this)">Delete</button>
+					</td>
+				</tr>
+				<% }) 
 					%>
-				</tbody>
-			</table>
-		</div>
-		<!--普通弹窗-->
-		<div class="hsycms-model-mask" id="mask-alert"></div>
-		<div class="hsycms-model hsycms-model-alert" id="alert">
-			<div class="hscysm-model-title">Notification</div>
-			<div class="hsycms-model-text">You have add: </div>
-			<div class="hsycms-model-btn">
-				<button type="button ok">OK</button>
-			</div>
-		</div>
+			</tbody>
+		</table>
 
-		<!--询问弹窗-->
-		<div class="hsycms-model-mask" id="mask-confirm"></div>
-		<div class="hsycms-model hsycms-model-confirm" id="confirm">
-			<div class="hscysm-model-title">Notification</div>
-			<div class="hsycms-model-text">Are you sure you want to delete？</div>
-			<div class="hsycms-model-btn">
-				<button type="button" class="cancel">Cancel</button>
-				<button type="button" class="ok">OK</button>
-			</div>
+
+	</div>
+
+	<div class="box">
+		<div id="pagination3" class="page fl"></div>
+		<div class="info fl">
+			<p>当前页数：<span id="current3">1</span></p>
 		</div>
+	</div>
+	<!--普通弹窗-->
+	<div class="hsycms-model-mask" id="mask-alert"></div>
+	<div class="hsycms-model hsycms-model-alert" id="alert">
+		<div class="hscysm-model-title">Notification</div>
+		<div class="hsycms-model-text">You have add: </div>
+		<div class="hsycms-model-btn">
+			<button type="button ok">OK</button>
+		</div>
+	</div>
+
+	<!--询问弹窗-->
+	<div class="hsycms-model-mask" id="mask-confirm"></div>
+	<div class="hsycms-model hsycms-model-confirm" id="confirm">
+		<div class="hscysm-model-title">Notification</div>
+		<div class="hsycms-model-text">Are you sure you want to delete？</div>
+		<div class="hsycms-model-btn">
+			<button type="button" class="cancel">Cancel</button>
+			<button type="button" class="ok">OK</button>
+		</div>
+	</div>
 	</div>
 	<!--_footer 作为公共模版分离出去-->
 	<script type="text/javascript" src="../../public/js/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../../public/js/2.4/layer.js"></script>
 	<script type="text/javascript" src="../../public/h-ui/js/H-ui.min.js"></script>
 	<script type="text/javascript" src="../../public/h-ui.admin/js/H-ui.admin.js"></script>
+	<script src="../../public/js/jquery.pagination.min.js"></script>
 	<!--/_footer 作为公共模版分离出去-->
 
 	<!--请在下方写此页面业务相关的脚本-->
@@ -135,8 +172,69 @@
 	<script type="text/javascript" src="../../public/js/laypage/1.2/laypage.js"></script>
 	<script type="text/javascript" src="../../public/js/hsycmsAlert.js"></script>
 	<script type="text/javascript">
+		// $.post("admin/getTotalPage",functon(totalsize){
+
+		// })
+		$(function () {
+			$("#pagination3").pagination({
+				currentPage: 1,// 当前页数
+				totalPage:Math.ceil(parseFloat('<%=count/50%>')),// 总页数
+				isShow: true,// 是否显示首尾页
+				count: '<%=count%>',// 显示个数
+				homePageText: "首页",// 首页文本
+				endPageText: "尾页",// 尾页文本
+				prevPageText: "上一页",// 上一页文本
+				nextPageText: "下一页",// 下一页文本
+				callback: function (current) {
+					$("#current3").text(current)
+					var vdata = {}
+					vdata.current = current
+					// 数据库返回json数组 然后拼接成HTML 替换上面的html
+					$.post("/admin/pagenation", vdata, function (data) {
+						let jsondata = data
+						let html = []
+						html.push('<tbody id="tbody">')
+						for (let i = 0; i < jsondata.length; i++) {
+							html.push('<tr class="text-c">')
+							html.push('<td><input type="checkbox" value=' + jsondata[i]._id + ' name=""></td>')
+							html.push('<td>' + parseInt(50*parseInt(current-1)+i) + '</td>')
+							html.push('<td>' + jsondata[i].username + '</td>')
+							html.push('<td><select id="sample_type">')
+							html.push('<option value="Plasma">Plasma</option>')
+							html.push('<option value="Saliva">Saliva</option> ')
+							html.push('</select>')
+							html.push('</td>')
+							html.push('<td>')
+							html.push('<input type="text" value=' + jsondata[i].sampleid + '>')
+							html.push('<input type="hidden" name="sampleid" value=' + jsondata[i]._id + '>')
+							html.push('</td>')
+							html.push('<td>')
+							html.push('<a name="detail" style="text-decoration:underline"  url="/admin/detail?id='+jsondata[i]._id +'"   title="Detail">Detail</a>')
+							html.push('</td>')
+							html.push('<td>')
+							html.push('<a name="report_parameter" style="text-decoration:underline" url="/admin/report?id='+jsondata[i]._id+'" title="Report Parameter">Report Parameter</a>')
+							html.push('</td>')
+							html.push('<td>')
+							html.push('<button id="delete" type="button" onclick="confirm(this)">Delete</button>')
+							html.push('</td>')
+							html.push('</tr>')
+						}
+						html.push('</tbody>')
+						$("#tbody").replaceWith(html.join(""))
+
+					})
+				}
+			})
+		})
 
 		$(function () {
+			$("body").on("click","a[name=detail]",function(){
+				article_edit("Detail information",$(this).attr("url"),"10002")
+			})
+			$("body").on("click","a[name=report_parameter]",function(){
+				console.log()
+				article_edit("Report Parameter",$(this).attr("url"),"10002")
+			})
 			$("input[name=sampleid]").blur(function () {
 				if ($('input[name=sampleid]').val() != "") {//jquery方法和js方法不同，获取不到值当做空字符串而不是undefined
 					var vdata = {}
@@ -150,7 +248,7 @@
 						}
 					})
 				} else {
-					hsycms.alert("alert", vdata.sampleid+"已保存", function () {
+					hsycms.alert("alert", vdata.sampleid + "已保存", function () {
 						hsycms.close('alert');
 
 					})
@@ -165,10 +263,10 @@
 					hsycms.success('success', '点击了确定');
 					var vdata = {}
 					//获取该条数据的数据库id
-					vdata.id =$(obj).parent().parent().find("input[name=sampleid]").val()
+					vdata.id = $(obj).parent().parent().find("input[name=sampleid]").val()
 					$.post("/admin/delete", vdata, function (data) {
-						if(data=="success"){
-						location.replace(location.href)
+						if (data == "success") {
+							location.replace(location.href)
 						}
 					})
 				},
@@ -188,13 +286,13 @@
 		}
 
 		//显示loading
-		function loading() {
-			hsycms.loading('loading', '正在加载');
-			//2秒后隐藏
-			setTimeout(res => {
-				hsycms.hideLoading('loading');
-			}, 2000)
-		}
+		// function loading() {
+		// 	hsycms.loading('loading', '正在加载');
+		// 	//2秒后隐藏
+		// 	setTimeout(res => {
+		// 		hsycms.hideLoading('loading');
+		// 	}, 2000)
+		// }
 
 		// $('.table-sort').dataTable({
 		// 	"aaSorting": [[1, "desc"]],//默认第几个排序

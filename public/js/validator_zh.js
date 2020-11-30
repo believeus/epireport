@@ -35,7 +35,8 @@ $().ready(function () {
                 required: true,
                 minlength: 10,
             },
-            identify: {              
+            identify: {        
+                required: true,
                 isIdCardNo: true
             },
             tel: {
@@ -93,7 +94,7 @@ $().ready(function () {
                 $.post("/saveform", finalHtml, function (data) {
                     if (data == "success") {
                         alert("您的信息已保存成功")
-                        window.location.href = "http://192.168.0.111:3000/reserveLiver_success"
+                        window.location.href = "http://192.168.0.103:3000/reserveLiver_success"
                     } else {
                         alert("出错")
                     }

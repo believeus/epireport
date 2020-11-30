@@ -12,9 +12,6 @@ var wkhtmltopdf = require('wkhtmltopdf');
 var url = 'mongodb://localhost:27017/dbtest';
 var session = require('express-session');
 var http = require('http');
-// var mpdf = require('markdown-pdf'); 
-
-// const { id } = require('pdfkit/js/reference');
 var exec = require('child_process').exec;
 // 创建app应用对象
 const sha1 = require("sha1");
@@ -29,18 +26,18 @@ app.use(session({
 
 }))
 const wechat = require('./modules/wechat/wechat');
+const { count } = require('console');
 // console.info("app.js:"+global.openid)
 //设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');  //设置渲染引擎
-app.set('host', "http://192.168.0.113:3000")
+app.set('host', "http://192.168.0.103:3000")
 app.use("/public", express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 //设置全局的变量url供模板ejs引用
 //app.locals会在整个生命周期中起作用；而res.locals只会有当前请求中起作用
-app.locals["url"] = "http://192.168.0.113:3000"
+app.locals["url"] = "http://192.168.0.103:3000"
 
 //1.创建User集合规则
 let UserSchema = new mongoose.Schema({
@@ -64,25 +61,7 @@ let UserInfoSchema = new mongoose.Schema({
 })
 //2.根据规则创建集合实例UserInfo
 let UserInfo = mongoose.model('UserInfo', UserInfoSchema)
-// app.get("/admin/reportby/:identity", (req,res) => { 
-//   let identity = req.params.identity//根据样本id查询到那条记录，然后根据这个ID 查询数据返回htmlpage给浏览器显示
-//   console.info("reportby identity: "+identity)
-//   UserInfo.find({ identity: identity }, function (err, result) {
-//     if (err) throw err
-//     //如果result[0].reportPage没有值返回undefined，但result[0].reportPage有值返回已经保存的页面
-//     //!result[0].reportPage表示result[0].reportPage有值，返回数据库中的页面
-//     let html = result[0].reportPage
-//     if (html) { // true false 0 1 undefind=false 有值=true 
-//       //et dvalue = html.replace("/range1tu[0-5]{1}/g", "range1tu<%=data.dnaval%>").replace(/scroe:[0-5]{1}/,"range1tu<%=data.dnaval%>")
-//       //res.render(dvalue, { "data": result[0] })//render如何把字符串输出到页面
 
-//       res.send(result[0].reportPage)
-//       //如果没值返回页面
-//     } else {
-//       res.render('reportLiver', { "data": result[0] })
-//     }
-//   })
-// })
 
 app.get("/admin/report/", (req, res) => {
   //req.query获取的是通过链接地址传递过来的数据
@@ -95,13 +74,37 @@ app.get("/admin/report/", (req, res) => {
     if (html) { // true false 0 1 undefind=false 有值=true 
       //et dvalue = html.replace("/range1tu[0-5]{1}/g", "range1tu<%=data.dnaval%>").replace(/scroe:[0-5]{1}/,"range1tu<%=data.dnaval%>")
       //res.render(dvalue, { "data": result[0] })//render如何把字符串输出到页面
-
       res.send(result[0].reportPage)
-      //如果没值返回页面
     } else {
+      //如果没值返回页面
       res.render('reportLiver2', { "data": result[0] })
     }
   })
+})
+
+app.post("/admin/pagenation", (req, res) => {
+
+  let index = parseInt(req.body.current) - 1
+  let vdata = {}
+  UserInfo.find(vdata, function (err, result) {
+    res.send(result) //把数据传递给客户端页面
+  }).sort({ "_id": -1 }).skip(50 * index).limit(50 * index + 49)
+  // res.render('back/member-list', { "data": result[0] })
+  //let curent 
+  // x  begin  end
+  // 0  0-------49
+  // 1  50------99
+  // 2  100-----149
+  // y=ax+b
+  // begin=ax+b (x当前页，y开始的位置)
+  // 0=a0+b b=0   50=a+b a=50  y=50x
+
+  //  end=ax+b (x当前页，y结束的位置)
+  //  49=a0+b  99=1a+49 a=50 end=50c+49
+  // find(user ,50*c,50c+49)
+  // var result = UserInfo.FindAll().SetSkip(50*c).SetLimit(50*c+49).SetSortOrder(SortBy.Ascending("amount"))
+  // console.log(result)
+
 })
 app.post("/admin/buildpdf", (req, res) => {
   let id = req.body.id//根据样本id查询到那条记录，然后根据这个ID 查询数据返回htmlpage给浏览器显示
@@ -183,7 +186,6 @@ app.all("/testre", function (req, res) {
     if (err) {
       res.send('noid')
     }
-    return
     if (result[0].pdf) {
       var pdf = result[0].pdf
       console.info(result[0].pdf);
@@ -210,7 +212,7 @@ app.use(function (req, res, next) {
   var url = req.url
   var user = req.session.user  //记录登录的信息
   console.log("backend app.js:" + url)
-  if (url.split("?")[0] == "/") {
+  if (url.split("?")[0] == "/" || url.split("%")[0] == "/") {
     if (sha1Str === signature) {
       res.send(echostr) //返回微信验证字符串
       //openid
@@ -262,10 +264,13 @@ app.get("/admin/member", (req, res) => {
   //查询数据库数据
   let vdata = {}
   UserInfo.find(vdata, function (err, result) {
-    res.render('back/member-list', { "data": result }) //把数据传递给客户端页面
-  })
+    UserInfo.count().then((count) => {
+      res.render('back/member-list', { "data": result,"count": count }) //把数据传递给客户端页面
+    });
+  }).sort({ "_id": -1 }).skip(0).limit(50)
 
 })
+
 app.get("/admin/member-show", (req, res) => {
   let id = req.query.id
   //查询数据库数据
@@ -273,9 +278,10 @@ app.get("/admin/member-show", (req, res) => {
     // res.render('back/member-list', { "data": result }) //把数据传递给客户端页面
   })
 })
+
 app.post("/admin/saveReport", (req, res) => {
   //根据客户端传来的id查询并更新、插入对应数据
-  console.log("这是报告里面的id??"+req.body.id)
+  console.log("这是报告里面的id??" + req.body.id)
   UserInfo.find({ _id: req.body.id }, function (err, result) {
     if (err) throw err
     result[0].sampleid = req.body.sampleid
@@ -312,7 +318,7 @@ app.post("/admin/updateform", (req, res) => {
 
 //删除数据库一行
 app.post("/admin/delete", (req, res) => {
-  console.log(req.body.id)
+  console.log("删除的id是： " + req.body.id)
   UserInfo.deleteOne({ _id: req.body.id }, function (err, data) {
     if (err) throw err
     res.send("success")
@@ -336,7 +342,6 @@ app.get("/admin/detail", (req, res) => {
 mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, db) {
   if (err) throw err;
   console.log("Connected to Database");
-
   //开启自定义菜单
   (async () => {
     const w = new wechat();
@@ -344,7 +349,13 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, funct
     let muelu = await w.creatMenu(menu);
 
   })();
-  app.listen(3000, () => console.log('Server listening on port 3000!'))
+  app.listen(3000, () => {
+    let html = []
+    let hello=10
+    html.push('<a id="detail" style="text-decoration:underline" onclick="article_edit("Detail information","/admin/detail?id='+ hello +' ","10002")" title="Detail">Detail</a>')
+    console.info(html.join(""))
+    console.log('Server listening on port 3000!')
+  })
 
 })
 
