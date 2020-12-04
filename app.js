@@ -41,18 +41,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');  //设置渲染引擎
 app.set('host', "http://192.168.0.110:3000")
 app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use("/BQvnRcT01J.txt", express.static(path.join(__dirname, '/BQvnRcT01J.txt')));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 //设置全局的变量url供模板ejs引用
 //app.locals会在整个生命周期中起作用；而res.locals只会有当前请求中起作用
 app.locals["url"] = "http://192.168.0.110:3000"
-app.get('/BQvnRcT01J.txt', function(req, res) {
-    // const txt = fs.readFile(__dirname+"/BQvnRcT01J.txt") 
-    
-    res.send("d5f3b9a2a5c1a6236aa8b94e72690a74")
+// app.get('/BQvnRcT01J.txt', function(req, res) {   
+//     res.send("d5f3b9a2a5c1a6236aa8b94e72690a74")
   
   
- })
+//  })
 const httpsOption = {
   key : fs.readFileSync(__dirname+"/4832262_www.epireport.beijingepidial.com.key", 'utf8'),
   cert: fs.readFileSync(__dirname+"/4832262_www.epireport.beijingepidial.com.pem", 'utf8'),
