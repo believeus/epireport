@@ -28,13 +28,16 @@ app.use(session({
 
 }))
 const wechat = require('./modules/wechat/wechat');
-const { count } = require('console');
+const { count, Console } = require('console');
+const { send } = require('process');
+const { Http2ServerResponse } = require('http2');
 // console.info("app.js:"+global.openid)
 //设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');  //设置渲染引擎
 app.set('host', "http://192.168.0.112:3000")
 app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use("/BQvnRcT01J.txt", express.static(path.join(__dirname, '/BQvnRcT01J.txt')));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 //设置全局的变量url供模板ejs引用
@@ -233,7 +236,6 @@ app.all("/testre", function (req, res) {
 })
 
 
-
 //登录拦截器，必须放在静态资源声明之后、路由导航之前
 app.use(function (req, res, next) {
   const { signature, echostr, timestamp, nonce } = req.query;
@@ -255,8 +257,9 @@ app.use(function (req, res, next) {
 
   } else if (user || url.split("?")[0] == "/") {
     next()
-  }
-  else if (url == "/admin/loginview") {
+  }else if (url == "/BQvnRcT01J.txt") {
+    next()
+  }else if (url == "/admin/loginview") {
     next()
   } else if (url == "/admin/login") {
     fs.readFile(__dirname + '/account.txt', 'utf-8', function (err, data) {
