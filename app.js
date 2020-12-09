@@ -12,7 +12,9 @@ var wkhtmltopdf = require('wkhtmltopdf');
 var url = 'mongodb://localhost:27017/dbtest';
 var session = require('express-session');
 var http = require('http');
+var multiparty = require('multiparty');
 var exec = require('child_process').exec;
+const formidable = require('formidable');
 // 创建app应用对象
 const sha1 = require("sha1");
 //引入tool
@@ -31,13 +33,13 @@ const { count } = require('console');
 //设置views的目录,__dirname全局变量表示当前执行脚本所在的目录
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');  //设置渲染引擎
-app.set('host', "http://192.168.0.103:3000")
+app.set('host', "http://192.168.0.112:3000")
 app.use("/public", express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 //设置全局的变量url供模板ejs引用
 //app.locals会在整个生命周期中起作用；而res.locals只会有当前请求中起作用
-app.locals["url"] = "http://192.168.0.103:3000"
+app.locals["url"] = "http://192.168.0.112:3000"
 
 //1.创建User集合规则
 let UserSchema = new mongoose.Schema({
@@ -178,7 +180,38 @@ app.post("/saveform", function (req, res) {
   })
 
 });
+app.post("/upload", function (req, res) {
+  //创建表单解析对象formidable
+  const form = new formidable.IncomingForm();
+  //设置客户端上传文件的路径
+  form.uploadDir =__dirname+'\\public\\uploads\\'
+  console.log(form.uploadDir)
+  form.keepExtensions = true;
+  //解析客户端传递到服务端的formDate对象
+  form.parse(req, function (err, fields, files) {
+    if (err) { throw err }
+    else {
+      
+      console.log(files);
+      console.log(files.path);
+      res.send("success")
+    }
+  })
 
+});
+// app.post('/upload', (req, res, next) => {
+//   const form = new formidable.IncomingForm();
+//   form.uploadDir =__dirname+'\\public\\uploads\\'
+//   form.keepExtensions = true;
+//   form.parse(req, (err, fields, files) => {
+//     if (err) {
+//       next(err);
+//       return;
+//     }
+//     res.json({ fields, files });
+//     res.send("ok")
+//   });
+// });
 app.all("/testre", function (req, res) {
   console.info("身份证：" + req.body.identity)
   let identity = req.body.identity;
@@ -265,7 +298,8 @@ app.get("/admin/member", (req, res) => {
   let vdata = {}
   UserInfo.find(vdata, function (err, result) {
     UserInfo.count().then((count) => {
-      res.render('back/member-list', { "data": result,"count": count }) //把数据传递给客户端页面
+      res.render('back/member-list', { "data": result, "count": count }) //把数据传递给客户端页面
+      console.log(count)
     });
   }).sort({ "_id": -1 }).skip(0).limit(50)
 
@@ -351,8 +385,8 @@ mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, funct
   })();
   app.listen(3000, () => {
     let html = []
-    let hello=10
-    html.push('<a id="detail" style="text-decoration:underline" onclick="article_edit("Detail information","/admin/detail?id='+ hello +' ","10002")" title="Detail">Detail</a>')
+    let hello = 10
+    html.push('<a id="detail" style="text-decoration:underline" onclick="article_edit("Detail information","/admin/detail?id=' + hello + ' ","10002")" title="Detail">Detail</a>')
     console.info(html.join(""))
     console.log('Server listening on port 3000!')
   })
