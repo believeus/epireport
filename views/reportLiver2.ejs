@@ -1212,13 +1212,14 @@
 
         /* page14 end */
     </style>
-    <script src="<%=locals.url%>/public/js/query-3.5.1.min.js"></script>
+    <script src="<%=locals.url%>/public/js/jquery-3.5.1.min.js"></script>
     <script src="<%=locals.url%>/public/js/InputSpinner.js"></script>
     <title> HKG 肝癌报告</title>
 </head>
 
 <body>
     <div style="height: auto;width: 90%; margin: 0 auto;">
+        <div><%=locals.url%></div>
         <!-- page1 start -->
         <div id="page1">
             <div class="block"></div>
@@ -2054,7 +2055,9 @@
         <!-- page14 end -->
     </div>
     <script>
-        $("#dnarate").on("input", function () {
+        $(function(){
+           
+            $("#dnarate").on("input", function () {
             var dnarate = parseInt($('#dnarate').val())
             console.log("shurudeshi" + dnarate)
             if (dnarate < 0) {
@@ -2083,6 +2086,7 @@
         })
 
         $("input[id=submit]").click(function () {
+            alert("xxxx")
             $('input').attr('value', function () {
                 return $(this).val();
             });
@@ -2091,7 +2095,6 @@
             finalHtml.id = '<%=data.id%>'
             finalHtml.sampleid = '<%=data.sampleid%>'
             finalHtml.reportPage = "<html>" + $('html').html() + "</html>"
-            alert(finalHtml)
             $.post("/admin/saveReport", finalHtml, function (data) {
                 if (data == "success") alert("保存成功")
 
@@ -2101,10 +2104,13 @@
             var pdf = {}
             pdf.id = '<%=data.id%>'
             pdf.sampleid = '<%=data.sampleid%>'
-            $.post("/admin/buildpdf", pdf, function (data) {
+            $.post("/admin/buildliverpdf", pdf, function (data) {
                 if (data == "success") alert("pdf generated success")
             })
         })
+
+        })
+      
     </script>
 
 </body>

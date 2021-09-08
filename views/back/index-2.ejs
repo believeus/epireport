@@ -52,9 +52,9 @@
 			<ul class="cl">
 				<li>Administrator</li>
 				<li class="dropDown dropDown_hover">
-					<a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+					<a href="javascript:void(0);" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
 					<ul class="dropDown-menu menu radius box-shadow">
-						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
+						<li><a href="javascript:void(0);" onClick="myselfinfo()">个人信息</a></li>
 						<li><a href="#">切换账户</a></li>
 						<li><a href="#">退出</a></li>
 				</ul>
@@ -82,8 +82,18 @@
 			<dd>
 				<ul>
 					<!-- <li id="epiLiver_parameter"><a data-href="http://localhost:3000/admin/article" data-title="epiLiver parameters" href="javascript:void(0)">epiLiver Parameters</a></li> -->
-					<li><a data-href="<%=locals.url%>/admin/member" data-title="epiLiver Users " href="javascript:void(0)">epiLiver Users</a></li>
+					<li><a data-href="<%=locals.url%>/admin/memberLiver" data-title="epiLiver Users " href="javascript:void(0)">epiLiver Users</a></li>
 					<!-- <li><a data-href="http://localhost:3000/admin/" data-title="epiLiver Users " href="javascript:void(0)">epiLiver Users</a></li> -->
+				</ul>
+			</dd>
+		</dl>
+		<dl id="menu-article">
+			<dt><i class="Hui-iconfont">&#xe616;</i> epiAge<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dd>
+				<ul>
+					<!-- <li id="epiLiver_parameter"><a data-href="http://localhost:3000/admin/article" data-title="epiAge parameters" href="javascript:void(0)">epiAge Parameters</a></li> -->
+					<li><a data-href="<%=locals.url%>/admin/memberEpiage" data-title="epiAge Users " href="javascript:void(0)">epiAge Users</a></li>
+					<!-- <li><a data-href="http://localhost:3000/admin/" data-title="epiAge Users " href="javascript:void(0)">epiAge Users</a></li> -->
 				</ul>
 			</dd>
 		</dl>

@@ -102,12 +102,11 @@
 					<td><%=item.username%></td>
 					<td><select id="sample_type">
 							<option value="Plasma">Plasma</option>
-							<option value="Saliva">Saliva</option>
 						</select>
 					</td>
 					<td>
-						<input type="text" value="<%=item.sampleid %>">
-						<input type="hidden" name="sampleid" value="<%=item._id%>">
+						<input type="text"  name="sampleid" value="<%=item.sampleid %>">
+						<input type="hidden" name="id" value="<%=item._id%>">
 					</td>
 					<td>
 						<a id="detail" style="text-decoration:underline"
@@ -116,7 +115,7 @@
 					</td>
 					<td>
 						<a id="report_parameter" style="text-decoration:underline"
-							onClick="article_edit('Report Parameter','/admin/report?id=<%=item.id%>','10002')"
+							onClick="article_edit('Report Parameter','/admin/reportliver?id=<%=item.id%>','10002')"
 							title="Report Parameter">Report Parameter</a>
 					</td>
 					<td>
@@ -205,14 +204,14 @@
 							html.push('</select>')
 							html.push('</td>')
 							html.push('<td>')
-							html.push('<input type="text" value=' + jsondata[i].sampleid + '>')
-							html.push('<input type="hidden" name="sampleid" value=' + jsondata[i]._id + '>')
+							html.push('<input type="text" name="sampleid" value=' + jsondata[i].sampleid + '>')
+							html.push('<input type="hidden" name="id" value=' + jsondata[i]._id + '>')
 							html.push('</td>')
 							html.push('<td>')
 							html.push('<a name="detail" style="text-decoration:underline"  url="/admin/detail?id='+jsondata[i]._id +'"   title="Detail">Detail</a>')
 							html.push('</td>')
 							html.push('<td>')
-							html.push('<a name="report_parameter" style="text-decoration:underline" url="/admin/report?id='+jsondata[i]._id+'" title="Report Parameter">Report Parameter</a>')
+							html.push('<a name="report_parameter" style="text-decoration:underline" url="/admin/reportliver?id='+jsondata[i]._id+'" title="Report Parameter">Report Parameter</a>')
 							html.push('</td>')
 							html.push('<td>')
 							html.push('<button id="delete" type="button" onclick="confirm(this)">Delete</button>')
@@ -263,7 +262,8 @@
 					hsycms.success('success', '点击了确定');
 					var vdata = {}
 					//获取该条数据的数据库id
-					vdata.id = $(obj).parent().parent().find("input[name=sampleid]").val()
+					vdata.id = $(obj).parent().parent().find("input[name=id]").val()
+					console.info(vdata.id+"后台获取的数据库id")
 					$.post("/admin/delete", vdata, function (data) {
 						if (data == "success") {
 							location.replace(location.href)

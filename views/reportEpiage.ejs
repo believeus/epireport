@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <base href="<%=locals.url%>">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+    <!-- <link rel="stylesheet" media="screen and (min-width:600px) and (max-width:1920px)"
+        href="<%=locals.url%>/public/css/admin/reportpc.css" /> -->
+    <!-- <link rel="stylesheet" media="screen and (min-width:320px) and (max-width:600px)"
+        href="<%=locals.url%>/public/css/admin/reportphone.css" /> -->
+    <!-- <link rel="stylesheet" href="<%=locals.url%>/public/css/admin/reportpc.css" media="print" /> -->
+    <script src="public/js/echarts-gl.min.js"></script>
+    <script src="public/js/jquery-3.5.1.min.js"></script>
+    <script src="public/js/InputSpinner.js"></script>
+    <title>HKG生物学年龄检测报告</title>
+</head>
+<style>
+    /* @font-face {
+        font-family: 'mFontRegular';
+        src: url('/public/font/Poppins-Black.ttf');
+    } */
+
+    /* html * {
+        font-family: fantasy !important;
+    } */
+    /* body {
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    } */
+</style>
+
+<body style="margin: 0;padding: 0;">
+
+    <div id="container" style="width: 100%;height: 100%;">
+        <!--page 0 start-->
+        <div id="page0" style="width: 100%;height: 1160px;">
+            <div style="width: 100%;height: 213px;">
+                <div style="width: 70%;height: 213px;float: left;"></div>
+                <div style="width: 25%;height: 213px;border-radius: 40px; float: left;">
+                    <img src="public/img/epiage/epi-rep0.png" width="100%" height="auto" style="width: 164px;">
+                </div>
+                <div style="width: 5%;height: 213px;float: left;"></div>
+            </div>
+
+            <div style="width: 100%;height: 600px;">
+                <img src="public/img/epiage/epi-rep1.png" style="width: 100%; height: auto;" />
+            </div>
+            <div style="width: 80%;height: 300px;margin: 0 auto;">
+                <h1 style="font-family:Poppins-Black;">通过对表观遗传学的分析</h1>
+                <h1>探索您的生物学年龄</h1>
+                <h3 style="color: grey">表观遗传的改变与健康和潜在的生命周期息息相关</h3>
+                <h3 style="color: grey">近年来，对表观遗传学的研究正在迅速地展开</h3>
+                <div style="width: 100%;height: 180px;"></div>
+                <h4 style="color: grey;font-style: italic;">By HKG epiTherapeutics Ltd.</h4>
+            </div>
+        </div>
+        <!--page 0 end-->
+        <!--page 1 start-->
+        <div id="page1" style="width: 100%;height: 1260px; position: relative;border: none;">
+            <img src="public/img/epiage/epi-rep2.png" style="width: 100%; height: auto" />
+            <div style=" position: absolute;z-index:2; left:0px; top:0px;border: none;">
+                <div style="width: 100%;height: 80px;"></div>
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left; font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input name="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 100px;"></div>
+                <div style="width: 80%;height: 900px;margin: 0 auto;">
+                    <h1>您真的了解您的年龄吗？</h1>
+                    <h2>生物学年龄检测</h2>
+                    <p style="color: grey;">EpiAge的检测技术是属于表观遗传学范畴的，通过研究DNA甲基化，即决定生物年龄的重要表
+                        观遗传修饰，来鉴定每个人的生物年龄。</p>
+                    <p style="color: grey;">DNA甲基化程度已被科学认定为是与衰老相关的指标，且是最可靠的指标之一。HKG在这一
+                        “新时代”科学领域中已然走在了最前沿。</p>
+                    <p style="color: grey;">经过大量的实验以及广泛的数据挖掘，我们的团队发现通过检测唾液，可以找寻到DNA甲基化
+                        标记，从而进行可靠的生物学年龄预测。</p>
+                    <div style="width: 100%;height: 60px;"></div>
+                    <h1 style="text-align: center; color: #54d191;">
+                        您的生物学年龄（以年为单位）
+                    </h1>
+                    <div style="width: 100%;height: 60px;"></div>
+                    <div style="width: 100%;height: 150px;">
+                        <div
+                            style="width: 60%;margin: 0 auto; height: 160px;line-height: 160px; align-self: center;border-radius: 30px;font-size: 60px;font-weight: bold; color: #54d191;text-align: center;background-color: white;">
+                            <%=data.epiage%>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 20px;"></div>
+                    <div style="text-align: center;font-size: 12px;color: grey;"> *请注意，您的生物学年龄可能会增减+/- 2.8年。</div>
+
+                    <div style="width: 100%;height: 300px;"></div>
+                    <div style="width: 100%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;">
+                        探索您的生物学年龄&nbsp; 01</div>
+                </div>
+
+            </div>
+        </div>
+        <!--page 1 end-->
+        <!--page 2 start-->
+        <div id="page2" style="width: 100%; position: relative;height: 1260px;">
+            <img src="public/img/epiage/epi-rep3.png" style="width: 100%; height: auto;" />
+            <div style="width: 100%;height:auto; position: absolute;z-index:2; left:0px; top:0px">
+                <div style="width: 100%;height: 20px;"></div>
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left;font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input name="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 150px;"></div>
+                <div style="width: 80%;height: 50px;margin: 0 auto;">
+                    <h1>如何看懂这张图？</h1>
+                </div>
+            </div>
+
+            <div style="width: 100%;height: 50px;"></div>
+            <div id="main"
+                style="width:800px;height:500px;position: relative;margin: 0 auto;page-break-inside: avoid;page-break-before:always;">
+                
+            </div>
+            <div style="width: 85%;height: 400px;margin: 0 auto;">
+
+
+                <h2>我们评定您的日历年龄为<span id="expectedChro" style="color:blue;font-size: 33px;"><%=expectedChro%></span> 岁</h2>
+                <!-- <script>
+                    let epiage='<%=data.epiage%>';
+                    $("#expectedChro").html(Math.abs((parseFloat(epiage - 8.9657))).toFixed(2))
+                    
+                </script> -->
+                <h4 style="color: grey;">将该结果通过数学拟合与数据库进行比较</h4>
+                <hr>
+                </hr>
+                <p>图表显示了您与参照组别的相关性。</p>
+                <p>由于我们不会在测试前向您询问您的日历年龄，因此我们使用算法模型来估算您的
+                    日历年龄。</p>
+                <div style="width: 100%;height: 100px;"></div>
+                <div style="width: 100%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;">
+                    探索您的生物学年龄&nbsp; 02</div>
+            </div>
+        </div>
+        <!--page 2 end-->
+        <!-- page 3 start -->
+        <div id="page3" style="width: 100%; position: relative;height: 1260px;">
+            <img src="public/img/epiage/epi-rep4.png" style="width: 100%; height: auto;" />
+            <div style="width: 100%;height:500px; position: absolute;z-index:2; left:0px; top:0px">
+                <div style="width: 100%;height: 50px;"></div>
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left;font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input name="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 150px;"></div>
+                <div style="width: 80%;height: 50px;margin: 0 auto;">
+                    <h1>您的检测结果</h1>
+                </div>
+            </div>
+            <div style="width: 85%;height: 600px;margin: 0 auto;background-color:  #f7f7f7;;border-radius: 15px;">
+                <div style="width: 100%;height: 50px;"></div>
+                <div style="width:90%;height:500px;margin: 0 auto;">
+                    <div style="width: 100%;height: 100px;">
+                        <div style="width: 15%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep5.png"
+                                style="width: 69%;height: auto;">
+                        </div>
+                        <div style="width: 80%;height: 100px;float: left;">
+                            <h3 id="expectedChro1">如果您的实际年龄小于<%=expectedChro%>岁</h3>
+                            <!-- <script>
+                                let epiage='<%=data.epiage%>';
+                                $("#expectedChro1").html("如果您的实际年龄小于"+Math.abs((parseFloat(epiage - 8.9657))).toFixed(2)+"岁")
+                            </script> -->
+                            <p><span style="color: #74dbce;font-weight: bold;"> 恭喜您！</span> 请继续保持健康的生活方式，定期运动，均衡饮食，适当舒压。
+                            </p>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 130px;">
+                        <div style="width: 15%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep6.png"
+                                style="width: 69%;height: auto;">
+                        </div>
+                        <div style="width: 80%;height: 100px;float: left;">
+                            <h3>如果您的日历年龄大于<%=expectedChro%>岁，但小于<%=expectedChro+6%>岁，</h3>
+                            <p>您的衰老程度总体来说是<span style="color: blue;font-weight: bold;">正常</span>范围之内。 我们建议您采取健康的生活方式，由于
+                                您的生物年龄会因环境的变化而发生改变，我们建议您通过EpiAge检测跟进您
+                                的健康状况。</p>
+                        </div>
+                    </div>
+                    <div style="width: 100%;height: 130px;">
+                        <div style="width: 15%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep7.png"
+                                style="width: 69%;height: auto;">
+                        </div>
+                        <div style="width: 80%;height: 100px;float: left;">
+                            <h3>如果您的日历年龄大于<%=expectedChro+6%>岁，</h3>
+                            <p>这将是一个<span style="color: #ff6161;font-weight: bold;">“危险信号”</span>
+                                了，意味着您应该考虑寻求适当的健康管理或生活方式
+                                干预。 建议您可以咨询医生进行检查。</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <p>但是需要说明的是，与传统遗传学不同，表观遗传修饰是可以通过饮食干预和生活方式改
+                        变来逆转的 。大多数国家医学协会建议：改变生活方式是逆转衰老进程的一个起点。</p>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 90%;height: 40px;">
+                <div style="width: 50%;height: 40px;text-align: start;font-size: 12px;color: grey;float: left;">1
+                    Fitzgerald KN, et
+                    al. Potential reversal of epigenetic age using a diet and lifestyle
+                    intervention: a pilot randomized clinical trial. Aging (Albany NY). （2021）</div>
+                <div style="width: 50%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;float: left;">
+                    探索您的生物学年龄&nbsp; 03</div>
+            </div>
+        </div>
+
+        <!-- page 3 end -->
+        <!-- page 4 start -->
+        <div id="page4" style="width: 100%; position: relative;height: 1260px;">
+            <img src="public/img/epiage/epi-rep4.png" style="width: 100%; height: auto;" />
+            <div style="width: 100%;height:600px; position: absolute;z-index:2; left:0px; top:0px">
+                <div style="width: 100%;height: 50px;"></div>
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left;font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input vname="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 100px;"></div>
+                <div style="width: 80%;height: 50px;margin: 0 auto;">
+                    <h1>我们如何实现精准检测</h1>
+                    <div style="width: 100%;height: 80px;"></div>
+                    <h2>您的结果准确性：<span style="font-size: 80px;font-weight: bold;color:#54d191;">98.9%</span></h2>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 85%;height: 200px;margin: 0 auto;background-color:#f7f7f7;border-radius: 15px;">
+                <div style="width:90%;height:200px;margin: 0 auto; ">
+                    <div style="width: 100%;height: 200px;">
+                        <div style="width: 100%;height: 50px;"></div>
+                        <div style="width: 80%;height: 100px;float: left;">
+                            <p style="color: #655857;">EpiAge检测的一项特殊功能是使用Triple Independent
+                                Targeted Amplification and Sequencing Method（三重
+                                独立靶向扩增和测序法）。 为了确保检测的超高准确性，我
+                                们对您的唾液样本进行了三个独立的测试。 各个测试结果
+                                彼此之间越接近，则测试技术的精度就越接近100％。</p>
+                        </div>
+                        <div style="width: 12%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep8.png"
+                                style="width: 133px;height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 85%;height: 300px;margin: 0 auto;background-color:#f7f7f7;border-radius: 15px;">
+                <div style="width:90%;height:300px;margin: 0 auto; ">
+                    <div style="width: 100%;height: 300px;">
+                        <div style="width: 100%;height: 30px;"></div>
+                        <h3>我们的技术：</h3>
+                        <div style="width: 80%;height: 200px;float: left;">
+                            <ul>
+                                <li>分析DNA中的DNA数目的13个与年龄相关的特定CpG岛，
+                                    以减少错误并提高检测的准确性。</li>
+                                <p></p>
+                                <li>使用次测序可增加研究的CG数量，提高测定的稳定性并
+                                    降低成本。</li>
+                                <p></p>
+                                <li>在检测中，我们分析的细胞数是平均的。</li>
+                            </ul>
+                        </div>
+                        <div style="width: 12%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep9.png"
+                                style="width: 133px;height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 90%;height: 40px;">
+                <div style="width: 100%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;float: left;">
+                    探索您的生物学年龄&nbsp; 04</div>
+            </div>
+        </div>
+        <!-- page 4 end -->
+        <!-- page 5 start -->
+        <div id="page5" style="width: 100%; position: relative;height: 1260px;">
+            <img src="public/img/epiage/epi-rep4.png" style="width: 100%; height: auto;" />
+            <div style="width: 100%;height:400px; position: absolute;z-index:2; left:0px; top:0px">
+                <div style="width: 100%;height: 50px;"></div>
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left;font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input name="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 150px;"></div>
+                <div style="width: 80%;height: 50px;margin: 0 auto;">
+                    <h1>检测所运用的算法模型</h1>
+                    <div style="width: 100%;height: 80px;"></div>
+                </div>
+            </div>
+            <div style="width: 85%;height: 450px;margin: 0 auto;border-radius: 15px;">
+                <img src="/public/img/epiage/epi-rep17.jpg" style="width: 100%;height: 450px;" />
+            </div>
+            <div style="width: 85%;height: 300px;margin: 0 auto;top: -20px;">
+                <div style="width: 30%;height: 300px;float: left;"></div>
+                <div style="width: 70%;height: 300px;float: left;">
+                    <div style="width: 100%;height: 30px;"></div>
+                    <h3>模型背后的科学原理:</h3>
+                    <div style="width: 80%;height: 200px;float: left;">
+                        <p>如第2页所示，该图表建议您将您的年龄与普通人口的年龄进行比较。</p>
+                        <p>该模型显示了EpiAge的结果与日历年龄之间的线性相关性，因此
+                            我们能够预测您的日历年龄而无需事先询问。</p>
+                        <p>该算法模型是使用独立测试和公共数据库中的相关数据进行开发和
+                            优化的。</p>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 90%;height: 40px;">
+                <div style="width: 100%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;float: left;">
+                    探索您的生物学年龄&nbsp; 05</div>
+            </div>
+        </div>
+        <!-- page 5 end -->
+        <!-- page 6 start -->
+        <div id="page6" style="width: 100%; position: relative;height: 1360px;">
+            <img src="public/img/epiage/epi-rep4.png" style="width: 100%; height: auto;" />
+            <div style="width: 100%;height:600px; position: absolute;z-index:2; left:0px; top:0px">
+                <div style="width: 100%;height: 50px;"></div>
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left;font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input name="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 100px;"></div>
+                <div style="width: 80%;height: 50px;margin: 0 auto;">
+                    <h1>开启您的逆龄之旅</h1>
+                    <div style="width: 100%;height: 80px;"></div>
+                    <p>正如该报告所提到的，大量研究表明，想要调慢表观遗传时钟是可行的。科学研究仍在探索环境因
+                        素是如何对个人的生物学年龄产生影响。</p>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 85%;height: 200px;margin: 0 auto;background-color:#f7f7f7;border-radius: 15px;">
+                <div style="width:90%;height:200px;margin: 0 auto; ">
+                    <div style="width: 100%;height: 200px;">
+                        <div style="width: 100%;height: 50px;"></div>
+                        <div style="width: 80%;height: 100px;float: left;">
+                            <p style="color: #655857;">初步研究表明，饮食变化可能导致某些人的表观遗传时钟
+                                减速。全国医学协会已经建议通过改变生活方式，包括运
+                                动和饮食习惯，来改变衰老进程。</p>
+                            <p>但是我们仍然需要更多数据来证实这一改变，并且每个人
+                                的干预方案都应该是个性化的。</p>
+                        </div>
+                        <div style="width: 12%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep10.png"
+                                style="width: 133px;height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 85%;height: 200px;margin: 0 auto;background-color:#f7f7f7;border-radius: 15px;">
+                <div style="width:90%;height:200px;margin: 0 auto; ">
+                    <div style="width: 100%;height: 200px;">
+                        <div style="width: 100%;height: 30px;"></div>
+                        <div style="width: 20%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep11.png"
+                                style="width: 133px;height: auto;">
+                        </div>
+                        <div style="width: 80%;height: 150px;float: left;">
+                            <div style="width: 100%;height: 20px;"></div>
+                            <p>通过对大量人口生活方式差异的分析，我们可以确定生活
+                                方式、习惯对于表观遗传时钟是有影响的。</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 100%;height: 150px;"></div>
+            <div style="width: 90%;height: 40px;">
+                <div
+                    style="width: 50%;height: 40px; text-align: start;font-size: 14px;color: grey;; font-weight: 700;float: left;float: left;">
+                    1 Sae-Lee C, et al. Dietary Intervention Modifies DNA Methylation Age
+                    Assessed by the Epigenetic Clock. Mol Nutr Food Res. (2018）</div>
+                <div style="width: 50%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;float: left;">
+                    探索您的生物学年龄&nbsp; 06</div>
+            </div>
+        </div>
+        <!-- page 6 end -->
+        <!-- page 7 start -->
+        <div id="page7" style="width: 100%; position: relative;height: 1300px;">
+            <img src="public/img/epiage/epi-rep4.png" style="width: 100%; height: auto;" />
+            <div style="width: 100%;height:600px; position: absolute;z-index:2; left:0px; top:0px">
+                <div style="width: 100%;height: 50px;"></div>
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left;font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input name="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 100px;"></div>
+                <div style="width: 80%;height: 50px;margin: 0 auto;">
+                    <h1>下载EpiAge App</h1>
+                    <h1>一键触达更健康的生活方式</h1>
+                    <p>现在您可以登录EpiAge App，上传您的检测结果，
+                        即可评估您当前的生活方式是否可取。</p>
+                </div>
+            </div>
+            <div style="width: 85%;height: 150px;margin: 0 auto;background-color:#f7f7f7;border-radius: 15px;">
+                <div style="width:90%;height:150px;margin: 0 auto; ">
+                    <div style="width: 100%;height: 150px;">
+                        <div style="width: 60%;height: 100px;float: left;">
+                            <div style="width: 100%;height: 50px;"></div>
+                            <p style="color: #655857;">您还会获得美国国家医学协会推荐的生活习惯和
+                                权 威 健 康 管 理 方 式，指 导 您 科 学 补 充 营 养，例 如
+                                SAMe，维生素A，D和C。</p>
+                        </div>
+                        <div style="width: 40%;height: 100px;float: left;text-align: center;">
+                            <div style="width: 100%;height: 20px;"></div>
+                            <img src="/public/img/epiage/epi-rep14.png" style="width: 187px;height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%;height: 20px;"></div>
+            <div style="width: 85%;height: 200px;margin: 0 auto;">
+                <div style="width:90%;height:200px;margin: 0 auto; ">
+                    <div style="width: 100%;height: 200px;">
+                        <div style="width: 100%;height: 30px;"></div>
+                        <div style="width: 40%;height: 100px;float: left;text-align: center;">
+                            <img src="/public/img/epiage/epi-rep12.png" style="width: 123px;height: auto;">
+                        </div>
+                        <div style="width: 60%;height: 150px;float: left;">
+                            <div style="width: 100%;height: 20px;"></div>
+                            <p>您可以定期登录App更新与自己的生活方式有关的数据。 根据我们
+                                不断优化的算法模型，积累了越多与您有关的数据，将提供更贴近
+                                您的建议以及改善途径。</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div style="width: 85%;height: 200px;margin: 0 auto;background-color:#f7f7f7;border-radius: 15px;">
+                <div style="width:90%;height:200px;margin: 0 auto; ">
+                    <div style="width: 100%;height: 200px;">
+                        <div style="width: 100%;height: 50px;"></div>
+                        <div style="width: 80%;height: 100px;float: left;">
+                            <h1>您的个人信息安全</h1>
+                            <ul>
+                                <li>我们将全程保护您的隐私，不会出现信息泄露的情况。</li>
+                                <li>您的数据将被匿名化，并将仅用于优化人工智能模型。</li>
+                            </ul>
+                        </div>
+                        <div style="width: 20%;height: 100px;float: left;"><img src="/public/img/epiage/epi-rep13.png"
+                                style="width: 134px;height: auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 90%;height: 40px;">
+                <div
+                    style="width: 50%;height: 40px; text-align: start;font-size: 14px;color: grey;font-weight: 700;float: left;float: left;">
+                    1 Sae-Lee C, et al. Dietary Intervention Modifies DNA Methylation Age
+                    Assessed by the Epigenetic Clock. Mol Nutr Food Res. (2018）</div>
+                <div style="width: 50%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;float: left;">
+                    探索您的生物学年龄&nbsp; 07</div>
+            </div>
+        </div>
+        <!-- page 7 end -->
+        <!-- page 8 start -->
+        <div id="page8" style="width: 100%; position: relative;height: 1300px;">
+            <img src="public/img/epiage/epi-rep4.png" style="width: 100%; height: auto;" />
+            <div style="width: 100%;height:600px; position: absolute;z-index:2; left:0px; top:0px">
+                <div style="width: 85%;height: 100px;margin: 0 auto;">
+                    <div
+                        style="width: 20%;height: 100px;font-size: 28px;float: left;font-weight: bold;text-align: center;line-height: 46px;">
+                        epiAge
+                        ---</div>
+                    <div style="width: 35%;height: 100px;float: left">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            姓名：<input name="username" type="text"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.username%>"></input></div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            条形码：<input type="text" name="sampleid"
+                                style="width: 70%; border: none;background-color: transparent;line-height: 50px;font-size: 18px;font-weight: 700;"
+                                value="<%=data.sampleid%>"></input></div>
+                    </div>
+                    <div style="width: 45%;height: 100px;float: left;">
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            报告日期：<input name="repDate" value="<%=data.date%>"
+                                style="width: 60%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                        <div style="width: 100%;height: 50px;line-height: 50px;font-size: 18px;font-weight: 700;">
+                            建议下次检测日期：<input name="nextTestDate"
+                                style="width: 50%; line-height: 50px;font-size: 18px; border: none;background-color: transparent;font-weight: 700;"></input>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%;height: 150px;"></div>
+                <div style="width: 50%;height: 500px;z-index: 99;float: right;">
+                    <div style="width: 100%;height: 20px;"></div>
+                    <img src="/public/img/epiage/epi-rep15.png" style="width: 100%;height: auto;">
+                </div>
+                <div style="width: 100%;height: 400px;">
+                    <div style="width: 80%;height: 400px;z-index: 9;background-color: #f7f7f7; border-radius: 30px;">
+                        <div style="width: 20%;height: 300px;float: left;"></div>
+                        <div style="width: 40%;height: 300px;float: left;">
+                            <h1>Moshe Szyf 博士</h1>
+                            <h2>HKG创始人</h2>
+                            <h3>表观遗传学新兴科技的领头人</h3>
+                            <p style="color: #655857;">EpiAge所使用的DNA甲基化技术最初是由
+                                麦吉尔大学教授Moshe Szyf博士开发的。 Szyf博士
+                                是表观遗传学领域的先驱，是该领域的首批广泛专利
+                                的发明者，以及DNA甲基化和癌症的首批专利的发明
+                                者，也是行为和精神病学表观遗传学领域的创始人。</p>
+                        </div>
+                        <div style="width: 40%;height: 300px;float: left;"></div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div style="width: 100%;height: 600px;">
+                <div style="width: 100%;height: 400px;"></div>
+                <div style="width: 60%;height: 200px;font-size: 14px;color: grey;">
+                    <p>免责声明</p>
+                    <p>-EpiAge TM测试不是诊断测试，不能用于专业医学治疗，干预或评估任何疾病或状态的风险。
+                        在对医疗保健计划进行任何更改之前，请先征询医生的建议。</p>
+                    <p>-EpiAge TM测试仅用于鉴定生物学年龄，并且是基于对唾液样本中DNA甲基化水平的分析。</p>
+                </div>
+            </div>
+            <div style="width: 100%;height: 100px;"></div>
+            <div style="width: 90%;height: 50px;">
+                <div
+                    style="width: 50%;height: 40px; text-align: start;font-size: 14px;color: grey; font-weight: 700;float: left;float: left;">
+                    1 Sae-Lee C, et al. Dietary Intervention Modifies DNA Methylation Age
+                    Assessed by the Epigenetic Clock. Mol Nutr Food Res. (2018）</div>
+                <div style="width: 50%;height: 40px; text-align: end;font-size: 14px;font-weight: 700;float: left;">
+                    探索您的生物学年龄&nbsp; 08</div>
+            </div>
+        </div>
+        <!-- page 7 end -->
+    </div>
+    <!-- footer 保存与生成pdf -->
+    <div id="page-end" style="width: 100%;height: 16rem; margin: 0 auto;overflow: hidden;">
+        <div style="text-align: center;display: block;margin: 3.125rem;">
+            <input id="submit" type="button"
+                style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
+                value="SAVE">
+        </div>
+        <div style="text-align: center;display: block;margin: 3.125rem;">
+            <input id="generate_pdf" type="button"
+                style="width: 100%;height: 2.5rem; background-color: #1a88c7; line-height: 2.5rem;text-align: center;border-radius: 0.3rem; color: white;"
+                value="GENERATE PDF">
+        </div>
+    </div>
+
+
+</body>
+<script>
+
+
+
+
+    $("input[id=submit]").click(function () {
+        $('input').attr('value', function () {
+            return $(this).val();
+        });
+        var finalHtml = {}
+        finalHtml.id = '<%=data.id%>'
+        finalHtml.sampleid = '<%=data.sampleid%>'
+        finalHtml.chroage = '<%=data.chroage%>'
+        finalHtml.epiage = '<%=data.epiage%>'
+        finalHtml.epiage = '<%=data.accuracy%>'
+        finalHtml.reportPage = "<html>" + $('html').html() + "</html>"
+        $.post("/admin/saveEpiageReport", finalHtml, function (data) {
+            if (data == "success") alert("保存成功")
+
+        })
+    })
+    $("input[id=generate_pdf]").click(function () {
+        var pdf = {}
+        pdf.id = '<%=data.id%>'
+        pdf.sampleid = '<%=data.sampleid%>'
+        $.post("/admin/buildepiagepdf", pdf, function (data) {
+            if (data == "success") alert("pdf generated success")
+        })
+    })
+    function timeString(time) {
+        var datetime = new Date();
+        datetime.setTime(time);
+        var year = datetime.getFullYear();
+        var month = datetime.getMonth() + 1 < 10 ? "0" + (datetime.getMonth() + 1) : datetime.getMonth() + 1;
+        var date = datetime.getDate() < 10 ? "0" + datetime.getDate() : datetime.getDate();
+        var hour = datetime.getHours() < 10 ? "0" + datetime.getHours() : datetime.getHours();
+        var minute = datetime.getMinutes() < 10 ? "0" + datetime.getMinutes() : datetime.getMinutes();
+        var second = datetime.getSeconds() < 10 ? "0" + datetime.getSeconds() : datetime.getSeconds();
+        return year + "/" + month + "/" + date
+    }
+    let oldTime = (new Date('<%=data.date%>')).getTime();
+    let endtime = oldTime + (1000 * 60 * 60 * 24 * 30 * 6)
+    //let x=new Date(endtime).toLocaleString()
+    let sugTime = timeString(endtime);
+    $("input[name=nextTestDate]").val(sugTime)
+    console.info(sugTime)
+
+
+    $(function () {
+        var ntrLtBioData = []
+        var ntrGtBioData = []
+        var _ntrGtBioUsers = eval('<%-ntrGtBioUsers%>') //把字符串类型数组转换成真的数组 -表示不进行编码输出
+        var _ntrLtBioUsers = eval('<%-ntrLtBioUsers%>')
+        for (var i in _ntrGtBioUsers) {
+            ntrLtBioData.push([window.parseFloat(_ntrGtBioUsers[i].chroage).toFixed(2), window.parseFloat(_ntrGtBioUsers[i].epiage).toFixed(2)])
+        }
+        for (var i in _ntrLtBioUsers) {
+            ntrGtBioData.push([window.parseFloat(_ntrLtBioUsers[i].chroage).toFixed(2), window.parseFloat(_ntrLtBioUsers[i].epiage).toFixed(2)])
+        }
+
+        let option = {
+            width:500,
+            height:500,
+            animation: false,
+            legend: {
+                data: ['Chronological Age<Epigenetic Age', 'Chronological Age>Epigenetic Age']
+            },
+            xAxis: [{
+                name: 'Chronological Age',
+                type: 'value',
+                nameLocation: 'middle',
+                nameGap: 20,
+                scale: true,
+                nameTextStyle: { color: "#404bc2" },
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            }],
+            yAxis: [{
+                name: 'Epigenetic Age',
+                nameLocation: 'middle',
+                nameGap: 22,
+                nameRotate: 90,
+                type: 'value',
+                scale: true,
+                nameTextStyle: { color: "#404bc2" },
+                axisLabel: {
+                    formatter: '{value}'
+                }
+            }],
+            series: [{
+                name: 'Chronological Age<Epigenetic Age',
+                type: 'scatter',
+                //圆点的颜色为红色
+                itemStyle: {
+                    normal: {
+                        color: 'red'
+                    }
+                },
+                //自然年龄<生物学年龄
+                data: ntrLtBioData,
+                markPoint: {
+                    data: [
+                        {
+                            name: 'Epigenetic Age',
+                            value: window.parseFloat('<%=data.epiage%>').toFixed(2),
+                            xAxis: window.parseFloat('<%=data.chroage%>').toFixed(2),
+                            yAxis: window.parseFloat('<%=data.epiage%>').toFixed(2)
+                        }
+                    ]
+                },
+            },
+            {
+                name: 'Chronological Age>Epigenetic Age',
+                type: 'scatter',
+                //圆点的颜色为绿色
+                itemStyle: {
+                    normal: {
+                        color: 'green'
+                    }
+                },
+                //自然年龄>生物学年龄
+                data: ntrGtBioData,
+                markPoint: {
+                    data: [
+                        {
+                            name: 'Epigenetic Age',
+                            value: window.parseFloat('<%=data.epiage %>').toFixed(2),
+                            xAxis: window.parseFloat('<%=data.chroage %>').toFixed(2),
+                            yAxis: window.parseFloat('<%=data.epiage %>').toFixed(2)
+                        }
+                    ]
+                },
+            }]
+        }
+        // 使用刚指定的配置项和数据显示图表。
+        echarts.init(document.getElementById("main")).setOption(option);
+    })
+</script>
+
+
+
+</html>

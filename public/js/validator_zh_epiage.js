@@ -35,10 +35,6 @@ $().ready(function () {
                 required: true,
                 minlength: 10,
             },
-            identify: {        
-                required: true,
-                isIdCardNo: true
-            },
             tel: {
                 isMobile: true,
                 required: true,
@@ -51,7 +47,7 @@ $().ready(function () {
         messages: {
             name: {
                 required: "请输入用户名",
-                minlength: "用户名最少输入2个文字",
+                minlength: "请最少输入2个文字",
                 maxlength: "用户名超出上限"
             },
             ethnic: {
@@ -60,9 +56,6 @@ $().ready(function () {
             address: {
                 required: "请输入地址",
                 minlength: "请输入详细地址",
-            },
-            identify: {
-                required: "请输入您的身份证号码",
             },
             tel: {
                 required: "请输入您的手机号码",
@@ -86,17 +79,16 @@ $().ready(function () {
                 // $("input").attr("readonly", "true");
                 var finalHtml = {}
                 finalHtml.sampleid = $('#sampleid').val()
-                finalHtml.username = $('#name').val()
+                finalHtml.username = $('#username').val()
                 finalHtml.tel = $("#tel").val()
-                finalHtml.identity=$("#identity").val()
                 finalHtml.htmlpage = ("<html>" + $('html').html() + "</html>").replace(/block/g, "none")
                 finalHtml.date = new Date().toLocaleString()
-                $.post("/saveform", finalHtml, function (data) {
+                $.post("/saveformEpiage", finalHtml, function (data) {
                     if (data == "success") {
                         alert("您的信息已保存成功")
-                        window.location.href = "http://192.168.0.103:3000/reserveLiver_success"
+                        window.location.href = "http://localhost:3000/reserveEpiage_success"
                     } else {
-                        alert("出错")
+                        alert("保存信息出错")
                     }
                 })
             })

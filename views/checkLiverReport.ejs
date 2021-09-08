@@ -18,7 +18,7 @@
         <div id="content" style=" padding: 50px;">
             <p style="color:#1a88c7;font-size: 34px;text-align: center;">为保护您的隐私，请输入身份证号查询报告</p>
             <div style="text-align: center;margin: 45px;">
-                <input type="text" id="sfz" name="identity" value="" placeholder="请填写身份证号"></input>
+                <input type="text" id="identity" name="identity" value="" placeholder="请填写身份证号"></input>
             </div>
             <div style="height: 23px;width: 100%;"></div>
             <div style="text-align: center;margin: 45px;">
@@ -29,33 +29,21 @@
             </p>
 
         </div>
+        <script>
+            $("#button").click(function () {
+                userData = {};
+                userData.identity = $("#identity").val()
+                $.post("/testre", userData, function (data) {
+                    if (data == "error") {
+                        $('html').html("<div>" + "您的报告还未出结果或条码不正确!" + "</div>")
+                    }else {
+                        window.location.href = "<%=locals.url%>" + "/public/pdffile/" + data
+                    }
+                })
 
-  
+            })
+        </script>
 
-    <script>
-    
-      $("#button").click(function () {
-        userData = {};
-        userData.identity=$("#sfz").val()
-        // window.location.href= "http://192.168.0.112:3000/testre?sfz="+$("#sfz").val()
-
-       $.post("/testre",  userData, function (data) {
-            if(data){
-                // $('html').html(data)
-                window.location.href= "<%=locals.url%>"+"/public/pdffile/"+data
-            }
-         
-          if(data=="error"){
-              $('html').html("<div>"+"您的报告还未出结果，请您耐心等待！"+"</div>")
-          }
-          if(data=="noid"){
-            alert("无效号码")
-          }
-        })
-      
-      })
-    </script>
- 
 
 </body>
 
